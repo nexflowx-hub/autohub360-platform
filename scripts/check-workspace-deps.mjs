@@ -5,7 +5,13 @@ import { builtinModules } from 'node:module';
 const root = process.cwd();
 const workspaceRoots = ['apps', 'packages'];
 const sourceExtensions = new Set(['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs']);
-const extraFiles = new Set(['next.config.ts', 'next.config.js', 'next.config.mjs', 'eslint.config.mjs', 'postcss.config.mjs']);
+const extraFiles = new Set([
+  'next.config.ts',
+  'next.config.js',
+  'next.config.mjs',
+  'eslint.config.mjs',
+  'postcss.config.mjs',
+]);
 const builtins = new Set([
   ...builtinModules,
   ...builtinModules.map((name) => `node:${name}`),
@@ -45,7 +51,16 @@ function walk(dir, out = []) {
 }
 
 function packageRoot(specifier) {
-  if (!specifier || specifier.startsWith('.') || specifier.startsWith('/') || specifier.startsWith('#')) return null;
+  if (
+    !specifier ||
+    specifier.startsWith('.') ||
+    specifier.startsWith('/') ||
+    specifier.startsWith('#') ||
+    specifier === '@' ||
+    specifier.startsWith('@/')
+  ) {
+    return null;
+  }
   if (builtins.has(specifier)) return null;
   if (specifier.startsWith('@')) {
     const [scope, name] = specifier.split('/');
@@ -69,13 +84,8 @@ function importsFrom(source) {
 }
 
 const workspaces = listWorkspaceDirs();
-const workspaceNames = new Map();
-for (const dir of workspaces) {
-  const pkg = readJson(path.join(dir, 'package.json'));
-  workspaceNames.set(pkg.name, dir);
-}
-
 const failures = [];
+
 for (const dir of workspaces) {
   const manifestPath = path.join(dir, 'package.json');
   const pkg = readJson(manifestPath);
@@ -98,9 +108,7 @@ for (const dir of workspaces) {
     }
   }
 
-  if (missing.size) {
-    failures.push({ name: pkg.name, missing });
-  }
+  if (missing.size) failures.push({ name: pkg.name, missing });
 }
 
 if (failures.length) {
