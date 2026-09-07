@@ -1,0 +1,16 @@
+[
+  { "id": "cat-iluminacao", "slug": "iluminacao-automotiva", "name": "Iluminação Automotiva", "universe": "auto", "description": "Kits LED, lâmpadas e faróis auxiliares", "icon": "lightbulb" },
+  { "id": "cat-eletrica", "slug": "eletrica-eletronica", "name": "Elétrica e Eletrônica", "universe": "auto", "description": "Alarmes, sensores e módulos", "icon": "zap" },
+  { "id": "cat-cameras", "slug": "cameras-e-dashcams", "name": "Câmeras e Dashcams", "universe": "auto", "description": "Câmera de ré, dashcam e visão 360", "icon": "camera" },
+  { "id": "cat-rastreamento", "slug": "rastreamento-seguranca", "name": "Rastreamento e Segurança", "universe": "seguranca", "description": "Rastreadores GPS e bloqueadores", "icon": "shield" },
+  { "id": "cat-multimidia", "slug": "multimidia-conectividade", "name": "Multimídia e Conectividade", "universe": "auto", "description": "Centrais multimídia, som e conectividade", "icon": "monitor-speaker" },
+  { "id": "cat-baterias", "slug": "baterias-boosters", "name": "Baterias, Boosters e Carga", "universe": "auto", "description": "Boosters, carregadores e partida auxiliar", "icon": "battery-charging" },
+  { "id": "cat-moto", "slug": "moto", "name": "Moto", "universe": "moto", "description": "Acessórios e eletrônicos para motos", "icon": "bike" },
+  { "id": "cat-truck", "slug": "truck-12v-24v", "name": "Truck / 12V-24V", "universe": "truck", "description": "Soluções elétricas para caminhões", "icon": "truck" },
+  { "id": "cat-gadgets", "slug": "gadgets", "name": "Gadgets", "universe": "tech", "description": "Eletrônicos e gadgets para o dia a dia", "icon": "watch" },
+  { "id": "cat-carregamento", "slug": "carregamento-e-cabos", "name": "Carregamento e Cabos", "universe": "tech", "description": "Carregadores, cabos e power banks", "icon": "plug" },
+  { "id": "cat-casa", "slug": "casa-inteligente", "name": "Casa Inteligente", "universe": "casa-inteligente", "description": "Automação, iluminação e controle Wi-Fi", "icon": "house" },
+  { "id": "cat-sensores", "slug": "cameras-e-sensores", "name": "Câmeras e Sensores", "universe": "seguranca", "description": "Câmeras Wi-Fi e sensores residenciais", "icon": "cctv" },
+  { "id": "cat-energia", "slug": "energia-portatil", "name": "Energia Portátil e Solar", "universe": "energia", "description": "Estações de energia e soluções solares", "icon": "sun" },
+  { "id": "cat-pro", "slug": "ferramentas-profissionais", "name": "Ferramentas Profissionais", "universe": "pro", "description": "Diagnóstico e equipamentos para oficinas", "icon": "wrench" }
+]
