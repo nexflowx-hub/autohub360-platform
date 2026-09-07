@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { storeSite } from '@autohub360/config';
-import { getAllProducts, getCategories } from '@autohub360/catalog';
+import {
+  getAllProducts,
+  getCategories,
+} from '@autohub360/catalog/server';;
 import { KITS } from '@autohub360/config';
 import { LEGAL_DOCS } from '@autohub360/config';
 

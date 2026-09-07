@@ -107,7 +107,7 @@ export function Footer() {
               ['/instalacao', 'Instalação em Anápolis'],
               ['/kits', 'Kits e combos'],
               ['/conta/pedidos', 'Meus pedidos'],
-              ['/legal/trocas-devolucoes-arrependimento', 'Trocas e devoluções'],
+              ['/legal/trocas-devolucoes-arrependimento', 'Trocas e devoluções'] as const,
               ['/legal/garantia', 'Garantia'],
               ['/legal/entrega-e-frete', 'Entrega e frete'],
               ['/legal/pagamentos-e-seguranca', 'Pagamentos e segurança'],
@@ -126,7 +126,7 @@ export function Footer() {
           <h3 className="mb-4 font-display text-sm font-bold uppercase tracking-wider text-white">Institucional</h3>
           <ul className="space-y-2.5 text-sm">
             {[
-              ['https://autohub360.tech/sobre', 'Sobre a AutoHub360'],
+              ['https://autohub360.tech/sobre', 'Sobre a AutoHub360'] as const,
               ['https://autohub360.tech/pro', 'AutoHub360 Pro (B2B)'],
               ['https://autohub360.tech/hub', 'Blog / Hub'],
               ['/legal/termos-de-uso', 'Termos de uso'],

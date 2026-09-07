@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Archivo, Inter } from 'next/font/google';
-import { storeSite, ENV } from '@autohub360/config';
+import { storeSite } from '@autohub360/config';
 import { WhatsAppLauncher } from '@autohub360/ui';
 import { CookieConsent } from '@autohub360/ui';
 import { Header } from '@/components/header';

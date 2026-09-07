@@ -6,7 +6,6 @@ import {
   Percent,
   ShieldCheck,
   Truck,
-  Headset,
   Wrench,
   BadgeCheck,
   ClipboardCheck,
@@ -24,7 +23,11 @@ import {
   LogoHorizontal,
 } from '@autohub360/ui';
 import { GENEROSO, UNIVERSES, whatsappLink } from '@autohub360/config';
-import { getBestSellers, getFeatured, getOffers } from '@autohub360/catalog';
+import {
+  getBestSellers,
+  getFeatured,
+  getOffers,
+} from '@autohub360/catalog/server';;
 import { VehicleSelector } from '@/components/vehicle-selector';
 
 export const metadata = {

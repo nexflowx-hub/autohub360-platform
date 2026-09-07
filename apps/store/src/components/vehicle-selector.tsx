@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Car, Search, BookmarkPlus, X } from 'lucide-react';
+import { Car, Search, X } from 'lucide-react';
 import { Button, Select } from '@autohub360/ui';
 import { track } from '@autohub360/analytics';
 import { useFitmentStore } from '@autohub360/vehicle-fitment';
@@ -11,7 +11,7 @@ import {
   getVehicleModels,
   getVehicleVersions,
   describeVehicle,
-} from '@autohub360/catalog';
+} from '@autohub360/catalog';;
 
 type Mode = 'car' | 'moto' | 'truck';
 

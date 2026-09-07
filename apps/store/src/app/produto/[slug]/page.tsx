@@ -30,7 +30,7 @@ import {
   getAllProducts,
   getCatalogProduct,
   getComplementary,
-} from '@autohub360/catalog';
+} from '@autohub360/catalog/server';;
 import { ProductBuyBox } from '@/components/product-buy-box';
 import { ShareButton } from '@/components/share-button';
 import { productFaq } from '@/lib/faq';

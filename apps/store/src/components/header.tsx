@@ -18,7 +18,6 @@ import {
 import { LogoHorizontal } from '@autohub360/ui';
 import { storeSite, UNIVERSES } from '@autohub360/config';
 import { useCart } from '@autohub360/commerce';
-import { useFitmentStore } from '@autohub360/vehicle-fitment';
 import * as Dialog from '@radix-ui/react-dialog';
 
 function UtilityBar() {
@@ -127,10 +126,8 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const itemsCount = useCart((s) => s.lines.reduce((acc, l) => acc + l.quantity, 0));
-  const selectedVehicle = useFitmentStore((s) => s.selected);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  const hasVehicle = mounted && Boolean(selectedVehicle.versionId);
 
   return (
     <>

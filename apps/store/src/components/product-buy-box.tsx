@@ -23,7 +23,7 @@ import {
   describeVehicle,
   fitmentStatus,
   compatibilityVersionIds,
-} from '@autohub360/catalog';
+} from '@autohub360/catalog';;
 import { INSTALLATION_FEE_CENTS, formatBRL } from '@autohub360/commerce';
 
 /** PDP buy box: quantity, vehicle compatibility state, somente produto vs + instalação. */
