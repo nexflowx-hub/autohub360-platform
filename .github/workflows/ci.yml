@@ -12,8 +12,25 @@ concurrency:
 
 jobs:
   validate:
+    name: ${{ matrix.name }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: workspace-deps
+            command: pnpm deps:check
+          - name: lint
+            command: pnpm lint
+          - name: typecheck
+            command: pnpm typecheck
+          - name: build-tech
+            command: pnpm build:tech
+          - name: build-store
+            command: pnpm build:store
+          - name: build-admin
+            command: pnpm --filter @autohub360/admin build
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,17 +50,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Lint
-        run: pnpm lint
-
-      - name: Typecheck
-        run: pnpm typecheck
-
-      - name: Build tech
-        run: pnpm build:tech
-
-      - name: Build store
-        run: pnpm build:store
-
-      - name: Build admin
-        run: pnpm --filter @autohub360/admin build
+      - name: Run ${{ matrix.name }}
+        run: ${{ matrix.command }}
