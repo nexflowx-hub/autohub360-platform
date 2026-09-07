@@ -62,3 +62,30 @@ export function fitmentStatus(
   if (!versionId) return 'unconfirmed';
   return ids.includes(versionId) ? 'compatible' : 'not_compatible';
 }
+
+// ===== Vehicle lookups (pure, client-safe) =====
+export function getVehicleMakes(type?: string): VehicleMake[] {
+  return type ? vehicleMakes.filter((m) => m.type === type) : vehicleMakes;
+}
+export function getVehicleModels(makeId: string): VehicleModel[] {
+  return vehicleModels.filter((m) => m.makeId === makeId);
+}
+export function getVehicleVersions(modelId: string): VehicleVersion[] {
+  return vehicleVersions.filter((v) => v.modelId === modelId);
+}
+export function getVehicleVersion(versionId: string): VehicleVersion | undefined {
+  return vehicleVersions.find((v) => v.id === versionId);
+}
+export function getVehicleModel(modelId: string): VehicleModel | undefined {
+  return vehicleModels.find((m) => m.id === modelId);
+}
+export function getVehicleMake(makeId: string): VehicleMake | undefined {
+  return vehicleMakes.find((m) => m.id === makeId);
+}
+export function describeVehicle(versionId: string): string {
+  const v = getVehicleVersion(versionId);
+  if (!v) return '';
+  const model = getVehicleModel(v.modelId);
+  const make = model ? getVehicleMake(model.makeId) : undefined;
+  return [make?.name, model?.name, v.name].filter(Boolean).join(' ');
+}

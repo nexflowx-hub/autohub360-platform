@@ -35,13 +35,16 @@ export function Card({
   children,
   className,
   hover = false,
+  id,
 }: {
   children: ReactNode;
   className?: string;
   hover?: boolean;
+  id?: string;
 }) {
   return (
     <div
+      id={id}
       className={cn(
         'rounded-xl border border-surface-200 bg-white shadow-[var(--ah-shadow-card)]',
         hover && 'ah-card-hover',

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Cookie } from 'lucide-react';
 import { useConsent } from '@autohub360/analytics';
@@ -9,11 +10,21 @@ import { Checkbox } from './form';
 /** GDPR/LGPD-aware cookie preferences component. Non-essential trackers never
  *  load before consent; rejecting is as easy as accepting; reopen from footer. */
 export function CookieConsent() {
-  const { consent, open, acceptAll, rejectAll, setConsent, setOpen } = useConsent();
+  const consent = useConsent((s) => s.consent);
+  const open = useConsent((s) => s.open);
+  const setOpen = useConsent((s) => s.setOpen);
+  const acceptAll = useConsent((s) => s.acceptAll);
+  const rejectAll = useConsent((s) => s.rejectAll);
+  const setConsent = useConsent((s) => s.setConsent);
 
-  // Hydration-safe: wait for persisted state.
-  const ready = useConsent.persist.hasHydrated();
-  if (!ready || !open) return null;
+  // Hydration-safe: render only after mount (consent is client-only state).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+    // First visit: invite consent decision once.
+    if (!useConsent.getState().consent) setOpen(true);
+  }, [setOpen]);
+  if (!mounted || !open) return null;
 
   const analytics = consent?.analytics ?? false;
   const marketing = consent?.marketing ?? false;

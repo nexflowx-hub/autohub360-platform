@@ -47,8 +47,8 @@ const vendors: VendorPush[] = [];
 
 declare global {
   interface Window {
-    gtag?: VendorPush;
-    fbq?: VendorPush;
+    gtag?: (...args: unknown[]) => void;
+    fbq?: (...args: unknown[]) => void;
     ttq?: { track: VendorPush };
   }
 }

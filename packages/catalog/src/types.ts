@@ -146,3 +146,11 @@ export interface Order {
   createdAt: string;
   demo: boolean;
 }
+
+/** Hydrated product with joined display fields (category/brand). */
+export interface CatalogProduct extends Product {
+  categoryName: string;
+  categorySlug: string;
+  universe: string;
+  brandName: string;
+}

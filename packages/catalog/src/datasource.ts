@@ -1,6 +1,7 @@
 import 'server-only';
 import type {
   Article,
+  CatalogProduct,
   Brand,
   Category,
   FitmentStatus,
@@ -31,12 +32,20 @@ import {
 
 type SeedProduct = Product & { socket?: string };
 
-export interface CatalogProduct extends Product {
-  categoryName: string;
-  categorySlug: string;
-  universe: string;
-  brandName: string;
-}
+// Re-export client-safe catalog helpers so server code has one import surface.
+export {
+  getCategory,
+  getCategoryBySlug,
+  getBrand,
+  getProductBySlug,
+  getVehicleMakes,
+  getVehicleModels,
+  getVehicleVersions,
+  getVehicleVersion,
+  getVehicleModel,
+  getVehicleMake,
+  describeVehicle,
+} from './seed-store';
 
 function hydrate(p: SeedProduct): CatalogProduct {
   const cat = seedCategories.find((c) => c.id === p.categoryId);
@@ -154,32 +163,6 @@ export function checkFitment(productSlug: string, versionId: string): FitmentSta
   return fitmentStatus(p, versionId);
 }
 
-// ===== Vehicle data =====
-export function getVehicleMakes(type?: string): VehicleMake[] {
-  return type ? seedMakes.filter((m) => m.type === type) : seedMakes;
-}
-export function getVehicleModels(makeId: string): VehicleModel[] {
-  return seedModels.filter((m) => m.makeId === makeId);
-}
-export function getVehicleVersions(modelId: string): VehicleVersion[] {
-  return seedVersions.filter((v) => v.modelId === modelId);
-}
-export function getVehicleVersion(versionId: string): VehicleVersion | undefined {
-  return seedVersions.find((v) => v.id === versionId);
-}
-export function getVehicleModel(modelId: string): VehicleModel | undefined {
-  return seedModels.find((m) => m.id === modelId);
-}
-export function getVehicleMake(makeId: string): VehicleMake | undefined {
-  return seedMakes.find((m) => m.id === makeId);
-}
-export function describeVehicle(versionId: string): string {
-  const v = getVehicleVersion(versionId);
-  if (!v) return '';
-  const model = getVehicleModel(v.modelId);
-  const make = model ? getVehicleMake(model.makeId) : undefined;
-  return [make?.name, model?.name, v.name].filter(Boolean).join(' ');
-}
 
 // ===== Editorial =====
 export function getArticles(): Article[] {
