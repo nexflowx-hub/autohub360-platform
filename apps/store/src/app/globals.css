@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '@autohub360/ui/src/styles/theme.css';
+@source '../../../../packages/ui/src';
 
 html {
   scroll-behavior: smooth;

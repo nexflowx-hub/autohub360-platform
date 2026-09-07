@@ -24,7 +24,7 @@ export function LogoIcon({ className }: { className?: string }) {
   );
 }
 
-function Wordmark({ mono, className }: { mono?: boolean; className?: string }) {
+function Wordmark({ mono, tone, className }: { mono?: boolean; tone?: 'light' | 'dark'; className?: string }) {
   return (
     <span
       className={cn(
@@ -36,7 +36,7 @@ function Wordmark({ mono, className }: { mono?: boolean; className?: string }) {
         <span className="text-current">AUTOHUB360</span>
       ) : (
         <>
-          <span className="text-white">AUTO</span>
+          <span className={tone === 'dark' ? 'text-ink-900' : 'text-white'}>AUTO</span>
           <span className="text-ahblue-500">HUB</span>
           <span className="text-ahorange-500">360</span>
         </>
@@ -45,17 +45,20 @@ function Wordmark({ mono, className }: { mono?: boolean; className?: string }) {
   );
 }
 
-/** Flat horizontal logo — navigation, checkout, footer, small UI. */
+/** Flat horizontal logo — navigation, checkout, footer, small UI.
+ *  tone='light' for dark backgrounds (AUTO in white); tone='dark' for light surfaces. */
 export function LogoHorizontal({
   className,
   mono,
   tagline = true,
   size = 'md',
+  tone = 'light',
 }: {
   className?: string;
   mono?: boolean;
   tagline?: boolean;
   size?: 'sm' | 'md' | 'lg';
+  tone?: 'light' | 'dark';
 }) {
   const text = size === 'lg' ? 'text-3xl' : size === 'sm' ? 'text-lg' : 'text-2xl';
   const tag = size === 'lg' ? 'text-xs' : 'text-[10px]';
@@ -63,7 +66,7 @@ export function LogoHorizontal({
     <span className={cn('inline-flex items-center gap-2.5', className)}>
       <LogoIcon className={size === 'lg' ? 'h-11 w-11' : size === 'sm' ? 'h-7 w-7' : 'h-9 w-9'} />
       <span className="flex flex-col gap-0.5">
-        <Wordmark mono={mono} className={text} />
+        <Wordmark mono={mono} tone={tone} className={text} />
         {tagline && (
           <span
             className={cn(

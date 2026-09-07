@@ -22,15 +22,15 @@ export function Rating({
       <span className="inline-flex items-center gap-0.5" aria-hidden="true">
         {stars.map((i) => {
           if (i < full)
-            return <Star key={i} className={cn(px, 'fill-amber-400 text-amber-400')} />;
+            return <Star key={`f-${i}`} className={cn(px, 'fill-amber-400 text-amber-400')} />;
           if (i === full && half)
             return (
-              <span className="relative inline-flex">
+              <span key={`h-${i}`} className="relative inline-flex">
                 <Star className={cn(px, 'fill-surface-300 text-surface-300')} />
                 <StarHalf className={cn(px, 'absolute inset-0 fill-amber-400 text-amber-400')} />
               </span>
             );
-          return <Star key={i} className={cn(px, 'fill-surface-300 text-surface-300')} />;
+          return <Star key={`e-${i}`} className={cn(px, 'fill-surface-300 text-surface-300')} />;
         })}
       </span>
       {typeof count === 'number' && (

@@ -30,7 +30,7 @@ export function Header() {
         </button>
 
         <Link href="/" aria-label="AutoHub360 — página inicial" className="shrink-0">
-          <LogoHorizontal size="md" tagline={false} />
+          <LogoHorizontal size="md" tagline={false} tone="dark" />
         </Link>
 
         <nav aria-label="Navegação principal" className="ml-auto hidden h-full lg:block">
@@ -80,7 +80,7 @@ export function Header() {
           <Dialog.Overlay className="fixed inset-0 z-50 bg-navy-950/60 backdrop-blur-sm" />
           <Dialog.Content className="fixed inset-y-0 left-0 z-50 flex w-[86%] max-w-sm flex-col bg-white shadow-2xl focus:outline-none">
             <div className="flex items-center justify-between border-b border-surface-200 px-4 py-4">
-              <LogoHorizontal size="sm" tagline={false} />
+              <LogoHorizontal size="sm" tagline={false} tone="dark" />
               <Dialog.Close
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-ink-500 hover:bg-surface-100"
                 aria-label="Fechar menu"
