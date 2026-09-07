@@ -79,6 +79,12 @@ function tiktokAdapter(): VendorPush | null {
   return null;
 }
 
+function isLocalDevelopment(): boolean {
+  if (typeof window === 'undefined') return false;
+  const host = window.location.hostname;
+  return host === 'localhost' || host === '127.0.0.1' || host === '::1';
+}
+
 /** Core tracking entry point. Marketing events are gated by consent. */
 export function track(event: AhEvent, data: AhEventData = {}) {
   if (typeof window === 'undefined') return;
@@ -87,19 +93,14 @@ export function track(event: AhEvent, data: AhEventData = {}) {
   if (marketingEvents.includes(event) && !consent?.analytics) return;
 
   const payload = { ...data, sent_at: new Date().toISOString() };
-  for (const push of [
-    gtagAdapter(),
-    metaAdapter(),
-    tiktokAdapter(),
-    ...vendors,
-  ]) {
+  for (const push of [gtagAdapter(), metaAdapter(), tiktokAdapter(), ...vendors]) {
     try {
       push?.(event, payload);
     } catch {
       // Analytics must never break the app.
     }
   }
-  if (process.env.NODE_ENV === 'development') {
+  if (isLocalDevelopment()) {
     // eslint-disable-next-line no-console
     console.debug('[ah-analytics]', event, payload);
   }
@@ -139,4 +140,13 @@ export function syncVendorScripts(gaId: string, metaPixelId: string, tiktokPixel
   loader.id = 'ah-analytics-loader';
   loader.textContent = code;
   document.head.appendChild(loader);
+}
+
+/** React hook to trigger page-level events without leaking vendor details. */
+export function useTrackPage(event: AhEvent, data: AhEventData = {}) {
+  useEffect(() => {
+    track(event, data);
+    // data is intentionally captured at mount; callers should pass stable primitives.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [event]);
 }
