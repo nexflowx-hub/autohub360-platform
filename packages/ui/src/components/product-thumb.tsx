@@ -5,8 +5,6 @@ import {
   ShieldCheck,
   MonitorSmartphone,
   BatteryCharging,
-  Bike,
-  Truck,
   Watch,
   Plug,
   House,
@@ -22,7 +20,16 @@ import {
 } from 'lucide-react';
 import { cn } from '../lib/cn';
 
-/** Deterministic product artwork per imageKey — crisp SVG placeholders, no external images. */
+/**
+ * Deterministic product artwork per imageKey.
+ *
+ * The first V1 rendered saturated gradient placeholders. They were technically
+ * useful but visually too far from the approved store board, whose product
+ * cards use bright catalogue photography on clean white/ice surfaces. Until
+ * real supplier photography lands in Supabase Storage, these illustrations
+ * intentionally imitate that catalogue treatment: light background, grounded
+ * product silhouette and a restrained brand-colour accent.
+ */
 
 const registry: Record<string, { icon: LucideIcon; from: string; to: string }> = {
   'led-kit': { icon: Lightbulb, from: '#10459b', to: '#1e6feb' },
@@ -88,28 +95,41 @@ export function ProductThumb({
 }) {
   const def = registry[imageKey] ?? registry.gadget!;
   const Icon = def.icon;
-  const iconSize = size === 'sm' ? 'h-10 w-10' : size === 'lg' ? 'h-28 w-28' : 'h-20 w-20';
+  const iconSize = size === 'sm' ? 'h-9 w-9' : size === 'lg' ? 'h-24 w-24' : 'h-16 w-16';
+
   return (
     <div
       role="img"
       aria-label={alt}
       className={cn(
-        'relative flex items-center justify-center overflow-hidden rounded-lg',
+        'relative flex items-center justify-center overflow-hidden rounded-lg border border-slate-200/80 bg-white',
         className,
       )}
-      style={{ background: `linear-gradient(140deg, ${def.from} 0%, ${def.to} 100%)` }}
+      style={{
+        background:
+          'radial-gradient(circle at 72% 18%, rgba(96,165,250,.20) 0%, transparent 27%), linear-gradient(145deg, #ffffff 0%, #f8fafc 58%, #eef4fb 100%)',
+      }}
     >
       <div
         aria-hidden="true"
-        className="absolute -right-6 -top-6 h-28 w-28 rounded-full opacity-20"
-        style={{ background: 'radial-gradient(circle, #ffffff 0%, transparent 70%)' }}
+        className="absolute inset-x-[18%] bottom-[15%] h-3 rounded-full bg-slate-950/10 blur-md"
       />
       <div
         aria-hidden="true"
-        className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full opacity-10"
-        style={{ background: 'radial-gradient(circle, #ffffff 0%, transparent 70%)' }}
+        className="absolute -right-6 -top-6 h-24 w-24 rounded-full opacity-30"
+        style={{ background: `radial-gradient(circle, ${def.to}55 0%, transparent 68%)` }}
       />
-      <Icon aria-hidden="true" className={cn(iconSize, 'relative text-white/95')} strokeWidth={1.4} />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-3 left-3 h-1 w-8 rounded-full"
+        style={{ background: `linear-gradient(90deg, ${def.from}, ${def.to})` }}
+      />
+      <Icon
+        aria-hidden="true"
+        className={cn(iconSize, 'relative drop-shadow-[0_8px_12px_rgba(15,23,42,.18)]')}
+        style={{ color: def.to }}
+        strokeWidth={1.55}
+      />
     </div>
   );
 }
