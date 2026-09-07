@@ -1,0 +1,12 @@
+[
+  { "id": "brd-neon", "slug": "neon-drive", "name": "NeonDrive" },
+  { "id": "brd-vision", "slug": "visionone", "name": "VisionOne" },
+  { "id": "brd-track", "slug": "trackpoint", "name": "TrackPoint" },
+  { "id": "brd-sonus", "slug": "sonuscar", "name": "SonusCar" },
+  { "id": "brd-powerbrick", "slug": "powerbrick", "name": "PowerBrick" },
+  { "id": "brd-homelink", "slug": "homelink", "name": "HomeLink" },
+  { "id": "brd-protech", "slug": "protech", "name": "ProTech" },
+  { "id": "brd-urbanmob", "slug": "urbanmob", "name": "UrbanMob" },
+  { "id": "brd-solaria", "slug": "solaria", "name": "Solaria" },
+  { "id": "brd-gadgetly", "slug": "gadgetly", "name": "Gadgetly" }
+]

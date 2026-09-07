@@ -1,0 +1,196 @@
+[
+  {
+    "id": "prd-central-9", "slug": "central-multimidia-9-android-auto-carplay", "sku": "AH-MMD-9IN",
+    "categoryId": "cat-multimidia", "brandId": "brd-sonus",
+    "title": "Central Multimídia 9\" Android Auto e CarPlay", "subtitle": "Tela QLED · GPS · Bluetooth",
+    "description": "Central multimídia de 9 polegadas com tela QLED, wireless Android Auto e CarPlay, GPS integrado, Bluetooth 5.0 e ajuste de áudio profissional. Interface fluida e compatível com comandos de volante na maioria dos modelos com adaptador correto. Instalação com adaptação de chicote disponível em Anápolis.",
+    "specs": [
+      { "label": "Tela", "value": "9\" QLED touch" },
+      { "label": "Sistema", "value": "Android + fontes rádio/BT/USB" },
+      { "label": "Conectividade", "value": "Wi-Fi, Bluetooth 5.0, GPS" },
+      { "label": "Câmera de ré", "value": "Entrada dedicada" }
+    ],
+    "imageKey": "head-unit", "priceCents": 89900, "compareAtCents": 104900, "currency": "BRL",
+    "stock": 14, "weightGrams": 1900, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": true, "bestSeller": true,
+    "rating": 4.7, "reviewCount": 128, "badges": ["Oferta"],
+    "createdAt": "2026-08-09T08:00:00Z"
+  },
+  {
+    "id": "prd-mod-amp", "slug": "modulo-amplificador-digital-800w", "sku": "AH-AMP-800",
+    "categoryId": "cat-multimidia", "brandId": "brd-sonus",
+    "title": "Módulo Amplificador Digital 800W RMS", "subtitle": "Classe D · crossover ativo",
+    "description": "Módulo amplificador classe D de 800W RMS com crossover ativo, ganho ajustável e proteção térmica. Para quem quer dar um upgrade de som sem refazer todo o sistema. Instalação com fiação adequada é essencial — conte com o parceiro AutoHub360.",
+    "specs": [
+      { "label": "Potência", "value": "800W RMS" },
+      { "label": "Classe", "value": "D" },
+      { "label": "Impedância", "value": "2 ohms estável" }
+    ],
+    "imageKey": "amp", "priceCents": 44900, "currency": "BRL",
+    "stock": 11, "weightGrams": 2400, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.6, "reviewCount": 52, "badges": [],
+    "createdAt": "2026-08-09T08:30:00Z"
+  },
+  {
+    "id": "prd-falante-69", "slug": "par-alto-falante-6x9-200w", "sku": "AH-ALT-69X",
+    "categoryId": "cat-multimidia", "brandId": "brd-sonus",
+    "title": "Par Alto-Falante 6x9\" 200W Três Vias", "subtitle": "Grave firme · agudos claros",
+    "description": "Par de alto-falantes 6x9 três vias de 200W máximos por par, com suspensão reforçada e tweeter de seda. Substituição direta nos locais originais da maioria dos sedãs e picapes.",
+    "specs": [
+      { "label": "Tamanho", "value": "6x9 polegadas" },
+      { "label": "Potência", "value": "200W máx (par)" },
+      { "label": "Vias", "value": "3" }
+    ],
+    "imageKey": "speaker", "priceCents": 25900, "currency": "BRL",
+    "stock": 28, "weightGrams": 2600, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 71, "badges": [],
+    "createdAt": "2026-08-10T08:00:00Z"
+  },
+  {
+    "id": "prd-microfone-p2", "slug": "microfone-externo-p2-para-central", "sku": "AH-MIC-P2",
+    "categoryId": "cat-multimidia", "brandId": "brd-sonus",
+    "title": "Microfone Externo P2 para Central Multimídia", "subtitle": "Redução de ruído",
+    "description": "Microfone externo com plugue P2 e cabo de 3 metros para instalação discreta junto ao volante. Melhora drasticamente a qualidade de chamadas Bluetooth e comandos de voz.",
+    "specs": [
+      { "label": "Conector", "value": "P2 3,5mm" },
+      { "label": "Cabo", "value": "3 m" },
+      { "label": "Fixação", "value": "Adesiva 3M" }
+    ],
+    "imageKey": "mic", "priceCents": 4990, "currency": "BRL",
+    "stock": 68, "weightGrams": 90, "warrantyMonths": 6,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.4, "reviewCount": 58, "badges": [],
+    "createdAt": "2026-08-10T08:30:00Z"
+  },
+  {
+    "id": "prd-booster-2000", "slug": "booster-de-bateria-12v-2000a", "sku": "AH-BST-2000",
+    "categoryId": "cat-baterias", "brandId": "brd-powerbrick",
+    "title": "Booster de Bateria 12V 2000A", "subtitle": "Partida auxiliar + power bank",
+    "description": "Booster de partida auxiliar com pico de 2000A para motores a gasolina, álcool e diesel leves. Inclui pinças inteligentes com proteção contra inversão de polaridade, lanterna SOS e saída USB-C para recarregar o próprio aparelho ou o celular. Nunca mais fique na mão.",
+    "specs": [
+      { "label": "Pico", "value": "2000A" },
+      { "label": "Capacidade", "value": "24.000 mAh" },
+      { "label": "Saídas", "value": "Pinças + USB-C PD + USB-A" },
+      { "label": "Extras", "value": "Lanterna SOS e compasso" }
+    ],
+    "imageKey": "booster", "priceCents": 49990, "compareAtCents": 59990, "currency": "BRL",
+    "stock": 16, "weightGrams": 1100, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": true, "bestSeller": true,
+    "rating": 4.9, "reviewCount": 173, "badges": ["Oferta", "Mais vendido"],
+    "createdAt": "2026-08-11T08:00:00Z"
+  },
+  {
+    "id": "prd-carregador-bat", "slug": "carregador-de-bateria-inteligente-12v", "sku": "AH-CRG-12V",
+    "categoryId": "cat-baterias", "brandId": "brd-powerbrick",
+    "title": "Carregador de Bateria Inteligente 12V 8A", "subtitle": "Modo manutenção automático",
+    "description": "Carregador inteligente com ciclos automáticos de carga e manutenção para baterias 12V de carro, moto e equipamentos 12V. Carga segura com proteção contra sulfatação, sobrecarga e inversão. Ideal para veículos de uso esporádico.",
+    "specs": [
+      { "label": "Corrente", "value": "8A" },
+      { "label": "Baterias", "value": "12V (ácida, AGM, gel)" },
+      { "label": "Modo", "value": "Carga e manutenção automáticos" }
+    ],
+    "imageKey": "charger", "priceCents": 19990, "currency": "BRL",
+    "stock": 31, "weightGrams": 760, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.7, "reviewCount": 84, "badges": [],
+    "createdAt": "2026-08-11T08:30:00Z"
+  },
+  {
+    "id": "prd-usb-moto", "slug": "carregador-usb-para-moto-a-prova-dagua", "sku": "AH-MOT-USB",
+    "categoryId": "cat-moto", "brandId": "brd-urbanmob",
+    "title": "Carregador USB para Moto à Prova d'Água", "subtitle": "2 portas · 12V diretamente na bateria",
+    "description": "Tomada USB dupla selada para motos, ligada diretamente na bateria com fusível de proteção. Carregue celular e GPS de capacete mesmo debaixo de chuva. Tampa anti-poeira inclusa.",
+    "specs": [
+      { "label": "Portas", "value": "2 USB (3A total)" },
+      { "label": "Vedação", "value": "IP66" },
+      { "label": "Instalação", "value": "Bateria com fusível incluso" }
+    ],
+    "imageKey": "moto-usb", "priceCents": 8990, "compareAtCents": 10990, "currency": "BRL",
+    "stock": 52, "weightGrams": 140, "warrantyMonths": 6,
+    "universal": true, "installable": true, "featured": false, "bestSeller": true,
+    "rating": 4.6, "reviewCount": 112, "badges": ["Oferta"],
+    "createdAt": "2026-08-12T08:00:00Z"
+  },
+  {
+    "id": "prd-alarme-moto", "slug": "alarme-para-moto-com-controle", "sku": "AH-MOT-ALM",
+    "categoryId": "cat-moto", "brandId": "brd-vision",
+    "title": "Alarme para Moto com Controle", "subtitle": "Sensor de movimento · partida bloqueada",
+    "description": "Alarme específico para motos com sensor de movimento e choque, sirene de alta intensidade e bloqueio de partida. Controle com alcance estendido e bateria de reserva na sirene.",
+    "specs": [
+      { "label": "Sensor", "value": "Movimento + choque" },
+      { "label": "Sirene", "value": "120dB com bateria reserva" },
+      { "label": "Bloqueio", "value": "Partida via relé incluso" }
+    ],
+    "imageKey": "alarm", "priceCents": 15990, "currency": "BRL",
+    "stock": 25, "weightGrams": 480, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.4, "reviewCount": 63, "badges": [],
+    "createdAt": "2026-08-12T08:30:00Z"
+  },
+  {
+    "id": "prd-moto-milha", "slug": "par-farol-de-milha-led-para-moto", "sku": "AH-MOT-MLH",
+    "categoryId": "cat-moto", "brandId": "brd-neon",
+    "title": "Par Farol de Milha LED para Moto", "subtitle": "Alcance estendido · universal 12V",
+    "description": "Par de faróis de milha LED compactos para motos e scooters, com suportes universais e chapéu corta-luz. Aumenta a visibilidade em viagens noturnas e estradas sem iluminação.",
+    "specs": [
+      { "label": "Potência", "value": "40W (par)" },
+      { "label": "Feixe", "value": "Longo alcance + corta-luz" },
+      { "label": "Suporte", "value": "Universal para guidão" }
+    ],
+    "imageKey": "fog-light", "priceCents": 13990, "currency": "BRL",
+    "stock": 34, "weightGrams": 620, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 49, "badges": [],
+    "createdAt": "2026-08-13T08:00:00Z"
+  },
+  {
+    "id": "prd-led-24v", "slug": "kit-lampada-led-24v-para-caminhao", "sku": "AH-TRK-24V",
+    "categoryId": "cat-truck", "brandId": "brd-neon",
+    "title": "Kit Lâmpada LED 24V para Caminhão", "subtitle": "H4 · 8.000 lm · anti-interferência",
+    "description": "Kit LED 24V específico para caminhões e ônibus, com driver reforçado para rede elétrica de 24V e blindagem anti-interferência. Visão mais larga e segura nas viagens noturnas de rota.",
+    "specs": [
+      { "label": "Voltagem", "value": "24V" },
+      { "label": "Luminosidade", "value": "8.000 lm (par)" },
+      { "label": "Blindagem", "value": "Anti-ruído de rádio" }
+    ],
+    "imageKey": "led-kit", "priceCents": 23990, "currency": "BRL",
+    "stock": 20, "weightGrams": 520, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.6, "reviewCount": 41, "badges": [],
+    "createdAt": "2026-08-14T08:00:00Z"
+  },
+  {
+    "id": "prd-rastreador-truck", "slug": "rastreador-para-caminhao-24v", "sku": "AH-TRK-RAS",
+    "categoryId": "cat-truck", "brandId": "brd-track",
+    "title": "Rastreador para Caminhão 24V", "subtitle": "Telemetria básica · botão de pânico",
+    "description": "Rastreador robusto para frota pesada, com leitura de ignição, botão de pânico e integração com painel de gestão. Carcaça resistente para cabine e chassi.",
+    "specs": [
+      { "label": "Voltagem", "value": "9V a 90V" },
+      { "label": "Entradas", "value": "Ignição + pânico" },
+      { "label": "Plataforma", "value": "App e painel web" }
+    ],
+    "imageKey": "tracker", "priceCents": 38900, "currency": "BRL",
+    "stock": 13, "weightGrams": 260, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.6, "reviewCount": 27, "badges": [],
+    "createdAt": "2026-08-14T08:30:00Z"
+  },
+  {
+    "id": "prd-booster-24v", "slug": "booster-24v-para-caminhao", "sku": "AH-TRK-BST",
+    "categoryId": "cat-truck", "brandId": "brd-powerbrick",
+    "title": "Booster 24V para Caminhão", "subtitle": "Partida auxiliar pesada",
+    "description": "Booster de partida para caminhões e máquinas 24V, com pico de 3000A, pinças reforçadas e indicador de carga. Pronto para o campo e para a estrada.",
+    "specs": [
+      { "label": "Pico", "value": "3000A" },
+      { "label": "Voltagem", "value": "24V (12V opcional no modo leve)" },
+      { "label": "Pinças", "value": "Reforçadas 2000A" }
+    ],
+    "imageKey": "booster", "priceCents": 74900, "currency": "BRL",
+    "stock": 8, "weightGrams": 3200, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.7, "reviewCount": 22, "badges": [],
+    "createdAt": "2026-08-15T08:00:00Z"
+  }
+]

@@ -1,0 +1,404 @@
+[
+  {
+    "id": "prd-powerbank", "slug": "power-bank-20000mah-carga-rapida", "sku": "AH-GDG-PB20",
+    "categoryId": "cat-gadgets", "brandId": "brd-gadgetly",
+    "title": "Power Bank 20.000mAh Carga Rápida", "subtitle": "USB-C PD 20W · dupla saída",
+    "description": "Power bank de 20.000mAh com carga rápida Power Delivery 20W e Quick Charge para dois aparelhos ao mesmo tempo. Display de porcentagem real e células de alta densidade. Companheiro de viagem, trabalho e trânsito.",
+    "specs": [
+      { "label": "Capacidade", "value": "20.000 mAh" },
+      { "label": "Saídas", "value": "USB-C PD 20W + USB-A QC" },
+      { "label": "Display", "value": "Porcentagem digital" }
+    ],
+    "imageKey": "powerbank", "priceCents": 12990, "compareAtCents": 15990, "currency": "BRL",
+    "stock": 58, "weightGrams": 420, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": true,
+    "rating": 4.7, "reviewCount": 417, "badges": ["Oferta", "Mais vendido"],
+    "createdAt": "2026-08-16T08:00:00Z"
+  },
+  {
+    "id": "prd-gan-65", "slug": "carregador-veicular-usb-c-gan-65w", "sku": "AH-GDG-GAN65",
+    "categoryId": "cat-gadgets", "brandId": "brd-gadgetly",
+    "title": "Carregador Veicular USB-C GaN 65W", "subtitle": "Notebook e celular no carro",
+    "description": "Carregador veicular com tecnologia GaN de 65W: carregue notebook, tablet e celular ao mesmo tempo com distribuição inteligente de potência. Compacto, com anel de iluminação e proteção contra superaquecimento.",
+    "specs": [
+      { "label": "Potência", "value": "65W total" },
+      { "label": "Portas", "value": "USB-C PD + USB-A" },
+      { "label": "Tecnologia", "value": "GaN (compacto e frio)" }
+    ],
+    "imageKey": "car-charger", "priceCents": 12990, "currency": "BRL",
+    "stock": 49, "weightGrams": 110, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": true, "bestSeller": true,
+    "rating": 4.8, "reviewCount": 206, "badges": ["Mais vendido"],
+    "createdAt": "2026-08-16T08:30:00Z"
+  },
+  {
+    "id": "prd-caixa-bt", "slug": "caixa-de-som-bluetooth-a-prova-dagua", "sku": "AH-GDG-SPK",
+    "categoryId": "cat-gadgets", "brandId": "brd-gadgetly",
+    "title": "Caixa de Som Bluetooth à Prova d'Água", "subtitle": "20W · IPX7 · 12h de bateria",
+    "description": "Caixa de som portátil 20W com vedação IPX7 para piscina, praia e trilha. Pareamento estéreo duplo, alça de silicone e 12 horas de reprodução. Grave presente e vocais claros.",
+    "specs": [
+      { "label": "Potência", "value": "20W RMS" },
+      { "label": "Vedação", "value": "IPX7" },
+      { "label": "Bateria", "value": "12 horas" }
+    ],
+    "imageKey": "speaker-bt", "priceCents": 17990, "currency": "BRL",
+    "stock": 37, "weightGrams": 540, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.6, "reviewCount": 133, "badges": [],
+    "createdAt": "2026-08-17T08:00:00Z"
+  },
+  {
+    "id": "prd-suporte-mag", "slug": "suporte-veicular-magnetico-magsafe", "sku": "AH-GDG-SUP",
+    "categoryId": "cat-gadgets", "brandId": "brd-gadgetly",
+    "title": "Suporte Veicular Magnético MagSafe", "subtitle": "Giro 360° · adesivo e grade",
+    "description": "Suporte magnético forte para celulares compatíveis com MagSafe (ou com placa inclusa), rotação 360° e fixação dupla: adesivo para painel ou grade do ar-condicionado. Segura o celular mesmo em lombadas.",
+    "specs": [
+      { "label": "Fixação", "value": "Painel ou grade" },
+      { "label": "Imãs", "value": "N52 com base de silicone" },
+      { "label": "Rotação", "value": "360°" }
+    ],
+    "imageKey": "phone-mount", "priceCents": 7990, "compareAtCents": 9990, "currency": "BRL",
+    "stock": 73, "weightGrams": 120, "warrantyMonths": 6,
+    "universal": true, "installable": false, "featured": false, "bestSeller": true,
+    "rating": 4.5, "reviewCount": 289, "badges": ["Oferta"],
+    "createdAt": "2026-08-17T08:30:00Z"
+  },
+  {
+    "id": "prd-localizador", "slug": "localizador-bluetooth-para-chaves-e-mochila", "sku": "AH-GDG-TAG",
+    "categoryId": "cat-gadgets", "brandId": "brd-gadgetly",
+    "title": "Localizador Bluetooth para Chaves e Mochila", "subtitle": "Alerta de esquecimento · bateria 1 ano",
+    "description": "Tag Bluetooth para encontrar chaves, mochila, mala e capacete pelo celular, com alerta quando você esquece o item para trás. Bateria substituível com até um ano de uso.",
+    "specs": [
+      { "label": "Alcance", "value": "Até 60 m em campo aberto" },
+      { "label": "Bateria", "value": "CR2032 substituível" },
+      { "label": "Compatível", "value": "iOS e Android" }
+    ],
+    "imageKey": "tag", "priceCents": 5990, "currency": "BRL",
+    "stock": 91, "weightGrams": 40, "warrantyMonths": 6,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.3, "reviewCount": 76, "badges": [],
+    "createdAt": "2026-08-18T08:00:00Z"
+  },
+  {
+    "id": "prd-cabo-usb", "slug": "cabo-usb-c-100w-trancado-2m", "sku": "AH-CRG-C100",
+    "categoryId": "cat-carregamento", "brandId": "brd-gadgetly",
+    "title": "Cabo USB-C 100W Trançado 2m", "subtitle": "PD 100W · conectores reforçados",
+    "description": "Cabo USB-C para USB-C trançado em nylon com 2 metros, suporte a 100W Power Delivery e transferência de dados 480Mbps. Conectores reforçados para durar milhares de conexões.",
+    "specs": [
+      { "label": "Potência", "value": "100W PD" },
+      { "label": "Comprimento", "value": "2 m" },
+      { "label": "Revestimento", "value": "Nylon trançado" }
+    ],
+    "imageKey": "cable", "priceCents": 6990, "currency": "BRL",
+    "stock": 84, "weightGrams": 90, "warrantyMonths": 6,
+    "universal": true, "installable": false, "featured": false, "bestSeller": true,
+    "rating": 4.7, "reviewCount": 233, "badges": [],
+    "createdAt": "2026-08-19T08:00:00Z"
+  },
+  {
+    "id": "prd-fonte-30", "slug": "fonte-turbo-parede-30w-usb-c", "sku": "AH-CRG-F30",
+    "categoryId": "cat-carregamento", "brandId": "brd-gadgetly",
+    "title": "Fonte Turbo Parede 30W USB-C", "subtitle": "Compacta · multi-proteção",
+    "description": "Fonte de parede 30W USB-C Power Delivery para carregar celular e tablet em velocidade máxima em casa ou no hotel. Proteções contra surto, superaquecimento e curto.",
+    "specs": [
+      { "label": "Potência", "value": "30W PD" },
+      { "label": "Entrada", "value": "Bivolt automática" },
+      { "label": "Proteções", "value": "Surto, térmica, curto" }
+    ],
+    "imageKey": "wall-charger", "priceCents": 5990, "currency": "BRL",
+    "stock": 77, "weightGrams": 80, "warrantyMonths": 6,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.6, "reviewCount": 118, "badges": [],
+    "createdAt": "2026-08-19T08:30:00Z"
+  },
+  {
+    "id": "prd-sem-fio-15", "slug": "carregador-sem-fio-veicular-15w", "sku": "AH-CRG-W15",
+    "categoryId": "cat-carregamento", "brandId": "brd-gadgetly",
+    "title": "Carregador Sem Fio Veicular 15W", "subtitle": "Suporte integrado · ventilação",
+    "description": "Suporte de painel com carregamento sem fio de 15W e braço automático por sensor. Mantém o celular firmemente preso e protegido durante a navegação, com ventilação ativa na traseira.",
+    "specs": [
+      { "label": "Potência", "value": "15W Qi" },
+      { "label": "Fixação", "value": "Grade de ventilação" },
+      { "label": "Braço", "value": "Automático por sensor" }
+    ],
+    "imageKey": "wireless-charge", "priceCents": 11990, "compareAtCents": 14990, "currency": "BRL",
+    "stock": 42, "weightGrams": 260, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.4, "reviewCount": 97, "badges": ["Oferta"],
+    "createdAt": "2026-08-20T08:00:00Z"
+  },
+  {
+    "id": "prd-lampada-wifi", "slug": "lampada-inteligente-wifi-rgb-9w", "sku": "AH-CAS-LB9",
+    "categoryId": "cat-casa", "brandId": "brd-homelink",
+    "title": "Lâmpada Inteligente Wi-Fi RGB 9W", "subtitle": "16 milhões de cores · Alexa e Google",
+    "description": "Lâmpada LED Wi-Fi multicolorida com controle pelo celular ou por voz (Alexa e Google Assistente). Rotinas de horário, modo cinema, festa e despertar suave. Não requer hub.",
+    "specs": [
+      { "label": "Potência", "value": "9W (equivale 60W)" },
+      { "label": "Conexão", "value": "Wi-Fi 2.4GHz, sem hub" },
+      { "label": "Voz", "value": "Alexa e Google" }
+    ],
+    "imageKey": "smart-bulb", "priceCents": 4990, "currency": "BRL",
+    "stock": 96, "weightGrams": 120, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": true,
+    "rating": 4.6, "reviewCount": 344, "badges": ["Mais vendido"],
+    "createdAt": "2026-08-21T08:00:00Z"
+  },
+  {
+    "id": "prd-tomada-wifi", "slug": "tomada-inteligente-wifi-15a", "sku": "AH-CAS-TM15",
+    "categoryId": "cat-casa", "brandId": "brd-homelink",
+    "title": "Tomada Inteligente Wi-Fi 15A", "subtitle": "Medição de consumo · timer",
+    "description": "Tomada inteligente com medição de consumo em tempo real, timer e rotinas. Liga o ferro, a bomba do aquário ou o carregador do carro com segurança e desliga esquecimentos. Suporta até 15A (1650W).",
+    "specs": [
+      { "label": "Corrente", "value": "15A / 1650W" },
+      { "label": "Medição", "value": "Consumo em tempo real" },
+      { "label": "Voz", "value": "Alexa e Google" }
+    ],
+    "imageKey": "smart-plug", "priceCents": 6990, "currency": "BRL",
+    "stock": 64, "weightGrams": 140, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": true,
+    "rating": 4.7, "reviewCount": 251, "badges": [],
+    "createdAt": "2026-08-21T08:30:00Z"
+  },
+  {
+    "id": "prd-interruptor", "slug": "interruptor-inteligente-touch-wi-fi", "sku": "AH-CAS-INT",
+    "categoryId": "cat-casa", "brandId": "brd-homelink",
+    "title": "Interruptor Inteligente Touch Wi-Fi", "subtitle": "Vidro temperado · 1 tecla",
+    "description": "Interruptor touch de vidro temperado com Wi-Fi integrado. Acenda as luzes por toque, app ou voz, com retroiluminação suave para localizar de noite. Instalação requer neutro.",
+    "specs": [
+      { "label": "Teclas", "value": "1 tecla touch" },
+      { "label": "Acabamento", "value": "Vidro temperado preto" },
+      { "label": "Requisito", "value": "Fio neutro" }
+    ],
+    "imageKey": "smart-switch", "priceCents": 8990, "currency": "BRL",
+    "stock": 38, "weightGrams": 160, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 89, "badges": [],
+    "createdAt": "2026-08-22T08:00:00Z"
+  },
+  {
+    "id": "prd-hub-matter", "slug": "hub-casa-inteligente-matter", "sku": "AH-CAS-HUB",
+    "categoryId": "cat-casa", "brandId": "brd-homelink",
+    "title": "Hub Casa Inteligente Matter", "subtitle": "Centralize todos os devices",
+    "description": "Hub compatível com Matter e Thread para unificar dispositivos de várias marcas em um único app. Automações entre ambientes, resposta mais rápida sem depender da nuvem e suporte a rotinas de presença.",
+    "specs": [
+      { "label": "Protocolos", "value": "Matter, Thread, Wi-Fi, Zigbee" },
+      { "label": "Devices", "value": "Até 150" },
+      { "label": "App", "value": "Compatível com Apple Home, Google e Alexa" }
+    ],
+    "imageKey": "hub", "priceCents": 34900, "currency": "BRL",
+    "stock": 15, "weightGrams": 300, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": true, "bestSeller": false,
+    "rating": 4.6, "reviewCount": 42, "badges": [],
+    "createdAt": "2026-08-22T08:30:00Z"
+  },
+  {
+    "id": "prd-fita-rgb", "slug": "fita-led-rgb-inteligente-5m", "sku": "AH-CAS-FIT5",
+    "categoryId": "cat-casa", "brandId": "brd-homelink",
+    "title": "Fita LED RGB Inteligente 5m", "subtitle": "Wi-Fi · música e rotinas",
+    "description": "Fita LED RGB de 5 metros com controle por app e sincronização com música. Ideal para atrás da TV, rack, home office e cozinha. Cola 3M reforçada e conectores expansíveis.",
+    "specs": [
+      { "label": "Comprimento", "value": "5 m (expansível)" },
+      { "label": "Cores", "value": "RGB 16 milhões + branco frio" },
+      { "label": "Sincronização", "value": "Música via app" }
+    ],
+    "imageKey": "led-strip", "priceCents": 9990, "currency": "BRL",
+    "stock": 47, "weightGrams": 240, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 156, "badges": [],
+    "createdAt": "2026-08-23T08:00:00Z"
+  },
+  {
+    "id": "prd-cam-wifi-360", "slug": "camera-wi-fi-interna-smart-360-full-hd", "sku": "AH-CAS-CAM",
+    "categoryId": "cat-sensores", "brandId": "brd-homelink",
+    "title": "Câmera Wi-Fi Interna Smart 360° Full HD", "subtitle": "Visão noturna · áudio duplo",
+    "description": "Câmera interna com rotação 360°, Full HD, visão noturna colorida e áudio bidirecional: fale com a família ou avise o cachorro pelo app. Rastreamento de movimento e zonas configuráveis.",
+    "specs": [
+      { "label": "Resolução", "value": "1080p Full HD" },
+      { "label": "Rotação", "value": "360° automática" },
+      { "label": "Áudio", "value": "Bidirecional" },
+      { "label": "Cartão", "value": "MicroSD até 128GB ou nuvem" }
+    ],
+    "imageKey": "cam-360", "priceCents": 19990, "compareAtCents": 23990, "currency": "BRL",
+    "stock": 43, "weightGrams": 320, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": true, "bestSeller": true,
+    "rating": 4.8, "reviewCount": 289, "badges": ["Oferta", "Mais vendido"],
+    "createdAt": "2026-08-24T08:00:00Z"
+  },
+  {
+    "id": "prd-cam-solar", "slug": "camera-externa-solar-4g-sem-fio", "sku": "AH-CAS-SOL",
+    "categoryId": "cat-sensores", "brandId": "brd-homelink",
+    "title": "Câmera Externa Solar 4G Sem Fio", "subtitle": "Funciona longe do roteador",
+    "description": "Câmera de monitoramento externa com placa solar e chip 4G: vigie sítios, obras e casas de praia sem depender de Wi-Fi ou eletricidade. Detecção por PIR, sirene e holofote integrados.",
+    "specs": [
+      { "label": "Conexão", "value": "4G LTE (chip não incluso)" },
+      { "label": "Energia", "value": "Bateria + placa solar" },
+      { "label": "Resolução", "value": "2K" }
+    ],
+    "imageKey": "cam-solar", "priceCents": 59900, "currency": "BRL",
+    "stock": 12, "weightGrams": 900, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": true, "bestSeller": false,
+    "rating": 4.7, "reviewCount": 58, "badges": [],
+    "createdAt": "2026-08-24T08:30:00Z"
+  },
+  {
+    "id": "prd-sensor-porta", "slug": "sensor-de-abertura-porta-e-janela-wifi", "sku": "AH-CAS-PRT",
+    "categoryId": "cat-sensores", "brandId": "brd-homelink",
+    "title": "Sensor de Abertura de Porta e Janela Wi-Fi", "subtitle": "Notificação instantânea",
+    "description": "Sensor compacto para portas e janelas com notificação instantânea no celular quando algo for aberto. Crie automações: ao abrir a porta à noite, acenda a luz da cozinha. Bateria de 1 ano.",
+    "specs": [
+      { "label": "Conexão", "value": "Wi-Fi 2.4GHz" },
+      { "label": "Bateria", "value": "CR2 — até 12 meses" },
+      { "label": "Instalação", "value": "Fita dupla-face 3M" }
+    ],
+    "imageKey": "sensor", "priceCents": 8990, "currency": "BRL",
+    "stock": 55, "weightGrams": 70, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 74, "badges": [],
+    "createdAt": "2026-08-25T08:00:00Z"
+  },
+  {
+    "id": "prd-videopar", "slug": "video-porteiro-wi-fi-com-campainha", "sku": "AH-CAS-VDP",
+    "categoryId": "cat-sensores", "brandId": "brd-homelink",
+    "title": "Vídeo Porteiro Wi-Fi com Campainha", "subtitle": "Veja e fale de qualquer lugar",
+    "description": "Campainha com câmera Full HD, visão noturna e áudio duplo: atenda a porta pelo celular mesmo fora de casa. Gravação em nuvem ou cartão e alimentação por bateria recarregável ou fio da campainha existente.",
+    "specs": [
+      { "label": "Resolução", "value": "1080p" },
+      { "label": "Alimentação", "value": "Bateria ou fio existente" },
+      { "label": "Armazenamento", "value": "Nuvem ou microSD" }
+    ],
+    "imageKey": "doorbell", "priceCents": 39900, "compareAtCents": 46900, "currency": "BRL",
+    "stock": 18, "weightGrams": 420, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.6, "reviewCount": 63, "badges": ["Oferta"],
+    "createdAt": "2026-08-25T08:30:00Z"
+  },
+  {
+    "id": "prd-estacao-300", "slug": "estacao-de-energia-portatil-300w", "sku": "AH-ENG-P300",
+    "categoryId": "cat-energia", "brandId": "brd-solaria",
+    "title": "Estação de Energia Portátil 300W", "subtitle": "288Wh · AC + USB-C PD + solar",
+    "description": "Estação portátil de 288Wh com tomada AC de 300W (pico 600W), USB-C PD 60W e entradas para placa solar. Leve para acampar, trabalhar fora de casa ou garantir internet e luz em faltas de energia.",
+    "specs": [
+      { "label": "Capacidade", "value": "288Wh" },
+      { "label": "Saída AC", "value": "300W (pico 600W)" },
+      { "label": "Entrada solar", "value": "12V-24V MC4 adaptável" },
+      { "label": "Ciclos", "value": "2000+ recargas (LiFePO4)" }
+    ],
+    "imageKey": "power-station", "priceCents": 249900, "currency": "BRL",
+    "stock": 7, "weightGrams": 4200, "warrantyMonths": 24,
+    "universal": true, "installable": false, "featured": true, "bestSeller": false,
+    "rating": 4.8, "reviewCount": 31, "badges": ["Energia"],
+    "createdAt": "2026-08-26T08:00:00Z"
+  },
+  {
+    "id": "prd-placa-solar", "slug": "placa-solar-portatil-dobravel-100w", "sku": "AH-ENG-S100",
+    "categoryId": "cat-energia", "brandId": "brd-solaria",
+    "title": "Placa Solar Portátil Dobrável 100W", "subtitle": "Monocristalina · dobrável com alça",
+    "description": "Placa solar monocristalina dobrável de 100W com controlador e saídas para carregar estações portáteis, baterias 12V e dispositivos USB direto do sol. Dobrada cabe na mala; aberta, vira sua fonte de energia.",
+    "specs": [
+      { "label": "Potência", "value": "100W" },
+      { "label": "Células", "value": "Monocristalinas" },
+      { "label": "Saídas", "value": "MC4 + DC + USB" }
+    ],
+    "imageKey": "solar-panel", "priceCents": 89900, "compareAtCents": 104900, "currency": "BRL",
+    "stock": 9, "weightGrams": 4800, "warrantyMonths": 24,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.7, "reviewCount": 24, "badges": ["Oferta"],
+    "createdAt": "2026-08-26T08:30:00Z"
+  },
+  {
+    "id": "prd-ilum-solar", "slug": "refletor-solar-externo-com-sensor", "sku": "AH-ENG-RFL",
+    "categoryId": "cat-energia", "brandId": "brd-solaria",
+    "title": "Refletor Solar Externo com Sensor", "subtitle": "1000 lm · acende sozinho ao detectar",
+    "description": "Refletor solar de 1000 lúmens com sensor de movimento para entrada, quintal e área de serviço. Instalação sem fiação: fixe, deixe carregar no sol e pronto. À prova de chuva.",
+    "specs": [
+      { "label": "Lúmens", "value": "1000 lm" },
+      { "label": "Sensor", "value": "PIR até 8 m" },
+      { "label": "Vedação", "value": "IP65" }
+    ],
+    "imageKey": "solar-light", "priceCents": 15990, "currency": "BRL",
+    "stock": 33, "weightGrams": 560, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 67, "badges": [],
+    "createdAt": "2026-08-27T08:00:00Z"
+  },
+  {
+    "id": "prd-multimetro", "slug": "multimetro-automotivo-digital-profissional", "sku": "AH-PRO-MMT",
+    "categoryId": "cat-pro", "brandId": "brd-protech",
+    "title": "Multímetro Automotivo Digital Profissional", "subtitle": "RPM · duty cycle · True RMS",
+    "description": "Multímetro digital com funções automotivas: rotação (RPM), ângulo de fechamento, duty cycle e True RMS. Para eletricistas automotivos e oficinas que precisam de medições confiáveis no dia a dia.",
+    "specs": [
+      { "label": "Funções auto", "value": "RPM, dwell, duty cycle" },
+      { "label": "Categoria", "value": "CAT III 600V" },
+      { "label": "Acessórios", "value": "Pontas, corrente? não — manual e case" }
+    ],
+    "imageKey": "multimeter", "priceCents": 29900, "currency": "BRL",
+    "stock": 14, "weightGrams": 480, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.7, "reviewCount": 36, "badges": ["Pro"],
+    "createdAt": "2026-08-28T08:00:00Z"
+  },
+  {
+    "id": "prd-scanner-obd2", "slug": "scanner-automotivo-obd2-bluetooth", "sku": "AH-PRO-OBD",
+    "categoryId": "cat-pro", "brandId": "brd-protech",
+    "title": "Scanner Automotivo OBD2 Bluetooth", "subtitle": "Leitura de falhas em tempo real",
+    "description": "Scanner OBD2 com Bluetooth para diagnosticar luz de injeção acesa, ler e apagar falhas e monitorar sensores em tempo real pelo celular. Compatível com a maioria dos veículos flex e importados pós-2005.",
+    "specs": [
+      { "label": "Protocolos", "value": "Todos os OBD2 (CAN incluído)" },
+      { "label": "Conexão", "value": "Bluetooth 4.0" },
+      { "label": "Apps", "value": "Compatível com apps populares" }
+    ],
+    "imageKey": "scanner", "priceCents": 18900, "compareAtCents": 22900, "currency": "BRL",
+    "stock": 39, "weightGrams": 160, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": true,
+    "rating": 4.6, "reviewCount": 214, "badges": ["Oferta", "Pro"],
+    "createdAt": "2026-08-28T08:30:00Z"
+  },
+  {
+    "id": "prd-chave-impacto", "slug": "chave-de-impacto-1-2-20v-brushless", "sku": "AH-PRO-CMP",
+    "categoryId": "cat-pro", "brandId": "brd-protech",
+    "title": "Chave de Impacto 1/2\" 20V Brushless", "subtitle": "450 Nm · 2 baterias",
+    "description": "Chave de impacto brushless 1/2\" com torque de 450Nm, duas baterias de 4Ah e maleta. Para oficina, borracharia e uso profissional pesado. Controle de velocidade em três níveis.",
+    "specs": [
+      { "label": "Torque", "value": "450 Nm" },
+      { "label": "Motor", "value": "Brushless" },
+      { "label": "Baterias", "value": "2x 4Ah com carregador" }
+    ],
+    "imageKey": "impact-wrench", "priceCents": 109900, "currency": "BRL",
+    "stock": 6, "weightGrams": 3400, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.8, "reviewCount": 19, "badges": ["Pro"],
+    "createdAt": "2026-08-29T08:00:00Z"
+  },
+  {
+    "id": "prd-kit-lamp-h1", "slug": "lampada-halogena-h1-reforcada-par", "sku": "AH-LED-H1PR",
+    "categoryId": "cat-iluminacao", "brandId": "brd-neon",
+    "title": "Lâmpada Halógena H1 Reforçada (Par)", "subtitle": "+90% de luz · opção sob medida",
+    "description": "Par de lâmpadas halógenas H1 reforçadas com 90% mais luz que as comuns, mantendo o padrão elétrico original. Para quem prioriza baixo custo de troca e comportamento previsível no farol original.",
+    "specs": [
+      { "label": "Soquete", "value": "H1" },
+      { "label": "Ganho", "value": "+90% de luminosidade" },
+      { "label": "Voltagem", "value": "12V 55W" }
+    ],
+    "imageKey": "halogen", "priceCents": 7990, "currency": "BRL",
+    "stock": 60, "weightGrams": 120, "warrantyMonths": 3,
+    "universal": false, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.3, "reviewCount": 88, "badges": [],
+    "createdAt": "2026-08-29T08:30:00Z", "socket": "H1"
+  },
+  {
+    "id": "prd-mini-comp", "slug": "mini-compressor-de-ar-digital-12v", "sku": "AH-ELE-CMP",
+    "categoryId": "cat-eletrica", "brandId": "brd-protech",
+    "title": "Mini Compressor de Ar Digital 12V", "subtitle": "Display programável · bolsa",
+    "description": "Compressor portátil 12V com display digital para programar a pressão desejada e esquecer: ele desliga sozinho ao atingir o ponto ideal. Enche pneu de carro, moto e bicicleta em minutos, com bolsa e adaptadores.",
+    "specs": [
+      { "label": "Pressão", "value": "Até 150 PSI" },
+      { "label": "Desligamento", "value": "Automático programável" },
+      { "label": "Voltagem", "value": "12V (bateria do carro)" }
+    ],
+    "imageKey": "compressor", "priceCents": 19900, "compareAtCents": 23900, "currency": "BRL",
+    "stock": 27, "weightGrams": 1100, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": true, "bestSeller": true,
+    "rating": 4.7, "reviewCount": 176, "badges": ["Oferta", "Mais vendido"],
+    "createdAt": "2026-08-30T08:00:00Z"
+  }
+]

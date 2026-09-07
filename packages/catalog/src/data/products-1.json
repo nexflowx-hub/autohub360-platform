@@ -1,0 +1,266 @@
+[
+  {
+    "id": "prd-led-h4", "slug": "kit-led-automotivo-ultra-vision-h4", "sku": "AH-LED-H4-12K",
+    "categoryId": "cat-iluminacao", "brandId": "brd-neon",
+    "title": "Kit LED Automotivo Ultra Vision H4", "subtitle": "12.000 lumens · 6500K",
+    "description": "Kit de lâmpadas LED Ultra Vision H4 com 12.000 lumens por par, temperatura de cor 6500K e dissipação turbo por ventoinha. Feito para quem quer visibilidade real à noite sem perder a boa-mania: corte de luz preciso quando instalado corretamente em faróis compatíveis. Inclui par de lâmpadas, chicotes com relé e manual de instalação. Instalação especializada disponível em Anápolis - GO com nosso parceiro oficial.",
+    "specs": [
+      { "label": "Tecnologia", "value": "LED CSP 6 lados" },
+      { "label": "Luminosidade", "value": "12.000 lm (par)" },
+      { "label": "Temperatura de cor", "value": "6500K branco gelo" },
+      { "label": "Voltagem", "value": "12V" },
+      { "label": "Refrigeração", "value": "Ventoinha + corpo alumínio" },
+      { "label": "Conteúdo", "value": "Par de lâmpadas + chicotes" }
+    ],
+    "imageKey": "led-kit", "priceCents": 18990, "compareAtCents": 24990, "currency": "BRL",
+    "stock": 38, "weightGrams": 420, "warrantyMonths": 12,
+    "universal": false, "installable": true, "featured": true, "bestSeller": true,
+    "rating": 4.8, "reviewCount": 241, "badges": ["Mais vendido"],
+    "createdAt": "2026-08-01T10:00:00Z", "socket": "H4"
+  },
+  {
+    "id": "prd-led-h7", "slug": "kit-led-automotivo-ultra-vision-h7", "sku": "AH-LED-H7-12K",
+    "categoryId": "cat-iluminacao", "brandId": "brd-neon",
+    "title": "Kit LED Automotivo Ultra Vision H7", "subtitle": "12.000 lumens · 6500K",
+    "description": "Versão H7 do kit Ultra Vision, com mesma potência luminosa de 12.000 lumens e acabamento premium. Ideal para faróis de projeto H7 de sedãs e SUVs. Corpo em alumínio aeroespacial com ventoinha silenciosa e driver inteligente anti-interferência no rádio. Instalação com verificação de corte de luz disponível em Anápolis.",
+    "specs": [
+      { "label": "Tecnologia", "value": "LED CSP 6 lados" },
+      { "label": "Luminosidade", "value": "12.000 lm (par)" },
+      { "label": "Temperatura de cor", "value": "6500K" },
+      { "label": "Voltagem", "value": "12V" },
+      { "label": "Compatibilidade CANBUS", "value": "Sim, com driver anti-erro" }
+    ],
+    "imageKey": "led-kit", "priceCents": 19990, "currency": "BRL",
+    "stock": 29, "weightGrams": 430, "warrantyMonths": 12,
+    "universal": false, "installable": true, "featured": true, "bestSeller": false,
+    "rating": 4.7, "reviewCount": 187, "badges": [],
+    "createdAt": "2026-08-01T10:05:00Z", "socket": "H7"
+  },
+  {
+    "id": "prd-led-h11", "slug": "lampada-led-h11-ultra-vision", "sku": "AH-LED-H11-8K",
+    "categoryId": "cat-iluminacao", "brandId": "brd-neon",
+    "title": "Lâmpada LED Ultra Vision H11", "subtitle": "Par · 8.000 lumens · milha e neblina",
+    "description": "Par de lâmpadas LED H11 pensado para faróis de milha e neblina. Luz de corte amplo e baixo ofuscamento, com driver reforçado para uso prolongado. Compatível com sistemas 12V comum na maioria dos utilitários e hatches nacionais.",
+    "specs": [
+      { "label": "Soquete", "value": "H11" },
+      { "label": "Luminosidade", "value": "8.000 lm (par)" },
+      { "label": "Temperatura de cor", "value": "6000K" }
+    ],
+    "imageKey": "led-bulb", "priceCents": 12990, "currency": "BRL",
+    "stock": 41, "weightGrams": 260, "warrantyMonths": 12,
+    "universal": false, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.6, "reviewCount": 96, "badges": [],
+    "createdAt": "2026-08-01T10:10:00Z", "socket": "H11"
+  },
+  {
+    "id": "prd-farol-milha", "slug": "par-farol-auxiliar-led-milha-7", "sku": "AH-FML-7IN",
+    "categoryId": "cat-iluminacao", "brandId": "brd-neon",
+    "title": "Par Farol Auxiliar LED Milha 7\"", "subtitle": "Alta potência · alumínio",
+    "description": "Par de faróis auxiliares redondos de 7 polegadas com LEDs de alta intensidade e carcaça em alumínio fundido. Ideal para pick-ups, jipes e veículos que pegam estrada de terra. Lente policarbonato resistente e vedação contra poeira e chuva.",
+    "specs": [
+      { "label": "Diâmetro", "value": "7 polegadas" },
+      { "label": "Potência", "value": "120W (par)" },
+      { "label": "Vedação", "value": "IP67" }
+    ],
+    "imageKey": "fog-light", "priceCents": 28990, "compareAtCents": 34990, "currency": "BRL",
+    "stock": 17, "weightGrams": 1800, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.7, "reviewCount": 74, "badges": ["Oferta"],
+    "createdAt": "2026-08-02T09:00:00Z"
+  },
+  {
+    "id": "prd-led-t10", "slug": "kit-led-t10-w5w-placas-e-interno", "sku": "AH-T10-6PC",
+    "categoryId": "cat-iluminacao", "brandId": "brd-neon",
+    "title": "Kit LED T10 W5W para Placas e Interno", "subtitle": "6 peças · branco 6000K",
+    "description": "Kit com seis lâmpadas LED T10 para iluminação de placas, teto, porta-malas e detalhes internos. Luz branca uniforme sem erro de painel na maioria dos modelos nacionais. Instalação simples em minutos.",
+    "specs": [
+      { "label": "Soquete", "value": "T10 / W5W" },
+      { "label": "Conteúdo", "value": "6 peças" },
+      { "label": "Temperatura de cor", "value": "6000K" }
+    ],
+    "imageKey": "led-bulb", "priceCents": 3990, "currency": "BRL",
+    "stock": 120, "weightGrams": 80, "warrantyMonths": 6,
+    "universal": true, "installable": false, "featured": false, "bestSeller": true,
+    "rating": 4.5, "reviewCount": 203, "badges": [],
+    "createdAt": "2026-08-02T09:10:00Z"
+  },
+  {
+    "id": "prd-sensor-estac", "slug": "sensor-de-estacionamento-4-pontos", "sku": "AH-SEN-4PT",
+    "categoryId": "cat-eletrica", "brandId": "brd-vision",
+    "title": "Sensor de Estacionamento 4 Pontos", "subtitle": "Alerta sonoro progressivo",
+    "description": "Kit de sensor de estacionamento traseiro com quatro sensores na cor do para-choque, processador com alerta sonoro progressivo e display opcional. Reduz risco de colisões leves na hora de estacionar. Instalação especializada recomendada e disponível em Anápolis.",
+    "specs": [
+      { "label": "Sensores", "value": "4 pontos traseiros" },
+      { "label": "Alcance", "value": "0 a 1,5 m" },
+      { "label": "Alerta", "value": "Buzzer progressivo" }
+    ],
+    "imageKey": "parking-sensor", "priceCents": 14990, "compareAtCents": 18990, "currency": "BRL",
+    "stock": 33, "weightGrams": 640, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": true, "bestSeller": true,
+    "rating": 4.6, "reviewCount": 168, "badges": ["Oferta"],
+    "createdAt": "2026-08-03T08:00:00Z"
+  },
+  {
+    "id": "prd-alarme", "slug": "alarme-veicular-com-controle-e-presenca", "sku": "AH-ALM-PRE",
+    "categoryId": "cat-eletrica", "brandId": "brd-vision",
+    "title": "Alarme Veicular com Controle e Sensor de Presença", "subtitle": "Travamento automático",
+    "description": "Central de alarme com dois controles, sensor de presença interna, acionamento das luzes e travamento automático das portas ao rodar. Compatível com a maioria dos veículos nacionais e importados. Instalação especializada disponível.",
+    "specs": [
+      { "label": "Controles", "value": "2 inclusos" },
+      { "label": "Sensores", "value": "Presença interna + choque" },
+      { "label": "Funções", "value": "Trava automático, luzes, pânico" }
+    ],
+    "imageKey": "alarm", "priceCents": 21990, "currency": "BRL",
+    "stock": 22, "weightGrams": 560, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 87, "badges": [],
+    "createdAt": "2026-08-03T08:20:00Z"
+  },
+  {
+    "id": "prd-vidro-eletrico", "slug": "kit-vidro-eletrico-4-portas", "sku": "AH-VID-4P",
+    "categoryId": "cat-eletrica", "brandId": "brd-protech",
+    "title": "Kit Vidro Elétrico 4 Portas", "subtitle": "Módulo com one-touch",
+    "description": "Kit completo para conversão de vidros manuais em elétricos: quatro motores, módulo de comando com função one-touch no motorista, chicotes e botões. Projete a instalação com nosso parceiro para manter a garantia.",
+    "specs": [
+      { "label": "Portas", "value": "4" },
+      { "label": "Função", "value": "One-touch + anti-bipe" },
+      { "label": "Conteúdo", "value": "Motores, módulo, botões, chicotes" }
+    ],
+    "imageKey": "module", "priceCents": 49990, "currency": "BRL",
+    "stock": 12, "weightGrams": 4200, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.4, "reviewCount": 39, "badges": [],
+    "createdAt": "2026-08-04T08:00:00Z"
+  },
+  {
+    "id": "prd-inversor-150", "slug": "inversor-de-tensao-12v-110v-150w", "sku": "AH-INV-150",
+    "categoryId": "cat-eletrica", "brandId": "brd-powerbrick",
+    "title": "Inversor de Tensão 12V → 110V 150W", "subtitle": "Tomada USB integrada",
+    "description": "Transforme a tomada 12V do carro em uma tomada 110V para notebooks, câmeras e pequenos eletrônicos. Proteção contra sobrecarga, curto-circuito e superaquecimento. Ventoinha silenciosa.",
+    "specs": [
+      { "label": "Potência", "value": "150W contínuos" },
+      { "label": "Entrada", "value": "12V (tomada acendedor)" },
+      { "label": "Saídas", "value": "1 tomada 110V + 2 USB 2.4A" }
+    ],
+    "imageKey": "inverter", "priceCents": 9990, "currency": "BRL",
+    "stock": 44, "weightGrams": 380, "warrantyMonths": 12,
+    "universal": true, "installable": false, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 61, "badges": [],
+    "createdAt": "2026-08-04T08:30:00Z"
+  },
+  {
+    "id": "prd-cam-re-hd", "slug": "camera-de-re-hd-visao-noturna", "sku": "AH-CAM-REHD",
+    "categoryId": "cat-cameras", "brandId": "brd-vision",
+    "title": "Câmera de Ré HD Visão Noturna", "subtitle": "Linhas guias · IP68",
+    "description": "Câmera de ré HD com sensor de baixa luminosidade, visão noturna por LEDs infravermelho e linhas guias sobrepostas. Corpo metálico vedado IP68 para aguentar chuva e lavagem. Compatível com centrais multimídia com entrada de câmera.",
+    "specs": [
+      { "label": "Resolução", "value": "HD 720p" },
+      { "label": "Visão noturna", "value": "LED IR ativo" },
+      { "label": "Vedação", "value": "IP68" },
+      { "label": "Ângulo", "value": "170°" }
+    ],
+    "imageKey": "rear-cam", "priceCents": 25990, "currency": "BRL",
+    "stock": 47, "weightGrams": 240, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": true, "bestSeller": true,
+    "rating": 4.8, "reviewCount": 312, "badges": ["Mais vendido"],
+    "createdAt": "2026-08-05T08:00:00Z"
+  },
+  {
+    "id": "prd-dashcam", "slug": "dashcam-full-hd-com-wi-fi", "sku": "AH-DSH-FHD",
+    "categoryId": "cat-cameras", "brandId": "brd-vision",
+    "title": "Dashcam Full HD com Wi-Fi", "subtitle": "Gravação em loop · G-sensor",
+    "description": "Dashcam Full HD 1080p com gravação em loop, sensor de impacto (G-sensor) que protege o vídeo em colisões e Wi-Fi para ver as gravações pelo celular. Alimentação por tomada USB ou instalação oculta com chicote. Ideal para viagens, frotas e segurança no dia a dia.",
+    "specs": [
+      { "label": "Resolução", "value": "1080p Full HD" },
+      { "label": "Tela", "value": "3 polegadas" },
+      { "label": "Conectividade", "value": "Wi-Fi (app)" },
+      { "label": "Cartão", "value": "Até 128GB (não incluso)" }
+    ],
+    "imageKey": "dashcam", "priceCents": 22990, "compareAtCents": 27990, "currency": "BRL",
+    "stock": 35, "weightGrams": 320, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": true, "bestSeller": false,
+    "rating": 4.6, "reviewCount": 145, "badges": ["Oferta"],
+    "createdAt": "2026-08-05T08:30:00Z"
+  },
+  {
+    "id": "prd-cam-dupla", "slug": "camera-dupla-frontal-e-traseira-dvr", "sku": "AH-DSH-DUO",
+    "categoryId": "cat-cameras", "brandId": "brd-vision",
+    "title": "Câmera Dupla Frontal e Traseira DVR", "subtitle": "2 canais · estacionamento",
+    "description": "Grave frente e trás ao mesmo tempo com a câmera dupla DVR. Monitoramento de estacionamento por impacto, visão noturna nas duas câmeras e tela de 4 polegadas para conferência rápida.",
+    "specs": [
+      { "label": "Canais", "value": "2 (frontal + traseira)" },
+      { "label": "Resolução", "value": "1080p + 720p" },
+      { "label": "Modo estacionamento", "value": "G-sensor com gravação protegida" }
+    ],
+    "imageKey": "dashcam", "priceCents": 34990, "currency": "BRL",
+    "stock": 19, "weightGrams": 540, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 66, "badges": [],
+    "createdAt": "2026-08-06T08:00:00Z"
+  },
+  {
+    "id": "prd-rastreador-4g", "slug": "rastreador-veicular-4g-com-app", "sku": "AH-RAS-4G",
+    "categoryId": "cat-rastreamento", "brandId": "brd-track",
+    "title": "Rastreador Veicular 4G com App", "subtitle": "Bloqueio por app · histórico",
+    "description": "Rastreador GPS/GSM 4G com aplicativo próprio: posição em tempo real, histórico de rotas, cerca eletrônica e bloqueio remoto do motor. Compatível com 12V e 24V (carros, motos com bateria auxiliar e caminhões). Instalação especializada recomendada.",
+    "specs": [
+      { "label": "Rede", "value": "4G LTE / GSM" },
+      { "label": "Voltagem", "value": "9V a 90V (12V e 24V)" },
+      { "label": "Funções", "value": "Cerca, bloqueio, histórico 90 dias" },
+      { "label": "Chip", "value": "Não incluso" }
+    ],
+    "imageKey": "tracker", "priceCents": 34990, "currency": "BRL",
+    "stock": 26, "weightGrams": 180, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": true, "bestSeller": true,
+    "rating": 4.7, "reviewCount": 189, "badges": ["Mais vendido"],
+    "createdAt": "2026-08-07T08:00:00Z"
+  },
+  {
+    "id": "prd-rastreador-moto", "slug": "rastreador-gps-para-moto", "sku": "AH-RAS-MOT",
+    "categoryId": "cat-rastreamento", "brandId": "brd-track",
+    "title": "Rastreador GPS para Moto", "subtitle": "Compacto · alerta de movimento",
+    "description": "Rastreador compacto desenvolvido para motos, com alerta de movimento no app, corte de ignição remoto e caixa selada contra poeira e chuva. Instalação discreta para não chamar atenção.",
+    "specs": [
+      { "label": "Rede", "value": "GSM 2G/4G conforme lote" },
+      { "label": "Alerta", "value": "Movimento e ignição" },
+      { "label": "Bloqueio", "value": "Remoto via app" }
+    ],
+    "imageKey": "tracker", "priceCents": 24990, "currency": "BRL",
+    "stock": 21, "weightGrams": 150, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.5, "reviewCount": 77, "badges": [],
+    "createdAt": "2026-08-07T08:30:00Z"
+  },
+  {
+    "id": "prd-bloqueador", "slug": "bloqueador-veicular-com-rel-e-app", "sku": "AH-BLQ-REL",
+    "categoryId": "cat-rastreamento", "brandId": "brd-track",
+    "title": "Bloqueador Veicular com Relé e App", "subtitle": "Corte duplo de combustível/ignição",
+    "description": "Sistema de bloqueio com relé de alta corrente e corte duplo, controlado por aplicativo. Pode operar integrado ao rastreador ou de forma independente com botão de pânico.",
+    "specs": [
+      { "label": "Relé", "value": "40A duplo" },
+      { "label": "Comando", "value": "App + SMS" },
+      { "label": "Voltagem", "value": "12V" }
+    ],
+    "imageKey": "tracker", "priceCents": 18990, "currency": "BRL",
+    "stock": 24, "weightGrams": 220, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.4, "reviewCount": 45, "badges": [],
+    "createdAt": "2026-08-08T08:00:00Z"
+  },
+  {
+    "id": "prd-telemetria", "slug": "telemetria-para-frotas-com-relatorio", "sku": "AH-TEL-FRT",
+    "categoryId": "cat-rastreamento", "brandId": "brd-track",
+    "title": "Telemetria para Frotas com Relatórios", "subtitle": "Painel web · multiveículo",
+    "description": "Solução de telemetria para pequenas e médias frotas: painel web com relatórios de velocidade, paradas, quilometragem e manutenção preventiva. Projeto comercial sob consulta via AutoHub360 Pro.",
+    "specs": [
+      { "label": "Veículos", "value": "Até 50 por conta" },
+      { "label": "Relatórios", "value": "Velocidade, rota, paradas, custo" },
+      { "label": "Acesso", "value": "Painel web + app" }
+    ],
+    "imageKey": "tracker", "priceCents": 79900, "currency": "BRL",
+    "stock": 10, "weightGrams": 900, "warrantyMonths": 12,
+    "universal": true, "installable": true, "featured": false, "bestSeller": false,
+    "rating": 4.8, "reviewCount": 18, "badges": ["Pro"],
+    "createdAt": "2026-08-08T08:30:00Z"
+  }
+]

@@ -1,0 +1,227 @@
+[
+  {
+    "slug": "como-escolher-a-lampada-ideal",
+    "title": "Como escolher a lâmpada ideal para o seu farol",
+    "excerpt": "Saiba as diferenças entre LED, halógena e xenon — e escolha ideal para o seu veículo.",
+    "categoryLabel": "Iluminação",
+    "readMinutes": 6,
+    "publishedAt": "2026-08-20T09:00:00Z",
+    "imageKey": "led-kit",
+    "body": [
+      {
+        "heading": "LED, halógena ou xenon: o que muda na prática",
+        "body": [
+          "A lâmpada halógena é o padrão de fábrica da maioria dos carros: custa pouco, é fácil de trocar e cumpre bem seu papel na cidade. O ponto fraco é a eficiência — boa parte da energia vira calor, não luz.",
+          "O kit LED troca essa conta: consome menos, ilumina mais e dura muito mais. Já o xenon, que usa gás ionizado e precisa de um reator, entrega bastante luz, mas exigindo projeto correto de farol para não ofuscar — hoje é uma escolha mais comum em veículos que já saíram de fábrica com essa tecnologia.",
+          "Na AutoHub360 trabalhamos com kits LED de corte de luz preciso justamente para que o ganho de visibilidade não vire problema para quem vem na direção contrária."
+        ]
+      },
+      {
+        "heading": "O primeiro passo é o soquete do seu farol",
+        "body": [
+          "Antes de olhar marca ou potência, você precisa saber qual soquete o seu carro usa: H4, H7, H11, H1 são os mais comuns no mercado nacional. Esse dado está no manual do veículo, na tampa traseira do farol ou em uma consulta rápida com a nossa equipe.",
+          "É por isso que o seletor de veículos da AutoHub360 existe: você informa marca, modelo, ano e versão, e a loja já mostra os kits compatíveis com o seu farol. Sem chute, sem compra errada."
+        ]
+      },
+      {
+        "heading": "Corte de luz e CANBUS: os detalhes que separam um bom kit",
+        "body": [
+          "Um bom kit LED tem três sinais claros: posição do chip LED alinhada com o filamento original (para respeitar o desenho do refletor), dissipação eficiente (ventoinha ou manta de cobre) e driver com filtro anti-interferência, que evita aquele chiado no rádio e erros de painel em carros com CANBUS.",
+          "Kits sem essas atenções até acendem, mas ofuscam, esquentam e dão problema antes do tempo. O barato sai caro — literalmente no meio da estrada."
+        ]
+      },
+      {
+        "heading": "Instalação: dá pra fazer em casa?",
+        "body": [
+          "A troca em si é simples na maioria dos modelos, mas o acerto fino — regulagem da altura do feixe e verificação do corte de luz — é o que garante segurança. Se você não tem um posto com regulador por perto, vale agendar a instalação especializada.",
+          "Em Anápolis, nosso parceiro oficial Generoso Auto Center faz a instalação com teste de feixe incluído. Você compra na loja, agenda o horário e sai com a luz regulada."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "camera-de-re-o-que-avaliar",
+    "title": "Câmera de ré: o que avaliar antes de comprar",
+    "excerpt": "Veja os principais pontos para escolher o modelo ideal para o seu veículo.",
+    "categoryLabel": "Segurança",
+    "readMinutes": 5,
+    "publishedAt": "2026-08-22T09:00:00Z",
+    "imageKey": "rear-cam",
+    "body": [
+      {
+        "heading": "Resolução importa, mas não é tudo",
+        "body": [
+          "Uma câmera de ré HD já resolve 90% do dia a dia: dá para ver o muro, o meio-fio e a bicicleta que apareceu na retaguarda. O que separa uma câmera boa de uma mediana está em outros detalhes: qualidade do sensor em ambientes de pouca luz, ângulo de visão e resistência à água.",
+          "Prefira sensores com boa performance noturna (alguns têm LEDs infravermelhos) e vedação mínima IP67 — a câmera fica no para-choque e leva chuva, lama e lavagem de pressão."
+        ]
+      },
+      {
+        "heading": "Linhas guias e compatibilidade com a central",
+        "body": [
+          "As linhas guias sobrepostas à imagem ajudam a estimar distância e são indispensáveis para quem não está acostumado a estacionar com câmera. Verifique se o modelo oferece a opção de ligar/desligar.",
+          "No lado da tela, a câmera precisa ser compatível com a sua central multimídia (entrada de câmera dedicada) ou vir com um monitor próprio. Se sua central é Android, a entrada AV padrão funciona com quase todas as câmeras do mercado."
+        ]
+      },
+      {
+        "heading": "A instalação certa evita dor de cabeça",
+        "body": [
+          "O ponto crítico é o passamento do cabo da tampa traseira até a central — quando feito por fora, com fios expostos, vira ponto de oxidação e ruído na imagem. Com nosso parceiro em Anápolis a instalação é embutida, com chicote protegido e testes de imagem em marcha ré.",
+          "Vale combinar a câmera com sensores de estacionamento: a câmera mostra, o sensor avisa. Juntos, reduzem muito o risco de pequenas colisões no dia a dia."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "cinco-gadgets-uteis-para-o-dia-a-dia",
+    "title": "5 gadgets úteis para o dia a dia",
+    "excerpt": "Tecnologia que realmente faz diferença na sua rotina.",
+    "categoryLabel": "Smart Living",
+    "readMinutes": 4,
+    "publishedAt": "2026-08-24T09:00:00Z",
+    "imageKey": "gadget",
+    "body": [
+      {
+        "heading": "1. Power bank de 20.000mAh",
+        "body": [
+          "O celular virou carteira, chave, cartão e mapa — ficar sem bateria parou de ser opção. Um power bank de 20.000mAh com carga rápida segura o dia inteiro de uso pesado e ainda carrega o fone. Prefira modelos com display de porcentagem: você sabe exatamente o que tem na mão."
+        ]
+      },
+      {
+        "heading": "2. Carregador veicular GaN 65W",
+        "body": [
+          "A tecnologia GaN reduziu o tamanho dos carregadores sem perder potência. Um modelo veicular de 65W carrega notebook, tablet e celular ao mesmo tempo — o carro vira estação de trabalho em reuniões externas e viagens."
+        ]
+      },
+      {
+        "heading": "3. Lâmpada Wi-Fi RGB",
+        "body": [
+          "Parece supérfluo até você criar as primeiras rotinas: luz acendendo suave no despertar, modo cinema com uma frase para a assistente, luzes apagadas quando você já está na cama. A lâmpada Wi-Fi é a porta de entrada mais barata para a casa inteligente."
+        ]
+      },
+      {
+        "heading": "4. Suporte magnético no painel",
+        "body": [
+          "Segurar o celular enquanto dirige é infração e risco. Um suporte magnético de qualidade deixa o aparelho firme em lombada e na mão certa para o GPS — dois segundos de instalação que valem meses de conforto."
+        ]
+      },
+      {
+        "heading": "5. Localizador Bluetooth",
+        "body": [
+          "Chaves, mochila, capacete: o localizador Bluetooth acaba com a caça diária. Os modelos atuais avisam quando você esquece o item para trás e mostram o último local conhecido no mapa. Bateria de um ano e pronto."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "casa-inteligente-por-onde-comecar",
+    "title": "Casa inteligente: por onde começar sem se perder",
+    "excerpt": "Um guia direto para transformar sua casa em etapas — sem gastar tudo de uma vez.",
+    "categoryLabel": "Smart Living",
+    "readMinutes": 7,
+    "publishedAt": "2026-08-26T09:00:00Z",
+    "imageKey": "smart-home",
+    "body": [
+      {
+        "heading": "Comece pelo problema, não pelo dispositivo",
+        "body": [
+          "O erro mais comum é comprar gadgets soltos e nunca usá-los. O caminho eficiente é o contrário: liste o que te incomoda — luzes acesas à toa, medo de esquecer o ferro ligado, não saber quem está na porta — e resolva um problema por vez.",
+          "Na prática, três categorias entregam o melhor custo-benefício inicial: iluminação inteligente, tomadas com medição de consumo e câmeras/sensores de entrada."
+        ]
+      },
+      {
+        "heading": "A base: Wi-Fi estável e um ecossistema",
+        "body": [
+          "Casa inteligente vive de conexão. Antes de comprar, garanta um Wi-Fi 2.4GHz estável nos cômodos que serão automatizados — a maioria dos dispositivos usa essa faixa justamente por alcance.",
+          "Escolha um ecossistema de voz (Alexa, Google ou Apple Home) e mantenha os dispositivos compatíveis. Se a sua casa já tem marcas misturadas, um hub com suporte a Matter resolve a integração em um só app."
+        ]
+      },
+      {
+        "heading": "Iluminação: o impacto mais visível",
+        "body": [
+          "Lâmpadas Wi-Fi RGB nos cômodos principais e fitas LED atrás de móveis transformam o ambiente com pouco investimento. Crie cenas: 'Modo jantar', 'Modo cinema', 'Boa noite' — esta última apaga tudo com um comando e economiza no fim do mês."
+        ]
+      },
+      {
+        "heading": "Segurança: presença e monitoramento",
+        "body": [
+          "Sensores de abertura em portas e janelas de acesso mandam notificação na hora; câmeras internas com áudio permitem falar com quem está em casa; a campainha com câmera mostra o portão sem você sair do sofá.",
+          "Junte tudo em rotinas: 'Saindo de casa' desliga tomadas, apaga luzes e arma o monitoramento. É aqui que a casa inteligente deixa de ser curiosidade e vira hábito."
+        ]
+      },
+      {
+        "heading": "Instalação e suporte local",
+        "body": [
+          "Dispositivos de tomada e lâmpada são plug-and-play. Interruptores touch e vídeo porteiros pedem atenção à fiação — se você não tem familiaridade com eletrica, agende a instalação com nossa equipe parceira em Anápolis e receba tudo funcionando, com automações configuradas."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "energia-solar-portatil-quando-faz-sentido",
+    "title": "Energia solar portátil: quando faz sentido (e quando não)",
+    "excerpt": "Estações de energia e placas dobráveis explicados sem marketing.",
+    "categoryLabel": "Energia",
+    "readMinutes": 6,
+    "publishedAt": "2026-08-28T09:00:00Z",
+    "imageKey": "solar-panel",
+    "body": [
+      {
+        "heading": "O que é uma estação de energia portátil",
+        "body": [
+          "É uma bateria grande de lítio com inversor embutido: tomadas AC, portas USB-C e entrada para placa solar. Diferente do nobreak, foi projetada para mobilidade — camping, obra, trailer,home office ao ar livre — e para funcionar como reserva em faltas de energia."
+        ]
+      },
+      {
+        "heading": "Quando vale o investimento",
+        "body": [
+          "Três cenários claros: (1) você trabalha fora de casa e precisa de notebook + internet por horas; (2) sua região sofre com faltas de energia e você quer manter roteador, luzes e geladeira funcionando por alguns períodos; (3) você acampa ou viaja de motor-home e quer conforto sem gerador a gasolina.",
+          "Para manter uma geladeira por um dia inteiro, pense em estações a partir de 1kWh. Para notebook, roteador e iluminação, modelos de 300W/288Wh resolvem bem com peso e preço bem menores."
+        ]
+      },
+      {
+        "heading": "Placa solar: o complemento certo",
+        "body": [
+          "A placa dobrável de 100W recarrega a estação em algumas horas de sol bom e mantém o ciclo funcionando em acampamentos longos. Em uso urbano como backup, a recarga na tomada é mais prática — a placa entra para autonomia total."
+        ]
+      },
+      {
+        "heading": "O que olhar nas especificações",
+        "body": [
+          "Capacidade em Wh (a energia disponível), potência do inversor em W (o que você pode ligar ao mesmo tempo), química da bateria (LiFePO4 dura mais ciclos) e pureza da onda (onda senoidal pura é segura para eletrônicos sensíveis).",
+          "Nossa linha Solaria foi selecionada com esses critérios — e a equipe de venda orienta o dimensionamento pelo WhatsApp antes de você comprar."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "dashcam-vale-a-pena",
+    "title": "Dashcam vale a pena? O que diz a prática",
+    "excerpt": "Gravação em loop, G-sensor e o valor real de um vídeo quando dá tudo errado.",
+    "categoryLabel": "Auto & Tech",
+    "readMinutes": 5,
+    "publishedAt": "2026-08-30T09:00:00Z",
+    "imageKey": "dashcam",
+    "body": [
+      {
+        "heading": "O vídeo que resolve a discussão",
+        "body": [
+          "A maioria dos motoristas só descobre o valor da dashcam no dia em que precisam dela: colisão com versão dos fatos conflitante, buzinada cruzada, dano no estacionamento. Um vídeo com data e hora transforma uma briga de palavras em evidência objetiva."
+        ]
+      },
+      {
+        "heading": "Funcionalidades que importam",
+        "body": [
+          "Gravação em loop (sobrescreve o arquivo antigo sem intervenção), G-sensor (trava o vídeo em caso de impacto), boa performance noturna e — nas câmeras duplas — cobertura da traseira, onde boa parte dos toques acontece.",
+          "Wi-Fi pelo celular é conveniência real: baixar o trecho do incidente direto no aparelho sem tirar o cartão da câmera."
+        ]
+      },
+      {
+        "heading": "Instalação discreta e segura",
+        "body": [
+          "A diferença entre uma dashcam bem e mal instalada é o fio: pendurado pelo para-brisa, atrapalha a visão e chama atenção; embutido no forro e descendo pela coluna, fica invisível e não aflora em nenhuma vistoria.",
+          "No modo estacionamento, a alimentação precisa ser feita com proteção de bateria — mais um motivo para considerar a instalação especializada do nosso parceiro em Anápolis."
+        ]
+      }
+    ]
+  }
+]
