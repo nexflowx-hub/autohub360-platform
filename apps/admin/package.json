@@ -11,18 +11,21 @@
   },
   "dependencies": {
     "@autohub360/config": "workspace:*",
+    "@autohub360/ui": "workspace:*",
     "next": "^15.5.4",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "@autohub360/ui": "workspace:*"
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "15.5.4",
     "@tailwindcss/postcss": "^4.1.14",
     "@types/node": "^24.7.2",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "eslint": "9.37.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "tailwindcss": "^4.1.14",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.46.0"
   }
 }
