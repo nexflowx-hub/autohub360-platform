@@ -1,0 +1,85 @@
+/* Shared Tailwind v4 theme for AutoHub360 apps.
+   Apps import: `@import '@autohub360/ui/src/styles/theme.css';` after tailwindcss. */
+
+@import '@autohub360/config/src/tailwind.css';
+
+@theme inline {
+  --color-navy-950: var(--ah-navy-950);
+  --color-navy-900: var(--ah-navy-900);
+  --color-navy-850: var(--ah-navy-850);
+  --color-navy-800: var(--ah-navy-800);
+  --color-navy-700: var(--ah-navy-700);
+  --color-navy-600: var(--ah-navy-600);
+  --color-navy-500: var(--ah-navy-500);
+  --color-navy-400: var(--ah-navy-400);
+
+  --color-ahblue-300: var(--ah-blue-300);
+  --color-ahblue-400: var(--ah-blue-400);
+  --color-ahblue-500: var(--ah-blue-500);
+  --color-ahblue-600: var(--ah-blue-600);
+  --color-ahblue-700: var(--ah-blue-700);
+
+  --color-ahorange-300: var(--ah-orange-300);
+  --color-ahorange-400: var(--ah-orange-400);
+  --color-ahorange-500: var(--ah-orange-500);
+  --color-ahorange-600: var(--ah-orange-600);
+
+  --color-surface-50: var(--ah-surface-50);
+  --color-surface-100: var(--ah-surface-100);
+  --color-surface-200: var(--ah-surface-200);
+  --color-surface-300: var(--ah-surface-300);
+
+  --color-ink-900: var(--ah-ink-900);
+  --color-ink-700: var(--ah-ink-700);
+  --color-ink-500: var(--ah-ink-500);
+  --color-ink-300: var(--ah-ink-300);
+
+  --font-display: var(--font-archivo), 'Segoe UI', sans-serif;
+  --font-sans: var(--font-inter), 'Segoe UI', sans-serif;
+
+  --radius-card: var(--ah-radius-md);
+  --radius-panel: var(--ah-radius-lg);
+}
+
+/* Base look shared by both apps */
+.ah-dark {
+  background-color: var(--ah-navy-900);
+  color: #f1f5f9;
+}
+
+.ah-hero-glow {
+  background:
+    radial-gradient(60% 80% at 75% 20%, rgb(30 111 235 / 0.28) 0%, transparent 60%),
+    radial-gradient(45% 60% at 15% 85%, rgb(249 115 22 / 0.14) 0%, transparent 60%),
+    linear-gradient(135deg, var(--ah-navy-950) 0%, var(--ah-navy-900) 55%, var(--ah-navy-800) 100%);
+}
+
+.ah-glass {
+  background: rgb(13 27 48 / 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgb(124 176 255 / 0.16);
+}
+
+.ah-card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.ah-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ah-shadow-float);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ah-card-hover,
+  .ah-card-hover:hover {
+    transition: none;
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
