@@ -13,6 +13,120 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* --------------------------------------------------------------------------
+   AutoHub360.tech visual direction
+   The approved board is deliberately dark, cinematic and automotive-tech.
+   These overrides keep the existing semantic/component architecture intact
+   while bringing the production home page much closer to that art direction.
+   -------------------------------------------------------------------------- */
+
+header.sticky {
+  border-color: rgb(124 176 255 / 0.14) !important;
+  background: rgb(3 14 28 / 0.96) !important;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 0.22) !important;
+}
+
+header.sticky .text-ink-900 {
+  color: #f8fafc !important;
+}
+
+header.sticky .text-ink-700 {
+  color: #cbd5e1 !important;
+}
+
+header.sticky .text-ink-500,
+header.sticky .text-ink-300 {
+  color: #94a3b8 !important;
+}
+
+header.sticky a:hover,
+header.sticky button:hover {
+  color: #ffffff;
+}
+
+header.sticky .hover\:bg-surface-100:hover {
+  background: rgb(255 255 255 / 0.07) !important;
+}
+
+/* Main cinematic hero: dark copy zone at left, visual focus at right. */
+.ah-hero-glow {
+  background:
+    linear-gradient(
+      90deg,
+      rgb(2 12 24 / 0.99) 0%,
+      rgb(3 16 32 / 0.96) 31%,
+      rgb(3 16 32 / 0.83) 46%,
+      rgb(3 16 32 / 0.34) 68%,
+      rgb(3 16 32 / 0.58) 100%
+    ),
+    url('https://images.unsplash.com/photo-1785513748232-6a650277ae66?auto=format&fit=crop&fm=jpg&q=82&w=2000') center right / cover no-repeat;
+}
+
+.ah-hero-glow > div[aria-hidden='true'] {
+  display: none;
+}
+
+.ah-hero-glow > .mx-auto {
+  min-height: 500px;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+/* The original right-hand placeholder collage is intentionally hidden: the
+   photographic hero now provides the approved visual density without fake UI. */
+.ah-hero-glow > .mx-auto > div[aria-hidden='true'] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ah-hero-glow h1,
+.ah-hero-glow p,
+.ah-hero-glow li {
+  text-shadow: 0 2px 18px rgb(0 0 0 / 0.28);
+}
+
+/* The approved desktop mockup uses the universe cards as a compact strip
+   immediately below the hero, without another oversized marketing heading. */
+.ah-hero-glow + section {
+  padding-top: 1rem;
+  padding-bottom: 1.25rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ah-hero-glow + section > .mx-auto > div:first-child {
+  display: none;
+}
+
+.ah-hero-glow + section ul {
+  gap: 0.55rem;
+}
+
+.ah-hero-glow + section a {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+/* Generoso section — workshop photography is part of the brand story in the
+   approved board, rather than a generic dark information block. */
+section[aria-label='Instalação e assistência em Anápolis'] {
+  background:
+    linear-gradient(
+      90deg,
+      rgb(2 12 24 / 0.98) 0%,
+      rgb(2 12 24 / 0.91) 48%,
+      rgb(2 12 24 / 0.56) 71%,
+      rgb(2 12 24 / 0.78) 100%
+    ),
+    url('https://images.unsplash.com/photo-1727893119356-1702fe921cf9?auto=format&fit=crop&fm=jpg&q=80&w=2000') center / cover no-repeat !important;
+}
+
+section[aria-label='Instalação e assistência em Anápolis'] .ah-glass {
+  background: rgb(3 16 32 / 0.72);
+  border-color: rgb(124 176 255 / 0.22);
+  box-shadow: 0 20px 48px rgb(0 0 0 / 0.28);
+}
+
 /* Slim scrollbars for rails and drawers */
 .ah-scroll-slim::-webkit-scrollbar {
   height: 6px;
@@ -30,4 +144,33 @@ body {
 :focus-visible {
   outline: 2px solid var(--ah-blue-400);
   outline-offset: 2px;
+}
+
+@media (max-width: 1023px) {
+  .ah-hero-glow {
+    background:
+      linear-gradient(
+        180deg,
+        rgb(2 12 24 / 0.96) 0%,
+        rgb(2 12 24 / 0.84) 52%,
+        rgb(2 12 24 / 0.78) 100%
+      ),
+      url('https://images.unsplash.com/photo-1785513748232-6a650277ae66?auto=format&fit=crop&fm=jpg&q=80&w=1400') 62% center / cover no-repeat;
+  }
+
+  .ah-hero-glow > .mx-auto {
+    min-height: 590px;
+  }
+}
+
+@media (max-width: 639px) {
+  .ah-hero-glow > .mx-auto {
+    min-height: 620px;
+    padding-top: 2.5rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .ah-hero-glow + section {
+    padding-top: 0.75rem;
+  }
 }
