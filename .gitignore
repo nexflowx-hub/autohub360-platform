@@ -3,6 +3,7 @@ node_modules/
 .turbo/
 dist/
 build/
+out/
 coverage/
 .vercel/
 .env
@@ -10,5 +11,11 @@ coverage/
 !.env.example
 .DS_Store
 *.log
+*.tsbuildinfo
+next-env.d.ts
 supabase/.branches/
 supabase/.temp/
+supabase/.env
+.idea/
+.vscode/*
+!.vscode/extensions.json

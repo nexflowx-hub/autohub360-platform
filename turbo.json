@@ -1,0 +1,46 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "stream",
+  "globalEnv": [
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY",
+    "NEXT_PUBLIC_TECH_URL",
+    "NEXT_PUBLIC_STORE_URL",
+    "NEXT_PUBLIC_WHATSAPP_BR",
+    "NEXT_PUBLIC_SITE_URL",
+    "NEXT_PUBLIC_GA_ID",
+    "NEXT_PUBLIC_META_PIXEL_ID",
+    "NEXT_PUBLIC_TIKTOK_PIXEL_ID",
+    "PAYMENT_PROVIDER",
+    "PAYMENT_SECRET_KEY",
+    "PAYMENT_WEBHOOK_SECRET",
+    "SHIPPING_PROVIDER",
+    "SHIPPING_API_KEY",
+    "EMAIL_PROVIDER",
+    "EMAIL_API_KEY",
+    "PORT"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "format": {
+      "cache": false
+    }
+  }
+}

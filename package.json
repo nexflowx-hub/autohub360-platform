@@ -8,14 +8,21 @@
   },
   "scripts": {
     "dev": "turbo dev",
+    "dev:tech": "turbo dev --filter=@autohub360/tech",
+    "dev:store": "turbo dev --filter=@autohub360/store",
     "build": "turbo build",
+    "build:tech": "turbo build --filter=@autohub360/tech",
+    "build:store": "turbo build --filter=@autohub360/store",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
-    "format": "prettier --write ."
+    "format": "prettier --write \"**/*.{ts,tsx,css,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,css,json,md}\"",
+    "seed:sql": "node scripts/generate-seed-sql.mjs"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
-    "turbo": "^2.5.6"
+    "turbo": "^2.5.6",
+    "typescript": "^5.9.2"
   }
 }
