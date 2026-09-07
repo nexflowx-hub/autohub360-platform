@@ -6,3 +6,4 @@ export * from './commerce-config';
 export * from './sites';
 export * from './legal';
 export * from './env';
+export * from './kits';

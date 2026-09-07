@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+@import '@autohub360/ui/src/styles/theme.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ah-surface-50);
+  color: var(--ah-ink-900);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Slim scrollbars for rails and drawers */
+.ah-scroll-slim::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.ah-scroll-slim::-webkit-scrollbar-thumb {
+  background: var(--ah-surface-300);
+  border-radius: 999px;
+}
+.ah-scroll-slim::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Focus visibility for a11y */
+:focus-visible {
+  outline: 2px solid var(--ah-blue-400);
+  outline-offset: 2px;
+}
