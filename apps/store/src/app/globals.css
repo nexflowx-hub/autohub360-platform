@@ -13,6 +13,131 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* --------------------------------------------------------------------------
+   AutoHub360.store visual direction
+   The storefront mockup uses a compact dark commerce header, a cinematic hero
+   and bright catalogue surfaces. Keep behaviour intact; change presentation.
+   -------------------------------------------------------------------------- */
+
+header.sticky {
+  border-color: rgb(124 176 255 / 0.14) !important;
+  background: rgb(3 14 28 / 0.98) !important;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 0.2) !important;
+}
+
+header.sticky > div:first-child {
+  background: transparent;
+}
+
+header.sticky nav {
+  border-color: rgb(124 176 255 / 0.12) !important;
+  background: rgb(5 20 38 / 0.98) !important;
+}
+
+header.sticky .text-ink-900 {
+  color: #f8fafc !important;
+}
+
+header.sticky .text-ink-700 {
+  color: #cbd5e1 !important;
+}
+
+header.sticky .text-ink-500,
+header.sticky .text-ink-300 {
+  color: #94a3b8 !important;
+}
+
+header.sticky a:hover,
+header.sticky button:hover {
+  color: #ffffff;
+}
+
+header.sticky .hover\:bg-surface-100:hover {
+  background: rgb(255 255 255 / 0.07) !important;
+}
+
+/* Search stays bright inside the dark commerce header, as in the mockup. */
+header.sticky form input {
+  border-color: rgb(255 255 255 / 0.18) !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.14);
+}
+
+header.sticky form input::placeholder {
+  color: #64748b;
+}
+
+/* Store hero: visually dense at right, clean copy zone at left. */
+.ah-hero-glow {
+  background:
+    linear-gradient(
+      90deg,
+      rgb(2 12 24 / 0.99) 0%,
+      rgb(3 16 32 / 0.96) 31%,
+      rgb(3 16 32 / 0.83) 46%,
+      rgb(3 16 32 / 0.30) 68%,
+      rgb(3 16 32 / 0.56) 100%
+    ),
+    url('https://images.unsplash.com/photo-1739523914777-276f9ff5dcfc?auto=format&fit=crop&fm=jpg&q=82&w=2000') center right / cover no-repeat;
+}
+
+.ah-hero-glow > div[aria-hidden='true'] {
+  display: none;
+}
+
+.ah-hero-glow > .mx-auto {
+  min-height: 470px;
+  padding-top: 3.25rem;
+  padding-bottom: 4.5rem;
+}
+
+.ah-hero-glow > .mx-auto > div[aria-hidden='true'] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ah-hero-glow h1,
+.ah-hero-glow p,
+.ah-hero-glow li {
+  text-shadow: 0 2px 18px rgb(0 0 0 / 0.28);
+}
+
+/* Vehicle finder is the white bridge from hero to catalogue. */
+.ah-hero-glow + .mx-auto > div {
+  border: 1px solid rgb(148 163 184 / 0.28);
+  box-shadow: 0 18px 44px rgb(15 23 42 / 0.2);
+}
+
+/* Compact catalogue rhythm like the approved storefront board. */
+section[aria-label='Universos de produtos'] {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+section[aria-label='Produtos em destaque'] {
+  padding-top: 1.75rem;
+  padding-bottom: 2rem;
+}
+
+section[aria-label='Compra com instalação em Anápolis'] {
+  background:
+    linear-gradient(
+      90deg,
+      rgb(2 12 24 / 0.98) 0%,
+      rgb(2 12 24 / 0.91) 48%,
+      rgb(2 12 24 / 0.56) 71%,
+      rgb(2 12 24 / 0.79) 100%
+    ),
+    url('https://images.unsplash.com/photo-1727893119356-1702fe921cf9?auto=format&fit=crop&fm=jpg&q=80&w=2000') center / cover no-repeat !important;
+}
+
+section[aria-label='Compra com instalação em Anápolis'] .ah-glass {
+  background: rgb(3 16 32 / 0.72);
+  border-color: rgb(124 176 255 / 0.22);
+  box-shadow: 0 20px 48px rgb(0 0 0 / 0.28);
+}
+
 /* Slim scrollbars for rails and drawers */
 .ah-scroll-slim::-webkit-scrollbar {
   height: 6px;
@@ -30,4 +155,29 @@ body {
 :focus-visible {
   outline: 2px solid var(--ah-blue-400);
   outline-offset: 2px;
+}
+
+@media (max-width: 1023px) {
+  .ah-hero-glow {
+    background:
+      linear-gradient(
+        180deg,
+        rgb(2 12 24 / 0.97) 0%,
+        rgb(2 12 24 / 0.86) 54%,
+        rgb(2 12 24 / 0.80) 100%
+      ),
+      url('https://images.unsplash.com/photo-1739523914777-276f9ff5dcfc?auto=format&fit=crop&fm=jpg&q=80&w=1400') 58% center / cover no-repeat;
+  }
+
+  .ah-hero-glow > .mx-auto {
+    min-height: 570px;
+    padding-bottom: 5.5rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .ah-hero-glow > .mx-auto {
+    min-height: 600px;
+    padding-top: 2.35rem;
+  }
 }
