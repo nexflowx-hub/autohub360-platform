@@ -222,32 +222,31 @@ function ProductRender({ kind, id }: { kind: ProductKind; id: string }) {
           <g transform="translate(69 20)">
             <rect x="0" y="0" width="82" height="118" rx="28" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" />
             <circle cx="41" cy="44" r="26" fill="#e9f4fa" stroke="#c8dce8" strokeWidth="2" />
-            <circle cx="41" cy="44" r="16" fill={`url(#${glass})`} stroke="#20394c" strokeWidth="3" />
-            <circle cx="35" cy="38" r="5" fill="#cbf4ff" opacity="0.75" />
-            <rect x="31" y="87" width="20" height="12" rx="6" fill="#0a8cff" opacity="0.85" />
-            <path d="M27 105h28" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" />
+            <circle cx="41" cy="44" r="17" fill={`url(#${glass})`} stroke="#193e5c" strokeWidth="2.5" />
+            <circle cx="35" cy="37" r="4" fill="#d8f5ff" opacity="0.8" />
+            <rect x="22" y="87" width="38" height="9" rx="4.5" fill="#dbe7ef" />
+            <circle cx="41" cy="104" r="4" fill="#0a8cff" />
           </g>
         )}
 
         {kind === 'audio' && (
-          <g transform="translate(67 22)">
-            <rect x="0" y="0" width="86" height="118" rx="24" fill={`url(#${dark})`} stroke="#3e526a" strokeWidth="2" />
-            <circle cx="43" cy="44" r="27" fill="#08111d" stroke="#263b53" strokeWidth="4" />
-            <circle cx="43" cy="44" r="18" fill="#172a3e" stroke="#3c5770" strokeWidth="3" />
-            <circle cx="43" cy="44" r="7" fill="#0a8cff" opacity="0.85" />
-            <circle cx="43" cy="90" r="15" fill="#09121d" stroke="#263b53" strokeWidth="3" />
-            <circle cx="43" cy="90" r="5" fill="#f97316" opacity="0.9" />
+          <g transform="translate(47 24)">
+            <rect width="126" height="116" rx="19" fill={`url(#${dark})`} stroke="#42566f" strokeWidth="2" />
+            <circle cx="63" cy="58" r="39" fill="#0b1521" stroke="#506178" strokeWidth="4" />
+            <circle cx="63" cy="58" r="27" fill="#121f2d" stroke="#2d4055" strokeWidth="3" />
+            <circle cx="63" cy="58" r="10" fill={`url(#${blue})`} opacity="0.8" />
+            <rect x="98" y="16" width="11" height="5" rx="2.5" fill="#f97316" />
           </g>
         )}
 
         {kind === 'tool' && (
-          <g transform="translate(45 31)">
-            <rect x="0" y="18" width="130" height="84" rx="13" fill={`url(#${dark})`} stroke="#425871" strokeWidth="2" />
-            <rect x="14" y="32" width="61" height="39" rx="7" fill="#071a2c" stroke="#1e6feb" />
-            <path d="M25 61l10-10 9 5 14-15" stroke="#63c7ff" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="99" cy="44" r="9" fill="#f97316" />
-            <circle cx="99" cy="72" r="9" fill="#172b41" stroke="#50677f" />
-            <path d="M31 102v17M98 102v17" stroke="#334155" strokeWidth="7" strokeLinecap="round" />
+          <g transform="translate(45 30)">
+            <rect x="0" y="0" width="130" height="82" rx="15" fill={`url(#${dark})`} stroke="#42576e" strokeWidth="2" />
+            <rect x="14" y="15" width="72" height="39" rx="8" fill="#071827" stroke="#205277" />
+            <path d="M24 44c12-14 31-19 50-12" stroke="#0a8cff" strokeWidth="3" strokeLinecap="round" />
+            <circle cx="104" cy="31" r="12" fill="#111d29" stroke="#5b6f83" strokeWidth="2" />
+            <circle cx="104" cy="31" r="4" fill="#f97316" />
+            <path d="M31 82v17M98 82v17" stroke="#334155" strokeWidth="7" strokeLinecap="round" />
           </g>
         )}
       </g>
@@ -278,7 +277,7 @@ export function ProductThumb({
       role="img"
       aria-label={alt}
       className={cn(
-        'group/product relative flex items-center justify-center overflow-hidden rounded-lg border border-slate-200/80 bg-white',
+        'ah-product-thumb group/product relative flex items-center justify-center overflow-hidden rounded-lg border border-slate-200/80 bg-white',
         size === 'lg' && 'min-h-[180px]',
         className,
       )}
