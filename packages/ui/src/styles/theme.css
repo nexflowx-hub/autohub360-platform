@@ -41,6 +41,16 @@
   --radius-panel: var(--ah-radius-lg);
 }
 
+:root {
+  --ah-scroll-progress: 0;
+  --ah-pointer-x: 72%;
+  --ah-pointer-y: 44%;
+  --ah-parallax-x: 0px;
+  --ah-parallax-y: 0px;
+  --ah-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ah-ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
 /* Base look shared by both apps */
 .ah-dark {
   background-color: var(--ah-navy-900);
@@ -68,12 +78,230 @@
   box-shadow: var(--ah-shadow-float);
 }
 
+/* --------------------------------------------------------------------------
+   GLOBAL CINEMATIC MOTION LANGUAGE
+   -------------------------------------------------------------------------- */
+
+.ah-motion-ready .ah-reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0) scale(0.992);
+  filter: blur(5px);
+  transition:
+    opacity 820ms var(--ah-ease-out) var(--ah-reveal-delay, 0ms),
+    transform 900ms var(--ah-ease-out) var(--ah-reveal-delay, 0ms),
+    filter 760ms ease var(--ah-reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.ah-motion-ready .ah-reveal.ah-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+/* Thin top progress line — nearly invisible at rest, useful on long pages. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 999;
+  width: calc(var(--ah-scroll-progress) * 100%);
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #0788ff, #42c1ff 72%, #f97316);
+  box-shadow: 0 0 16px rgb(30 111 235 / 0.52);
+  transform-origin: left center;
+}
+
+/* Buttons receive a controlled metallic light sweep, not a casino glow. */
+.ah-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transform: translateZ(0);
+  box-shadow:
+    0 6px 18px rgb(15 23 42 / 0.09),
+    inset 0 1px 0 rgb(255 255 255 / 0.14);
+}
+
+.ah-button::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -35%;
+  bottom: -35%;
+  left: -52%;
+  width: 32%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.28), transparent);
+  transition: left 620ms var(--ah-ease-out);
+}
+
+.ah-button:hover {
+  transform: translateY(-1px);
+}
+
+.ah-button:hover::after {
+  left: 118%;
+}
+
+.ah-button:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Product cards: retail depth, controlled tilt and a light halo around artwork. */
+.ah-product-card {
+  position: relative;
+  transform: translateZ(0);
+  transition:
+    transform 380ms var(--ah-ease-out),
+    box-shadow 380ms var(--ah-ease-out),
+    border-color 280ms ease;
+}
+
+.ah-product-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  background: linear-gradient(145deg, rgb(30 111 235 / 0.30), transparent 34%, transparent 72%, rgb(249 115 22 / 0.18));
+  filter: blur(8px);
+  transition: opacity 350ms ease;
+}
+
+.ah-product-card:hover {
+  transform: translateY(-5px) perspective(900px) rotateX(0.8deg);
+  box-shadow:
+    0 20px 46px rgb(15 23 42 / 0.14),
+    0 4px 14px rgb(15 23 42 / 0.07);
+}
+
+.ah-product-card:hover::before {
+  opacity: 1;
+}
+
+.ah-product-card .ah-product-thumb {
+  transition: transform 620ms var(--ah-ease-out), filter 420ms ease;
+}
+
+.ah-product-card:hover .ah-product-thumb {
+  transform: scale(1.028);
+  filter: saturate(1.04) contrast(1.015);
+}
+
+/* Universe tiles behave like compact premium category showcases. */
+.ah-universe-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.ah-universe-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 50% 0%, rgb(30 111 235 / 0.10), transparent 42%),
+    linear-gradient(180deg, transparent, rgb(30 111 235 / 0.025));
+  transition: opacity 320ms ease;
+}
+
+.ah-universe-card:hover::after {
+  opacity: 1;
+}
+
+.ah-universe-card:hover .ah-product-thumb {
+  transform: translateY(-1px) scale(1.045);
+}
+
+/* The orbital mark receives a very subtle living highlight on interaction. */
+.ah-logo-icon {
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 4px 12px rgb(0 132 255 / 0.14));
+  transition: transform 500ms var(--ah-ease-out), filter 500ms ease;
+}
+
+a:hover .ah-logo-icon,
+button:hover .ah-logo-icon,
+.ah-logo-icon:hover {
+  transform: rotate(-4deg) scale(1.045);
+  filter: drop-shadow(0 5px 18px rgb(0 132 255 / 0.34));
+}
+
+/* Shared smooth header compression after scrolling. */
+.ah-site-header {
+  transition:
+    background-color 280ms ease,
+    box-shadow 280ms ease,
+    border-color 280ms ease,
+    backdrop-filter 280ms ease,
+    transform 280ms ease;
+}
+
+.ah-scrolled .ah-site-header {
+  background-color: rgb(3 14 28 / 0.985) !important;
+  border-color: rgb(124 176 255 / 0.14) !important;
+  box-shadow: 0 14px 34px rgb(0 0 0 / 0.28) !important;
+  backdrop-filter: blur(20px) saturate(1.15) !important;
+}
+
+/* General media / image treatment. */
+.ah-product-thumb {
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes ahFloatSoft {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--ah-float-rotate, 0deg)); }
+  50% { transform: translate3d(0, -9px, 0) rotate(var(--ah-float-rotate, 0deg)); }
+}
+
+@keyframes ahPulseGlow {
+  0%, 100% { opacity: 0.52; transform: scale(0.96); }
+  50% { opacity: 0.9; transform: scale(1.04); }
+}
+
+@keyframes ahLightSweep {
+  0% { transform: translateX(-130%) skewX(-18deg); opacity: 0; }
+  16% { opacity: 0.65; }
+  46%, 100% { transform: translateX(360%) skewX(-18deg); opacity: 0; }
+}
+
+@keyframes ahBackgroundDrift {
+  0% { background-position: 50% 52%; }
+  100% { background-position: 53% 48%; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ah-card-hover:hover {
+    transform: translateY(-4px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ah-card-hover,
-  .ah-card-hover:hover {
-    transition: none;
-    transform: none;
+  .ah-card-hover:hover,
+  .ah-button,
+  .ah-button:hover,
+  .ah-product-card,
+  .ah-product-card:hover,
+  .ah-universe-card,
+  .ah-logo-icon,
+  a:hover .ah-logo-icon,
+  button:hover .ah-logo-icon,
+  .ah-logo-icon:hover,
+  .ah-reveal,
+  .ah-reveal.ah-visible {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
   }
+
   *,
   *::before,
   *::after {
