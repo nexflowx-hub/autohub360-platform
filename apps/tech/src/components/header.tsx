@@ -18,7 +18,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#041326]/95 text-white shadow-[0_12px_32px_rgba(0,0,0,.24)] backdrop-blur-xl">
+    <header className="ah-site-header sticky top-0 z-40 border-b border-white/10 bg-[#041326]/95 text-white shadow-[0_12px_32px_rgba(0,0,0,.24)] backdrop-blur-xl">
       <div className="mx-auto flex h-[70px] max-w-[1380px] items-center gap-4 px-4 sm:px-6 lg:px-8">
         <button
           type="button"
@@ -134,7 +134,7 @@ export function Header() {
               <a
                 href={storeSite.url}
                 onClick={() => setMenuOpen(false)}
-                className="mt-6 flex h-12 items-center justify-center gap-2 rounded-[9px] bg-ahblue-500 font-display text-[14px] font-bold text-white shadow-[0_8px_22px_rgba(30,111,235,.28)] hover:bg-ahblue-600"
+                className="ah-button mt-6 flex h-12 items-center justify-center gap-2 rounded-[9px] bg-ahblue-500 font-display text-[14px] font-bold text-white shadow-[0_8px_22px_rgba(30,111,235,.28)] hover:bg-ahblue-600"
               >
                 <ShoppingCart className="h-4.5 w-4.5" aria-hidden="true" />
                 Comprar na AutoHub360.store
