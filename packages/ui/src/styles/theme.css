@@ -51,7 +51,6 @@
   --ah-ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* Base look shared by both apps */
 .ah-dark {
   background-color: var(--ah-navy-900);
   color: #f1f5f9;
@@ -99,7 +98,6 @@
   filter: blur(0);
 }
 
-/* Thin top progress line — nearly invisible at rest, useful on long pages. */
 body::after {
   content: '';
   position: fixed;
@@ -113,7 +111,6 @@ body::after {
   transform-origin: left center;
 }
 
-/* Buttons receive a controlled metallic light sweep, not a casino glow. */
 .ah-button {
   position: relative;
   isolation: isolate;
@@ -149,7 +146,6 @@ body::after {
   transform: translateY(0) scale(0.985);
 }
 
-/* Product cards: retail depth, controlled tilt and a light halo around artwork. */
 .ah-product-card {
   position: relative;
   transform: translateZ(0);
@@ -191,7 +187,6 @@ body::after {
   filter: saturate(1.04) contrast(1.015);
 }
 
-/* Universe tiles behave like compact premium category showcases. */
 .ah-universe-card {
   position: relative;
   isolation: isolate;
@@ -218,7 +213,6 @@ body::after {
   transform: translateY(-1px) scale(1.045);
 }
 
-/* The orbital mark receives a very subtle living highlight on interaction. */
 .ah-logo-icon {
   transform-origin: 50% 50%;
   filter: drop-shadow(0 4px 12px rgb(0 132 255 / 0.14));
@@ -232,7 +226,6 @@ button:hover .ah-logo-icon,
   filter: drop-shadow(0 5px 18px rgb(0 132 255 / 0.34));
 }
 
-/* Shared smooth header compression after scrolling. */
 .ah-site-header {
   transition:
     background-color 280ms ease,
@@ -249,7 +242,6 @@ button:hover .ah-logo-icon,
   backdrop-filter: blur(20px) saturate(1.15) !important;
 }
 
-/* General media / image treatment. */
 .ah-product-thumb {
   transform-origin: center center;
   will-change: transform;
@@ -279,6 +271,99 @@ button:hover .ah-logo-icon,
 @media (hover: hover) and (pointer: fine) {
   .ah-card-hover:hover {
     transform: translateY(-4px);
+  }
+}
+
+/* The approved mobile mockups still show the product universe inside the hero.
+   Tailwind hides the stage below lg; this deliberately re-enables and reshapes it. */
+@media (max-width: 1023px) {
+  .tech-device-stage,
+  .store-device-stage {
+    display: block !important;
+    width: min(100%, 720px);
+    height: 245px !important;
+    margin: -0.25rem auto 0;
+    transform: none !important;
+  }
+
+  .tech-device-stage .ah-product-thumb,
+  .store-device-stage .ah-product-thumb {
+    min-height: 0 !important;
+  }
+
+  .tech-device-stage > div:nth-child(1),
+  .store-device-stage > div:nth-child(1) {
+    width: 31% !important;
+    left: 7% !important;
+    bottom: 3px !important;
+  }
+
+  .tech-device-stage > div:nth-child(2),
+  .store-device-stage > div:nth-child(2) {
+    width: 19% !important;
+    left: 35% !important;
+    bottom: 10px !important;
+  }
+
+  .tech-device-stage > div:nth-child(3),
+  .store-device-stage > div:nth-child(3) {
+    width: 22% !important;
+    right: 7% !important;
+    top: 5px !important;
+  }
+
+  .tech-device-stage > div:nth-child(4),
+  .store-device-stage > div:nth-child(4) {
+    width: 24% !important;
+    right: 24% !important;
+    top: 0 !important;
+  }
+
+  .tech-device-stage > div:nth-child(5),
+  .store-device-stage > div:nth-child(5) {
+    right: 4% !important;
+    bottom: 7px !important;
+  }
+}
+
+@media (max-width: 639px) {
+  body::after {
+    height: 1px;
+  }
+
+  .tech-device-stage,
+  .store-device-stage {
+    height: 205px !important;
+    margin-top: -0.5rem;
+  }
+
+  .tech-device-stage > div:nth-child(1),
+  .store-device-stage > div:nth-child(1) {
+    width: 34% !important;
+    left: 2% !important;
+  }
+
+  .tech-device-stage > div:nth-child(2),
+  .store-device-stage > div:nth-child(2) {
+    width: 20% !important;
+    left: 32% !important;
+  }
+
+  .tech-device-stage > div:nth-child(3),
+  .store-device-stage > div:nth-child(3) {
+    width: 24% !important;
+    right: 1% !important;
+  }
+
+  .tech-device-stage > div:nth-child(4),
+  .store-device-stage > div:nth-child(4) {
+    width: 27% !important;
+    right: 19% !important;
+  }
+
+  .tech-device-stage > div:nth-child(5),
+  .store-device-stage > div:nth-child(5) {
+    display: none !important;
   }
 }
 
