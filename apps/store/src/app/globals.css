@@ -7,177 +7,136 @@ html {
 }
 
 body {
-  background-color: var(--ah-surface-50);
+  background: #f8fafc;
   color: var(--ah-ink-900);
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* --------------------------------------------------------------------------
-   AutoHub360.store visual direction
-   The storefront mockup uses a compact dark commerce header, a cinematic hero
-   and bright catalogue surfaces. Keep behaviour intact; change presentation.
+   AUTOHUB360.STORE — DENSE PREMIUM RETAIL ART DIRECTION
    -------------------------------------------------------------------------- */
 
-header.sticky {
-  border-color: rgb(124 176 255 / 0.14) !important;
-  background: rgb(3 14 28 / 0.98) !important;
-  box-shadow: 0 12px 30px rgb(0 0 0 / 0.2) !important;
-}
-
-header.sticky > div:first-child {
-  background: transparent;
-}
-
-header.sticky nav {
-  border-color: rgb(124 176 255 / 0.12) !important;
-  background: rgb(5 20 38 / 0.98) !important;
-}
-
-header.sticky .text-ink-900 {
-  color: #f8fafc !important;
-}
-
-header.sticky .text-ink-700 {
-  color: #cbd5e1 !important;
-}
-
-header.sticky .text-ink-500,
-header.sticky .text-ink-300 {
-  color: #94a3b8 !important;
-}
-
-header.sticky a:hover,
-header.sticky button:hover {
-  color: #ffffff;
-}
-
-header.sticky .hover\:bg-surface-100:hover {
-  background: rgb(255 255 255 / 0.07) !important;
-}
-
-/* Search stays bright inside the dark commerce header, as in the mockup. */
-header.sticky form input {
-  border-color: rgb(255 255 255 / 0.18) !important;
-  background: #ffffff !important;
-  color: #0f172a !important;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.14);
-}
-
-header.sticky form input::placeholder {
-  color: #64748b;
-}
-
-/* Store hero: visually dense at right, clean copy zone at left. */
-.ah-hero-glow {
+.store-cinematic-hero {
+  isolation: isolate;
   background:
-    linear-gradient(
-      90deg,
-      rgb(2 12 24 / 0.99) 0%,
-      rgb(3 16 32 / 0.96) 31%,
-      rgb(3 16 32 / 0.83) 46%,
-      rgb(3 16 32 / 0.30) 68%,
-      rgb(3 16 32 / 0.56) 100%
-    ),
-    url('https://images.unsplash.com/photo-1739523914777-276f9ff5dcfc?auto=format&fit=crop&fm=jpg&q=82&w=2000') center right / cover no-repeat;
+    linear-gradient(90deg, #020b17 0%, #031326 36%, rgba(3, 19, 38, 0.58) 63%, rgba(3, 19, 38, 0.18) 100%),
+    url('https://images.unsplash.com/photo-1762949857793-a62a1540d3eb?auto=format&fit=crop&fm=jpg&q=86&w=2400') center 58% / cover no-repeat;
+  box-shadow: inset 0 -1px 0 rgba(124, 176, 255, 0.12);
 }
 
-.ah-hero-glow > div[aria-hidden='true'] {
-  display: none;
+.store-cinematic-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 120px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(1, 8, 17, 0.45));
+  z-index: -1;
 }
 
-.ah-hero-glow > .mx-auto {
-  min-height: 470px;
-  padding-top: 3.25rem;
-  padding-bottom: 4.5rem;
-}
-
-.ah-hero-glow > .mx-auto > div[aria-hidden='true'] {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.ah-hero-glow h1,
-.ah-hero-glow p,
-.ah-hero-glow li {
-  text-shadow: 0 2px 18px rgb(0 0 0 / 0.28);
-}
-
-/* Vehicle finder is the white bridge from hero to catalogue. */
-.ah-hero-glow + .mx-auto > div {
-  border: 1px solid rgb(148 163 184 / 0.28);
-  box-shadow: 0 18px 44px rgb(15 23 42 / 0.2);
-}
-
-/* Compact catalogue rhythm like the approved storefront board. */
-section[aria-label='Universos de produtos'] {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-section[aria-label='Produtos em destaque'] {
-  padding-top: 1.75rem;
-  padding-bottom: 2rem;
-}
-
-section[aria-label='Compra com instalação em Anápolis'] {
+.store-hero-vignette {
+  pointer-events: none;
+  z-index: -1;
   background:
-    linear-gradient(
-      90deg,
-      rgb(2 12 24 / 0.98) 0%,
-      rgb(2 12 24 / 0.91) 48%,
-      rgb(2 12 24 / 0.56) 71%,
-      rgb(2 12 24 / 0.79) 100%
-    ),
-    url('https://images.unsplash.com/photo-1727893119356-1702fe921cf9?auto=format&fit=crop&fm=jpg&q=80&w=2000') center / cover no-repeat !important;
+    radial-gradient(circle at 72% 51%, rgba(8, 139, 255, 0.2), transparent 31%),
+    radial-gradient(circle at 57% 96%, rgba(249, 115, 22, 0.06), transparent 20%);
 }
 
-section[aria-label='Compra com instalação em Anápolis'] .ah-glass {
-  background: rgb(3 16 32 / 0.72);
-  border-color: rgb(124 176 255 / 0.22);
-  box-shadow: 0 20px 48px rgb(0 0 0 / 0.28);
+.store-device-stage::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 78px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(1, 8, 17, 0.48), transparent 67%);
+  filter: blur(8px);
 }
 
-/* Slim scrollbars for rails and drawers */
+.store-generoso {
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(2, 11, 22, 0.94), rgba(3, 19, 38, 0.42)),
+    url('https://images.unsplash.com/photo-1756575527484-2839c593ed84?auto=format&fit=crop&fm=jpg&q=84&w=2200') center 54% / cover no-repeat;
+}
+
+.store-generoso::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(6, 136, 255, 0.07), transparent 43%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.07), rgba(0, 0, 0, 0.2));
+}
+
+.store-generoso > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fitment selector is the white bridge between brand hero and catalogue. */
+.store-cinematic-hero + .mx-auto {
+  filter: drop-shadow(0 12px 22px rgba(15, 23, 42, 0.08));
+}
+
+/* Catalogue density and polish. */
+section[aria-label='Produtos em destaque'] article,
+section[aria-label='Ofertas e mais vendidos'] article {
+  backface-visibility: hidden;
+}
+
 .ah-scroll-slim::-webkit-scrollbar {
-  height: 6px;
   width: 6px;
+  height: 6px;
 }
 .ah-scroll-slim::-webkit-scrollbar-thumb {
-  background: var(--ah-surface-300);
   border-radius: 999px;
+  background: rgba(148, 163, 184, 0.38);
 }
 .ah-scroll-slim::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Focus visibility for a11y */
 :focus-visible {
   outline: 2px solid var(--ah-blue-400);
   outline-offset: 2px;
 }
 
 @media (max-width: 1023px) {
-  .ah-hero-glow {
+  .store-cinematic-hero {
     background:
-      linear-gradient(
-        180deg,
-        rgb(2 12 24 / 0.97) 0%,
-        rgb(2 12 24 / 0.86) 54%,
-        rgb(2 12 24 / 0.80) 100%
-      ),
-      url('https://images.unsplash.com/photo-1739523914777-276f9ff5dcfc?auto=format&fit=crop&fm=jpg&q=80&w=1400') 58% center / cover no-repeat;
+      linear-gradient(180deg, rgba(2, 11, 23, 0.97) 0%, rgba(3, 19, 38, 0.85) 57%, rgba(3, 19, 38, 0.74) 100%),
+      url('https://images.unsplash.com/photo-1762949857793-a62a1540d3eb?auto=format&fit=crop&fm=jpg&q=84&w=1600') 56% center / cover no-repeat;
   }
 
-  .ah-hero-glow > .mx-auto {
-    min-height: 570px;
-    padding-bottom: 5.5rem;
+  .store-generoso {
+    background:
+      linear-gradient(180deg, rgba(2, 11, 22, 0.92), rgba(3, 19, 38, 0.8)),
+      url('https://images.unsplash.com/photo-1756575527484-2839c593ed84?auto=format&fit=crop&fm=jpg&q=82&w=1500') 58% center / cover no-repeat;
   }
 }
 
 @media (max-width: 639px) {
-  .ah-hero-glow > .mx-auto {
-    min-height: 600px;
-    padding-top: 2.35rem;
+  .store-cinematic-hero {
+    background-position: 58% center;
+  }
+
+  .store-cinematic-hero h1 {
+    text-shadow: 0 5px 24px rgba(0, 0, 0, 0.52);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
