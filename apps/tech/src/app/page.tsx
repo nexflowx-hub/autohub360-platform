@@ -3,12 +3,9 @@ import {
   ArrowRight,
   Building2,
   Car,
-  Check,
-  Headphones,
   House,
   MapPin,
   ShieldCheck,
-  Truck,
   Users,
   Wifi,
   Wrench,
@@ -38,18 +35,23 @@ const heroHighlights = [
   { icon: Users, title: 'Pessoas', sub: 'mais conectadas' },
 ];
 
-function GenerosoMark({ compact = false }: { compact?: boolean }) {
+const serviceHighlights = [
+  { label: 'Instalação especializada', icon: Wrench },
+  { label: 'Mão de obra qualificada', icon: ShieldCheck },
+  { label: 'Atendimento local', icon: MapPin },
+  { label: 'Mais tecnologia na sua rotina', icon: Wifi },
+];
+
+function GenerosoMark() {
   return (
     <div className="inline-flex flex-col items-center leading-none">
       <div className="relative px-2 pt-2">
         <span className="absolute left-1/2 top-0 h-[2px] w-[78%] -translate-x-1/2 -skew-x-[28deg] rounded-full bg-red-500" />
-        <span className={`${compact ? 'text-lg' : 'text-2xl'} -skew-x-[8deg] font-display font-extrabold tracking-[-0.05em] text-white`}>
+        <span className="-skew-x-[8deg] font-display text-2xl font-extrabold tracking-[-0.05em] text-white">
           GENEROSO
         </span>
       </div>
-      <span className={`${compact ? 'text-[8px]' : 'text-[10px]'} mt-1 font-bold tracking-[0.28em] text-red-500`}>
-        AUTO CENTER
-      </span>
+      <span className="mt-1 text-[10px] font-bold tracking-[0.28em] text-red-500">AUTO CENTER</span>
     </div>
   );
 }
@@ -59,7 +61,6 @@ export default function TechHomePage() {
 
   return (
     <>
-      {/* HERO */}
       <section className="tech-cinematic-hero relative overflow-hidden text-white">
         <div className="tech-hero-vignette absolute inset-0" aria-hidden="true" />
         <Container className="relative grid min-h-[485px] items-center gap-8 py-10 lg:grid-cols-[0.92fr_1.08fr] lg:py-0">
@@ -86,7 +87,6 @@ export default function TechHomePage() {
                 Instalação em Anápolis
               </Button>
             </div>
-
             <ul className="mt-7 grid max-w-[560px] grid-cols-2 gap-x-5 gap-y-3 border-t border-white/10 pt-5 sm:grid-cols-4">
               {heroHighlights.map((item) => (
                 <li key={item.title} className="flex items-center gap-2.5">
@@ -100,19 +100,18 @@ export default function TechHomePage() {
             </ul>
           </div>
 
-          {/* Devices over the cinematic car + smart-home scene */}
           <div className="tech-device-stage relative hidden h-[455px] lg:block" aria-hidden="true">
             <div className="absolute bottom-[19px] left-[2%] w-[35%] -rotate-2 drop-shadow-2xl">
-              <ProductThumb imageKey="head-unit" alt="" size="lg" className="aspect-[1.35/1] border-white/20 bg-white/95 shadow-[0_22px_50px_rgba(0,0,0,.35)]" />
+              <ProductThumb imageKey="head-unit" alt="" size="lg" className="aspect-[1.35/1] border-white/20 shadow-[0_22px_50px_rgba(0,0,0,.35)]" />
             </div>
             <div className="absolute bottom-[27px] left-[36%] w-[19%] rotate-1 drop-shadow-2xl">
-              <ProductThumb imageKey="led-kit" alt="" size="lg" className="aspect-square border-white/15 bg-white/95 shadow-[0_22px_50px_rgba(0,0,0,.35)]" />
+              <ProductThumb imageKey="led-kit" alt="" size="lg" className="aspect-square border-white/15 shadow-[0_22px_50px_rgba(0,0,0,.35)]" />
             </div>
             <div className="absolute right-[3%] top-[35px] w-[22%] rotate-1 drop-shadow-2xl">
-              <ProductThumb imageKey="smart-home" alt="" size="lg" className="aspect-[.88/1] border-white/20 bg-white/95 shadow-[0_22px_50px_rgba(0,0,0,.32)]" />
+              <ProductThumb imageKey="smart-home" alt="" size="lg" className="aspect-[.88/1] border-white/20 shadow-[0_22px_50px_rgba(0,0,0,.32)]" />
             </div>
             <div className="absolute right-[22%] top-[28px] w-[25%] -rotate-2 drop-shadow-2xl">
-              <ProductThumb imageKey="dashcam" alt="" size="lg" className="aspect-[1.3/1] border-white/15 bg-white/95 shadow-[0_22px_50px_rgba(0,0,0,.32)]" />
+              <ProductThumb imageKey="dashcam" alt="" size="lg" className="aspect-[1.3/1] border-white/15 shadow-[0_22px_50px_rgba(0,0,0,.32)]" />
             </div>
             <div className="absolute bottom-[26px] right-[4%] rounded-xl border border-white/10 bg-[#041326]/72 px-4 py-3 text-right backdrop-blur-md">
               <p className="font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-ahblue-300">Mais tecnologia</p>
@@ -122,7 +121,6 @@ export default function TechHomePage() {
         </Container>
       </section>
 
-      {/* UNIVERSOS */}
       <section aria-label="Universos AutoHub360" className="border-b border-slate-200 bg-[#f8fafc] py-3.5 sm:py-4">
         <Container>
           <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
@@ -135,7 +133,6 @@ export default function TechHomePage() {
         </Container>
       </section>
 
-      {/* GENEROSO / LOCAL SERVICE */}
       <section aria-label="Instalação e assistência em Anápolis" className="generoso-cinematic relative overflow-hidden text-white">
         <div className="absolute inset-0 bg-gradient-to-r from-[#020b16]/98 via-[#031326]/82 to-[#020b16]/65" aria-hidden="true" />
         <Container className="relative grid min-h-[320px] items-center gap-8 py-10 lg:grid-cols-[1.05fr_0.95fr]">
@@ -164,36 +161,23 @@ export default function TechHomePage() {
           <div id="generoso" className="ml-auto w-full max-w-[475px] rounded-2xl border border-white/12 bg-[#06162a]/72 p-5 shadow-[0_24px_60px_rgba(0,0,0,.38)] backdrop-blur-md sm:p-6">
             <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
               <GenerosoMark />
-              <span className="rounded-full border border-ahblue-400/30 bg-ahblue-500/10 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-ahblue-300">
-                Parceiro em Anápolis
-              </span>
+              <span className="rounded-full border border-ahblue-400/30 bg-ahblue-500/10 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-ahblue-300">Parceiro em Anápolis</span>
             </div>
             <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {[
-                ['Instalação especializada', Wrench],
-                ['Mão de obra qualificada', ShieldCheck],
-                ['Atendimento local', MapPin],
-                ['Mais tecnologia na sua rotina', Wifi],
-              ].map(([label, Icon]) => {
-                const ItemIcon = Icon as typeof Wrench;
-                return (
-                  <li key={label as string} className="flex items-center gap-2.5 text-[12px] text-slate-200">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.05] text-ahblue-300">
-                      <ItemIcon className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                    {label as string}
-                  </li>
-                );
-              })}
+              {serviceHighlights.map((item) => (
+                <li key={item.label} className="flex items-center gap-2.5 text-[12px] text-slate-200">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.05] text-ahblue-300">
+                    <item.icon className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  {item.label}
+                </li>
+              ))}
             </ul>
-            <p className="mt-5 border-t border-white/10 pt-4 text-right text-[13px] italic text-slate-300">
-              “{GENEROSO.tagline}”
-            </p>
+            <p className="mt-5 border-t border-white/10 pt-4 text-right text-[13px] italic text-slate-300">“{GENEROSO.tagline}”</p>
           </div>
         </Container>
       </section>
 
-      {/* TRUST STRIP */}
       <section className="border-b border-slate-200 bg-white py-5" aria-label="Confiança AutoHub360">
         <Container>
           <TrustStrip
@@ -207,7 +191,6 @@ export default function TechHomePage() {
         </Container>
       </section>
 
-      {/* BLOG */}
       <section className="bg-[#f8fafc] py-9 sm:py-11" aria-label="Do nosso blog">
         <Container>
           <div className="mb-5 flex items-end justify-between gap-4">
@@ -238,7 +221,6 @@ export default function TechHomePage() {
         </Container>
       </section>
 
-      {/* PRO CTA */}
       <section className="border-y border-ahblue-400/15 bg-[#06172a] py-6 text-white" aria-label="AutoHub360 Pro">
         <Container className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-center">
           <div className="flex items-center gap-4">
