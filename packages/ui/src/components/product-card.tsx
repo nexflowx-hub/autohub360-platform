@@ -25,7 +25,7 @@ export function ProductCard({
   return (
     <article
       className={cn(
-        'group flex h-full min-w-0 flex-col overflow-hidden rounded-[12px] border border-slate-200/90 bg-white shadow-[0_5px_18px_rgba(15,23,42,.06)] transition-all duration-250 hover:-translate-y-1 hover:border-ahblue-500/35 hover:shadow-[0_16px_34px_rgba(15,23,42,.13)]',
+        'ah-product-card group flex h-full min-w-0 flex-col overflow-hidden rounded-[12px] border border-slate-200/90 bg-white shadow-[0_5px_18px_rgba(15,23,42,.06)] transition-all duration-250 hover:border-ahblue-500/35',
         className,
       )}
     >
@@ -43,7 +43,7 @@ export function ProductCard({
           imageKey={product.imageKey}
           alt={product.title}
           size="md"
-          className="aspect-[1.12/1] w-full"
+          className="ah-product-thumb aspect-[1.12/1] w-full"
         />
       </Link>
 
@@ -54,7 +54,7 @@ export function ProductCard({
         >
           {product.title}
         </Link>
-        <div className="mt-1.5 scale-[.92] origin-left">
+        <div className="mt-1.5 origin-left scale-[.92]">
           <Rating value={product.rating} count={product.reviewCount} />
         </div>
         <div className="mt-auto pt-1.5">
@@ -90,7 +90,7 @@ export function ProductCard({
             }
             aria-label={`Adicionar ${product.title} ao carrinho`}
             className={cn(
-              'mt-2.5 inline-flex h-9 w-full items-center justify-center gap-1.5 rounded-[7px] font-display text-[12px] font-bold transition-all',
+              'ah-button mt-2.5 inline-flex h-9 w-full items-center justify-center gap-1.5 rounded-[7px] font-display text-[12px] font-bold transition-all',
               inStock
                 ? 'bg-ahblue-500 text-white shadow-[0_5px_13px_rgba(30,111,235,.24)] hover:bg-ahblue-600 hover:shadow-[0_7px_18px_rgba(30,111,235,.33)]'
                 : 'cursor-not-allowed bg-slate-100 text-slate-400',
