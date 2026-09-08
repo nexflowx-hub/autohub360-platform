@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Archivo, Inter } from 'next/font/google';
 import { SOCIAL, techSite } from '@autohub360/config';
-import { CookieConsent, WhatsAppLauncher } from '@autohub360/ui';
+import { CookieConsent, MotionOrchestrator, WhatsAppLauncher } from '@autohub360/ui';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import './globals.css';
@@ -94,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Pular para o conteúdo
         </a>
+        <MotionOrchestrator />
         <Header />
         <main id="conteudo" className="flex-1">
           {children}
