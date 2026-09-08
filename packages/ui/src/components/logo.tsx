@@ -12,7 +12,7 @@ export function LogoIcon({ className }: { className?: string }) {
     <svg
       viewBox="0 0 72 48"
       fill="none"
-      className={cn('h-9 w-[3.35rem]', className)}
+      className={cn('ah-logo-icon h-9 w-[3.35rem]', className)}
       aria-hidden="true"
     >
       <defs>
