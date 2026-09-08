@@ -4,10 +4,13 @@
 
 html {
   scroll-behavior: smooth;
+  background: #020b16;
 }
 
 body {
-  background: #f8fafc;
+  background:
+    radial-gradient(circle at 12% 24%, rgba(30, 111, 235, 0.035), transparent 24%),
+    linear-gradient(180deg, #f8fafc 0%, #f7f9fc 100%);
   color: var(--ah-ink-900);
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -15,34 +18,71 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   AUTOHUB360.TECH — CINEMATIC ART DIRECTION
+   AUTOHUB360.TECH — FINAL CINEMATIC ART DIRECTION
    -------------------------------------------------------------------------- */
 
 .tech-cinematic-hero {
+  --ah-pointer-x: 72%;
+  --ah-pointer-y: 44%;
   isolation: isolate;
+  min-height: 485px;
   background:
-    linear-gradient(90deg, #020b17 0%, #031326 38%, rgba(3, 19, 38, 0.62) 66%, rgba(3, 19, 38, 0.22) 100%),
-    url('https://images.unsplash.com/photo-1768286868079-90c800c849e2?auto=format&fit=crop&fm=jpg&q=86&w=2400') center right / cover no-repeat;
-  box-shadow: inset 0 -1px 0 rgba(124, 176, 255, 0.12);
+    linear-gradient(90deg, #020b17 0%, #031326 37%, rgba(3, 19, 38, 0.67) 62%, rgba(3, 19, 38, 0.20) 100%),
+    url('https://images.unsplash.com/photo-1768286868079-90c800c849e2?auto=format&fit=crop&fm=jpg&q=88&w=2600') 50% 52% / cover no-repeat;
+  box-shadow:
+    inset 0 -1px 0 rgba(124, 176, 255, 0.13),
+    0 16px 48px rgba(1, 8, 17, 0.16);
+  animation: techHeroDrift 22s ease-in-out infinite alternate;
+}
+
+.tech-cinematic-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--ah-pointer-x) var(--ah-pointer-y), rgba(25, 148, 255, 0.22), transparent 19%),
+    linear-gradient(115deg, transparent 0 53%, rgba(74, 184, 255, 0.035) 57%, transparent 61%);
+  mix-blend-mode: screen;
+  transition: background-position 180ms linear;
 }
 
 .tech-cinematic-hero::after {
   content: '';
   position: absolute;
-  inset: auto 0 0;
-  height: 145px;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(1, 8, 17, 0.5));
+  inset: 0;
   z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 0 58%, rgba(1, 8, 17, 0.30) 100%),
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 5px);
+  mask-image: linear-gradient(180deg, transparent, #000 26%, #000);
 }
 
 .tech-hero-vignette {
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(circle at 74% 48%, rgba(16, 139, 255, 0.22), transparent 31%),
-    radial-gradient(circle at 52% 95%, rgba(249, 115, 22, 0.07), transparent 20%),
-    linear-gradient(180deg, rgba(0, 8, 17, 0.05), rgba(0, 8, 17, 0.26));
+    radial-gradient(circle at 74% 48%, rgba(16, 139, 255, 0.20), transparent 31%),
+    radial-gradient(circle at 52% 95%, rgba(249, 115, 22, 0.065), transparent 20%),
+    linear-gradient(180deg, rgba(0, 8, 17, 0.02), rgba(0, 8, 17, 0.23));
+}
+
+.tech-cinematic-hero h1 {
+  text-shadow: 0 6px 34px rgba(0, 0, 0, 0.38);
+}
+
+.tech-cinematic-hero h1::selection,
+.tech-cinematic-hero p::selection {
+  background: rgba(30, 111, 235, 0.55);
+  color: white;
+}
+
+.tech-device-stage {
+  transform: translate3d(var(--ah-parallax-x), var(--ah-parallax-y), 0);
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  perspective: 1200px;
 }
 
 .tech-device-stage::before {
@@ -51,17 +91,104 @@ body {
   left: 1%;
   right: 0;
   bottom: 4px;
-  height: 94px;
+  height: 98px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(1, 8, 17, 0.52), transparent 66%);
+  background:
+    radial-gradient(ellipse, rgba(3, 11, 22, 0.58), transparent 66%),
+    radial-gradient(ellipse at 62% 70%, rgba(25, 139, 255, 0.18), transparent 44%);
   filter: blur(8px);
 }
 
+.tech-device-stage::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 7%;
+  bottom: 22px;
+  height: 1px;
+  opacity: 0.5;
+  background: linear-gradient(90deg, transparent, #108bff, #58c9ff 58%, transparent);
+  box-shadow: 0 0 18px rgba(35, 151, 255, 0.55);
+}
+
+/* In the hero the product renders behave as actual objects, not catalogue cards. */
+.tech-device-stage .ah-product-thumb {
+  overflow: visible !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tech-device-stage .ah-product-thumb > div:first-child,
+.tech-device-stage .ah-product-thumb > div:last-child {
+  display: none;
+}
+
+.tech-device-stage .ah-product-thumb > div:nth-child(2) {
+  filter:
+    drop-shadow(0 18px 24px rgba(0, 0, 0, 0.34))
+    drop-shadow(0 0 14px rgba(49, 157, 255, 0.11));
+}
+
+.tech-device-stage > div:nth-child(1) {
+  --ah-float-rotate: -2deg;
+  animation: techFloatA 7.6s ease-in-out infinite;
+}
+
+.tech-device-stage > div:nth-child(2) {
+  --ah-float-rotate: 1deg;
+  animation: techFloatB 6.7s ease-in-out 0.7s infinite;
+}
+
+.tech-device-stage > div:nth-child(3) {
+  --ah-float-rotate: 1deg;
+  animation: techFloatC 8.4s ease-in-out 0.2s infinite;
+}
+
+.tech-device-stage > div:nth-child(4) {
+  --ah-float-rotate: -2deg;
+  animation: techFloatB 7.1s ease-in-out 1.1s infinite;
+}
+
+.tech-device-stage > div:nth-child(5) {
+  animation: techPanelPulse 5.8s ease-in-out infinite;
+}
+
+/* Universe rail acts as the clean white visual break from the cinematic hero. */
+section[aria-label='Universos AutoHub360'] {
+  position: relative;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.99)),
+    radial-gradient(circle at 50% 0%, rgba(30,111,235,0.055), transparent 52%);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.055);
+}
+
+section[aria-label='Universos AutoHub360']::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(30,111,235,0.42), transparent);
+}
+
+/* Generoso is treated as a campaign image, not a generic information strip. */
 .generoso-cinematic {
   isolation: isolate;
   background:
-    linear-gradient(90deg, rgba(2, 11, 22, 0.94), rgba(3, 19, 38, 0.42)),
-    url('https://images.unsplash.com/photo-1756575527484-2839c593ed84?auto=format&fit=crop&fm=jpg&q=84&w=2200') center 54% / cover no-repeat;
+    linear-gradient(90deg, rgba(2, 11, 22, 0.96) 0%, rgba(3, 19, 38, 0.78) 47%, rgba(3, 19, 38, 0.39) 76%, rgba(2, 11, 22, 0.54) 100%),
+    url('https://images.unsplash.com/photo-1756575527484-2839c593ed84?auto=format&fit=crop&fm=jpg&q=86&w=2400') 50% 54% / cover no-repeat;
+  animation: generosoDrift 26s ease-in-out infinite alternate;
+}
+
+.generoso-cinematic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 66% 48%, rgba(9, 136, 255, 0.12), transparent 28%),
+    linear-gradient(110deg, transparent 46%, rgba(82, 184, 255, 0.035) 51%, transparent 56%);
 }
 
 .generoso-cinematic::after {
@@ -71,12 +198,106 @@ body {
   pointer-events: none;
   background:
     linear-gradient(90deg, rgba(6, 136, 255, 0.07), transparent 43%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.23));
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.28));
 }
 
 .generoso-cinematic > * {
   position: relative;
   z-index: 1;
+}
+
+.generoso-cinematic #generoso {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 450ms var(--ah-ease-out),
+    border-color 350ms ease,
+    box-shadow 450ms var(--ah-ease-out);
+}
+
+.generoso-cinematic #generoso::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  width: 28%;
+  height: 220%;
+  transform: rotate(16deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+  animation: techPanelShine 8.5s ease-in-out 2s infinite;
+}
+
+.generoso-cinematic #generoso:hover {
+  transform: translateY(-4px);
+  border-color: rgba(73, 171, 255, 0.34);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(30,111,235,0.06);
+}
+
+/* Trust strip + editorial cards receive subtle premium separation. */
+section[aria-label='Confiança AutoHub360'] {
+  position: relative;
+  box-shadow: 0 10px 28px rgba(15,23,42,0.045);
+}
+
+section[aria-label='Do nosso blog'] {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(30,111,235,0.045), transparent 23%),
+    radial-gradient(circle at 88% 72%, rgba(249,115,22,0.025), transparent 24%),
+    #f8fafc;
+}
+
+section[aria-label='Do nosso blog'] li > a {
+  position: relative;
+  overflow: hidden;
+}
+
+section[aria-label='Do nosso blog'] li > a::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, #0788ff, #45c4ff, #f97316);
+  transition: transform 420ms var(--ah-ease-out);
+}
+
+section[aria-label='Do nosso blog'] li > a:hover::after {
+  transform: scaleX(1);
+}
+
+section[aria-label='AutoHub360 Pro'] {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 76% 40%, rgba(25, 139, 255, 0.13), transparent 28%),
+    linear-gradient(110deg, #041325, #071b31 54%, #06172a);
+}
+
+section[aria-label='AutoHub360 Pro']::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(124,176,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,176,255,.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(90deg, transparent, #000 35%, #000);
+}
+
+/* Footer transition into the dark ecosystem. */
+footer {
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(30,111,235,0.54), rgba(249,115,22,0.28), transparent);
 }
 
 /* Small premium details shared by the page. */
@@ -102,23 +323,77 @@ section[aria-label='Do nosso blog'] a {
   outline-offset: 2px;
 }
 
+@keyframes techHeroDrift {
+  0% {
+    background-position: 0 0, 50% 52%;
+    background-size: auto, 100% auto;
+  }
+  100% {
+    background-position: 0 0, 53% 48%;
+    background-size: auto, 104% auto;
+  }
+}
+
+@keyframes techFloatA {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+  50% { transform: translate3d(0, -9px, 18px) rotate(-0.8deg); }
+}
+
+@keyframes techFloatB {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(1deg); }
+  50% { transform: translate3d(0, -7px, 15px) rotate(2deg); }
+}
+
+@keyframes techFloatC {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(1deg); }
+  50% { transform: translate3d(0, -11px, 22px) rotate(0deg); }
+}
+
+@keyframes techPanelPulse {
+  0%, 100% { box-shadow: 0 14px 30px rgba(0,0,0,.20), 0 0 0 rgba(30,111,235,0); }
+  50% { box-shadow: 0 18px 38px rgba(0,0,0,.24), 0 0 26px rgba(30,111,235,.12); }
+}
+
+@keyframes techPanelShine {
+  0%, 58% { left: -45%; opacity: 0; }
+  68% { opacity: 0.65; }
+  83%, 100% { left: 132%; opacity: 0; }
+}
+
+@keyframes generosoDrift {
+  0% { background-position: 0 0, 50% 54%; }
+  100% { background-position: 0 0, 53% 51%; }
+}
+
+@media (max-width: 1199px) {
+  .tech-cinematic-hero {
+    animation-duration: 26s;
+  }
+}
+
 @media (max-width: 1023px) {
   .tech-cinematic-hero {
+    min-height: 570px;
     background:
-      linear-gradient(180deg, rgba(2, 11, 23, 0.97) 0%, rgba(3, 19, 38, 0.86) 54%, rgba(3, 19, 38, 0.73) 100%),
-      url('https://images.unsplash.com/photo-1768286868079-90c800c849e2?auto=format&fit=crop&fm=jpg&q=84&w=1600') 62% center / cover no-repeat;
+      linear-gradient(180deg, rgba(2, 11, 23, 0.97) 0%, rgba(3, 19, 38, 0.86) 54%, rgba(3, 19, 38, 0.74) 100%),
+      url('https://images.unsplash.com/photo-1768286868079-90c800c849e2?auto=format&fit=crop&fm=jpg&q=86&w=1800') 62% center / cover no-repeat;
   }
 
   .generoso-cinematic {
     background:
-      linear-gradient(180deg, rgba(2, 11, 22, 0.92), rgba(3, 19, 38, 0.8)),
-      url('https://images.unsplash.com/photo-1756575527484-2839c593ed84?auto=format&fit=crop&fm=jpg&q=82&w=1500') 58% center / cover no-repeat;
+      linear-gradient(180deg, rgba(2, 11, 22, 0.94), rgba(3, 19, 38, 0.81)),
+      url('https://images.unsplash.com/photo-1756575527484-2839c593ed84?auto=format&fit=crop&fm=jpg&q=84&w=1700') 58% center / cover no-repeat;
+  }
+
+  .tech-device-stage {
+    transform: none;
   }
 }
 
 @media (max-width: 639px) {
   .tech-cinematic-hero {
-    background-position: 57% center;
+    min-height: 610px;
+    background-position: 0 0, 57% center;
   }
 
   .tech-cinematic-hero h1 {
@@ -126,11 +401,22 @@ section[aria-label='Do nosso blog'] a {
   }
 
   .generoso-cinematic {
-    background-position: 57% center;
+    background-position: 0 0, 57% center;
+  }
+
+  section[aria-label='Universos AutoHub360'] {
+    box-shadow: 0 8px 22px rgba(15,23,42,.045);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .tech-cinematic-hero,
+  .generoso-cinematic,
+  .tech-device-stage > div,
+  .generoso-cinematic #generoso::after {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {
