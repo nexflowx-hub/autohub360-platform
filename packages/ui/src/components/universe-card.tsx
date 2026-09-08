@@ -30,7 +30,7 @@ export function UniverseCard({
     <Link
       href={href}
       className={cn(
-        'group flex min-h-[148px] flex-col overflow-hidden rounded-xl border text-center transition-all duration-250 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ahblue-400',
+        'ah-universe-card group flex min-h-[148px] flex-col overflow-hidden rounded-xl border text-center transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ahblue-400',
         dark
           ? 'border-white/10 bg-white/[0.055] hover:border-ahblue-400/50 hover:bg-white/10'
           : 'border-surface-200 bg-white shadow-[0_5px_18px_rgba(15,23,42,.06)] hover:-translate-y-1 hover:border-ahblue-500/35 hover:shadow-[0_16px_34px_rgba(15,23,42,.13)]',
@@ -43,7 +43,7 @@ export function UniverseCard({
           alt=""
           size="sm"
           className={cn(
-            'h-[70px] w-full border-0 transition-transform duration-500 group-hover:scale-[1.03]',
+            'ah-product-thumb h-[70px] w-full border-0 transition-transform duration-500',
             dark && 'bg-white/95',
           )}
         />
