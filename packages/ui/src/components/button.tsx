@@ -15,7 +15,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const base =
-  'inline-flex items-center justify-center gap-2 font-display font-bold rounded-[10px] transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ahblue-400 disabled:opacity-50 disabled:pointer-events-none select-none';
+  'ah-button inline-flex items-center justify-center gap-2 font-display font-bold rounded-[10px] transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ahblue-400 disabled:opacity-50 disabled:pointer-events-none select-none';
 
 const variants: Record<Variant, string> = {
   primary:
@@ -46,19 +46,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     const external = href.startsWith('http');
     if (external) {
       return (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+        <a href={href} target="_blank" rel="noopener noreferrer" className={classes} data-variant={variant}>
           {children}
         </a>
       );
     }
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} data-variant={variant}>
         {children}
       </Link>
     );
   }
   return (
-    <button ref={ref} className={classes} {...props}>
+    <button ref={ref} className={classes} data-variant={variant} {...props}>
       {children}
     </button>
   );
