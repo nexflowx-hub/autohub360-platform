@@ -84,7 +84,7 @@ function SearchBar({ mobile = false, onDone }: { mobile?: boolean; onDone?: () =
       <button
         type="submit"
         aria-label="Buscar"
-        className="flex h-10 w-11 items-center justify-center rounded-r-[7px] bg-ahblue-500 text-white transition-colors hover:bg-ahblue-600 sm:h-11 sm:w-12"
+        className="ah-button flex h-10 w-11 items-center justify-center rounded-r-[7px] bg-ahblue-500 text-white transition-colors hover:bg-ahblue-600 sm:h-11 sm:w-12"
       >
         <Search className="h-[18px] w-[18px]" aria-hidden="true" />
       </button>
@@ -134,7 +134,7 @@ export function Header() {
   return (
     <>
       <UtilityBar />
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#041326]/95 text-white shadow-[0_12px_32px_rgba(0,0,0,.22)] backdrop-blur-xl">
+      <header className="ah-site-header sticky top-0 z-40 border-b border-white/10 bg-[#041326]/95 text-white shadow-[0_12px_32px_rgba(0,0,0,.22)] backdrop-blur-xl">
         <div className="mx-auto flex h-[68px] max-w-[1380px] items-center gap-3 px-4 sm:px-6 lg:px-8">
           <button
             type="button"
