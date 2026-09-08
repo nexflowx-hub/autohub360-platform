@@ -14,3 +14,4 @@ export { ProductCard } from './components/product-card';
 export { PaymentMethods } from './components/payment-methods';
 export { WhatsAppLauncher, type WhatsAppEntry } from './components/whatsapp';
 export { CookieConsent, CookiePreferencesLink } from './components/cookie-consent';
+export { MotionOrchestrator } from './components/motion-orchestrator';
