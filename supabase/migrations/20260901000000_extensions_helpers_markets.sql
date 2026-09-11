@@ -4,6 +4,7 @@
 
 create extension if not exists pgcrypto with schema extensions;
 create extension if not exists pg_trgm with schema extensions;
+create extension if not exists "uuid-ossp" with schema extensions;
 
 -- Deterministic UUID from a natural key: seeds stay stable across environments.
 create or replace function public.stable_uuid(key text)

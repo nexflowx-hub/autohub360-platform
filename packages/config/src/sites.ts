@@ -33,6 +33,7 @@ export const techSite: SiteConfig = {
     { label: 'Energy', href: '/energy' },
     { label: 'Vision & Security', href: '/vision-security' },
     { label: 'Pro', href: '/pro' },
+    { label: 'Internacional', href: '/internacional' },
     { label: 'Blog', href: '/hub' },
     { label: 'Contato', href: '/contato' },
   ],
@@ -69,7 +70,6 @@ export const ENV = {
   whatsappBr: process.env.NEXT_PUBLIC_WHATSAPP_BR || '5562991903462',
 } as const;
 
-/** Data mode: 'supabase' when publishable credentials exist, otherwise bundled seed demo data. */
 export function dataMode(): 'supabase' | 'seed' {
   return ENV.supabasePublishableKey ? 'supabase' : 'seed';
 }
