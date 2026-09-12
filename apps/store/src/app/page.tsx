@@ -30,7 +30,7 @@ export const metadata = {
 
 const heroHighlights = [
   { icon: BadgeCheck, title: 'Qualidade', sub: 'e procedência' },
-  { icon: ShieldCheck, title: 'As melhores', sub: 'marcas' },
+  { icon: ShieldCheck, title: 'Curadoria', sub: 'com critério' },
   { icon: Truck, title: 'Tecnologia', sub: 'para o seu dia' },
   { icon: MapPin, title: 'Carro e casa', sub: 'mais conectados' },
 ];
@@ -49,7 +49,7 @@ function GenerosoMark() {
 
 export default function StoreHomePage() {
   const featured = getFeatured();
-  const bestSellers = getBestSellers();
+  const selectedProducts = getBestSellers();
   const offers = getOffers();
   const storeUniverses = UNIVERSES.filter((u) => u.key !== 'pro');
 
@@ -132,7 +132,7 @@ export default function StoreHomePage() {
                 </div>
                 <div className="flex flex-1 flex-col items-center px-2.5 pb-3 pt-2">
                   <span className="font-display text-[13px] font-extrabold text-ink-900">Ofertas</span>
-                  <span className="mt-1 text-[10px] leading-[1.25] text-ink-500">As melhores oportunidades</span>
+                  <span className="mt-1 text-[10px] leading-[1.25] text-ink-500">Oportunidades do catálogo</span>
                 </div>
               </Link>
             </li>
@@ -189,14 +189,14 @@ export default function StoreHomePage() {
         </Container>
       </section>
 
-      <section className="bg-[#f8fafc] py-7 sm:py-9" aria-label="Ofertas e mais vendidos">
+      <section className="bg-[#f8fafc] py-7 sm:py-9" aria-label="Ofertas e seleção AutoHub360">
         <Container>
           <div className="grid gap-8 xl:grid-cols-2 xl:gap-5">
             <div>
               <div className="mb-3 flex items-end justify-between">
                 <div>
-                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-red-500">Ofertas da semana</p>
-                  <h2 className="mt-0.5 font-display text-[18px] font-extrabold text-ink-900">Preços especiais</h2>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-red-500">Ofertas do catálogo</p>
+                  <h2 className="mt-0.5 font-display text-[18px] font-extrabold text-ink-900">Condições em destaque</h2>
                 </div>
                 <Link href="/ofertas" className="text-[10px] font-bold text-ahblue-600">Ver todas →</Link>
               </div>
@@ -209,13 +209,13 @@ export default function StoreHomePage() {
             <div>
               <div className="mb-3 flex items-end justify-between">
                 <div>
-                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-ahblue-600">Preferidos dos clientes</p>
-                  <h2 className="mt-0.5 font-display text-[18px] font-extrabold text-ink-900">Mais vendidos</h2>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-ahblue-600">Seleção AutoHub360</p>
+                  <h2 className="mt-0.5 font-display text-[18px] font-extrabold text-ink-900">Produtos selecionados</h2>
                 </div>
                 <Link href="/buscar" className="text-[10px] font-bold text-ahblue-600">Ver todos →</Link>
               </div>
               <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-                {bestSellers.slice(0, 3).map((p) => (
+                {selectedProducts.slice(0, 3).map((p) => (
                   <li key={p.id} className="flex"><ProductCard product={p} className="w-full" /></li>
                 ))}
               </ul>
@@ -229,7 +229,7 @@ export default function StoreHomePage() {
           <TrustStrip
             items={[
               { icon: 'truck', title: 'Entrega para todo o Brasil', subtitle: 'Com rastreamento' },
-              { icon: 'pin', title: 'Retirada local', subtitle: 'Em Anápolis - GO' },
+              { icon: 'pin', title: 'Loja e retirada local', subtitle: 'Em Anápolis - GO' },
               { icon: 'shield', title: 'Compra segura', subtitle: 'Seus dados protegidos' },
               { icon: 'headset', title: 'Suporte especializado', subtitle: 'Antes e depois da compra' },
             ]}
