@@ -9,18 +9,37 @@ import type {
 } from './types';
 import categoriesData from './data/categories.json';
 import brandsData from './data/brands.json';
+import realProductsData from './data/products-real.json';
 import products1 from './data/products-1.json';
 import products2 from './data/products-2.json';
 import products3 from './data/products-3.json';
 import vehiclesData from './data/vehicles.json';
 import articlesData from './data/articles.json';
 
-/** Bundled demo catalog (supabase/seed is the SQL counterpart). */
+/**
+ * Catalog modes:
+ * - real (default): only sourced/verifiable products are public.
+ * - mixed: sourced products first, legacy demo catalog afterwards.
+ * - demo: legacy bundled catalog only, useful for design/dev previews.
+ */
 export const categories = categoriesData as unknown as Category[];
 export const brands = brandsData as unknown as Brand[];
-export const products = [...products1, ...products2, ...products3] as unknown as Array<
+
+const realProducts = realProductsData as unknown as Array<Product & { socket?: string }>;
+const demoProducts = [...products1, ...products2, ...products3] as unknown as Array<
   Product & { socket?: string }
 >;
+
+const catalogMode = process.env.NEXT_PUBLIC_CATALOG_MODE ?? 'real';
+
+export const products = (
+  catalogMode === 'demo'
+    ? demoProducts
+    : catalogMode === 'mixed'
+      ? [...realProducts, ...demoProducts]
+      : realProducts
+) as Array<Product & { socket?: string }>;
+
 export const vehicleMakes = vehiclesData.makes as unknown as VehicleMake[];
 export const vehicleModels = vehiclesData.models as unknown as VehicleModel[];
 export const vehicleVersions = vehiclesData.versions as unknown as VehicleVersion[];
