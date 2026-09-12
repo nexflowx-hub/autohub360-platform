@@ -1,7 +1,13 @@
 import type { Metadata, Viewport } from 'next';
+import { cookies } from 'next/headers';
 import { Archivo, Inter } from 'next/font/google';
-import { storeSite } from '@autohub360/config';
-import { CookieConsent, MotionOrchestrator, WhatsAppLauncher } from '@autohub360/ui';
+import { BR, EU, MARKETS, storeSite, type MarketCode } from '@autohub360/config';
+import {
+  CookieConsent,
+  MarketProvider,
+  MotionOrchestrator,
+  WhatsAppLauncher,
+} from '@autohub360/ui';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { ServiceWorkerRegister } from '@/components/service-worker-register';
@@ -56,53 +62,84 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'OnlineStore',
-  name: 'AutoHub360 Store',
-  url: storeSite.url,
-  description: storeSite.description,
-  parentOrganization: {
-    '@type': 'Organization',
-    name: 'AutoHub360 Brasil',
-    taxID: '66.991.513/0001-10',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Av. Portugal, 1148, Setor Oeste',
-      addressLocality: 'Goiânia',
-      addressRegion: 'GO',
-      postalCode: '74140-020',
-      addressCountry: 'BR',
-    },
-  },
-  areaServed: 'BR',
-  currenciesAccepted: 'BRL',
-  paymentAccepted: 'Pix, Credit Card',
-};
+function marketFromCookie(value?: string): MarketCode {
+  return value === 'EU' ? 'EU' : 'BR';
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+function storeJsonLd(market: MarketCode) {
+  if (market === 'EU') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'OnlineStore',
+      name: 'AutoHub360 Europe',
+      url: storeSite.url,
+      description: storeSite.description,
+      parentOrganization: {
+        '@type': 'Organization',
+        name: EU.operator.legalName,
+        vatID: EU.operator.vat,
+        identifier: EU.operator.siren,
+      },
+      areaServed: 'EU',
+      currenciesAccepted: 'EUR',
+    };
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'OnlineStore',
+    name: 'AutoHub360 Store',
+    url: storeSite.url,
+    description: storeSite.description,
+    parentOrganization: {
+      '@type': 'Organization',
+      name: BR.registeredName,
+      alternateName: BR.legalName,
+      taxID: BR.cnpj,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: BR.address.street,
+        addressLocality: BR.address.city,
+        addressRegion: BR.address.state,
+        postalCode: BR.address.zip,
+        addressCountry: 'BR',
+      },
+    },
+    areaServed: 'BR',
+    currenciesAccepted: 'BRL',
+  };
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const market = marketFromCookie(cookieStore.get('ah_market')?.value);
+  const marketConfig = MARKETS[market];
+  const organizationJsonLd = storeJsonLd(market);
+
   return (
-    <html lang="pt-BR" className={`${archivo.variable} ${inter.variable}`}>
+    <html lang={marketConfig.locale} className={`${archivo.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <a
-          href="#conteudo"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
-        >
-          Pular para o conteúdo
-        </a>
-        <MotionOrchestrator />
-        <Header />
-        <main id="conteudo" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <WhatsAppLauncher />
-        <CookieConsent />
-        <ServiceWorkerRegister />
+        <MarketProvider initialMarket={market}>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          />
+          <a
+            href="#conteudo"
+            className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+          >
+            Pular para o conteúdo
+          </a>
+          <MotionOrchestrator />
+          <Header />
+          <main id="conteudo" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <WhatsAppLauncher />
+          <CookieConsent />
+          <ServiceWorkerRegister />
+        </MarketProvider>
       </body>
     </html>
   );
