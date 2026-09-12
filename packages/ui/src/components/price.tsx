@@ -1,5 +1,6 @@
 import { Star, StarHalf } from 'lucide-react';
-import { formatBRL, installmentLabel } from '@autohub360/commerce';
+import { formatPrice, installmentLabel } from '@autohub360/commerce';
+import type { Currency } from '@autohub360/catalog';
 import { cn } from '../lib/cn';
 
 export function Rating({
@@ -43,12 +44,14 @@ export function Rating({
 export function Price({
   cents,
   compareAtCents,
+  currency = 'BRL',
   showInstallments = true,
   size = 'md',
   className,
 }: {
   cents: number;
   compareAtCents?: number;
+  currency?: Currency;
   showInstallments?: boolean;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
@@ -59,21 +62,24 @@ export function Price({
       : size === 'sm'
         ? 'text-base'
         : 'text-xl';
-  const hasDiscount = compareAtCents && compareAtCents > cents;
-  const discountPct = hasDiscount ? Math.round((1 - cents / compareAtCents) * 100) : 0;
-  const inst = installmentLabel(cents);
+  const hasDiscount = Boolean(compareAtCents && compareAtCents > cents);
+  const discountPct = hasDiscount && compareAtCents
+    ? Math.round((1 - cents / compareAtCents) * 100)
+    : 0;
+  const inst = currency === 'BRL' ? installmentLabel(cents) : null;
+
   return (
     <div className={cn('flex flex-col gap-0.5', className)}>
-      {hasDiscount && (
+      {hasDiscount && compareAtCents && (
         <div className="flex items-center gap-2">
-          <span className="text-xs text-ink-500 line-through">{formatBRL(compareAtCents)}</span>
+          <span className="text-xs text-ink-500 line-through">{formatPrice(compareAtCents, currency)}</span>
           <span className="rounded bg-ahorange-500/15 px-1.5 py-0.5 text-[11px] font-bold text-ahorange-600">
             -{discountPct}%
           </span>
         </div>
       )}
       <span className={cn('font-display font-extrabold text-ink-900', priceSize)}>
-        {formatBRL(cents)}
+        {formatPrice(cents, currency)}
       </span>
       {showInstallments && inst && (
         <span className="text-xs text-ink-500">{inst} sem juros</span>
