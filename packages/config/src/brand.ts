@@ -29,7 +29,7 @@ export const EU = {
     vat: 'FR06924799356',
   },
   operatorWording:
-    'AutoHub360 Europe é uma marca comercial operada pela Auto Lux Europe SAS.',
+    'AutoHub360 Europe é uma marca comercial operada pela Auto Lux Europe SAS; a operação europeia é independente das vendas realizadas pela AutoHub360 Brasil.',
   supportWhatsapp: '+55 (62) 99190-3462',
 } as const;
 
