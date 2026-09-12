@@ -3,10 +3,24 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { TriangleAlert } from 'lucide-react';
 import { Badge, Breadcrumbs, Container } from '@autohub360/ui';
-import { LEGAL_DOCS, getLegalDoc, type MarketCode } from '@autohub360/config';
+import { BR, LEGAL_DOCS, getLegalDoc, type MarketCode } from '@autohub360/config';
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+function legalText(text: string): string {
+  return text
+    .replaceAll(
+      'AutoHub360 Brasil, CNPJ 66.991.513/0001-10',
+      `${BR.legalName}, CNPJ ${BR.cnpj}`,
+    )
+    .replaceAll('66.991.513/0001-10', BR.cnpj)
+    .replaceAll(
+      'O endereço fiscal da empresa em Goiânia - GO',
+      `O endereço comercial da empresa em ${BR.address.city} - ${BR.address.state}`,
+    )
+    .replaceAll('conteúdo,-commerce', 'conteúdo, e-commerce');
 }
 
 export function generateStaticParams() {
@@ -17,9 +31,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const doc = getLegalDoc(slug);
   if (!doc) return { title: 'Documento não encontrado' };
+  const intro = doc.market === 'BR' ? legalText(doc.intro) : doc.intro;
   return {
     title: doc.title,
-    description: doc.intro.slice(0, 155),
+    description: intro.slice(0, 155),
   };
 }
 
@@ -30,6 +45,7 @@ export default async function LegalPage({ params }: Props) {
 
   const isEU = doc.market === 'EU';
   const marketChip = (doc.market as MarketCode) === 'BR' ? 'Brasil' : 'Europa / França';
+  const intro = isEU ? doc.intro : legalText(doc.intro);
 
   return (
     <Container className="py-8 sm:py-12">
@@ -64,7 +80,21 @@ export default async function LegalPage({ params }: Props) {
           </div>
         )}
 
-        <p className="mt-5 text-[15px] leading-relaxed text-ink-700">{doc.intro}</p>
+        <p className="mt-5 text-[15px] leading-relaxed text-ink-700">{intro}</p>
+
+        {!isEU && (
+          <div className="mt-6 rounded-xl border border-surface-200 bg-surface-50 p-4 text-sm leading-relaxed text-ink-700">
+            <p className="font-display font-bold text-ink-900">Identificação da operação no Brasil</p>
+            <p className="mt-2">
+              <strong>{BR.registeredName}</strong> · CNPJ {BR.cnpj}
+            </p>
+            <p>
+              {BR.address.street}, {BR.address.district}, {BR.address.city} - {BR.address.state}, CEP{' '}
+              {BR.address.zip}, {BR.address.country}.
+            </p>
+            <p className="mt-2">AutoHub360 Brasil é a identificação comercial apresentada neste site.</p>
+          </div>
+        )}
 
         <div className="mt-8 flex flex-col gap-8">
           {doc.sections.map((section) => (
@@ -75,7 +105,7 @@ export default async function LegalPage({ params }: Props) {
               <div className="flex flex-col gap-3">
                 {section.body.map((paragraph, i) => (
                   <p key={i} className="text-[15px] leading-relaxed text-ink-700">
-                    {paragraph}
+                    {isEU ? paragraph : legalText(paragraph)}
                   </p>
                 ))}
               </div>
