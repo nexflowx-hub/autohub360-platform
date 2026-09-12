@@ -1,7 +1,13 @@
 import type { Metadata, Viewport } from 'next';
+import { cookies } from 'next/headers';
 import { Archivo, Inter } from 'next/font/google';
-import { SOCIAL, techSite } from '@autohub360/config';
-import { CookieConsent, MotionOrchestrator, WhatsAppLauncher } from '@autohub360/ui';
+import { BR, EU, MARKETS, SOCIAL, techSite, type MarketCode } from '@autohub360/config';
+import {
+  CookieConsent,
+  MarketProvider,
+  MotionOrchestrator,
+  WhatsAppLauncher,
+} from '@autohub360/ui';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import './globals.css';
@@ -53,62 +59,96 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'AutoHub360',
-  url: techSite.url,
-  logo: `${techSite.url}/icons/icon-512.png`,
-  description: techSite.description,
-  slogan: 'Tecnologia move melhores caminhos.',
-  sameAs: [SOCIAL.instagram, SOCIAL.facebook, SOCIAL.youtube].filter(Boolean),
-  contactPoint: [
-    {
-      '@type': 'ContactPoint',
-      contactType: 'customer service',
-      telephone: '+55-62-99190-3462',
-      availableLanguage: 'Portuguese',
-    },
-  ],
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Av. Portugal, 1148, Setor Oeste',
-    addressLocality: 'Goiânia',
-    addressRegion: 'GO',
-    postalCode: '74140-020',
-    addressCountry: 'BR',
-  },
-};
+function marketFromCookie(value?: string): MarketCode {
+  return value === 'EU' ? 'EU' : 'BR';
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+function organizationJsonLd(market: MarketCode) {
+  const common = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AutoHub360',
+    url: techSite.url,
+    logo: `${techSite.url}/icons/icon-512.png`,
+    description: techSite.description,
+    slogan: 'Tecnologia move melhores caminhos.',
+    sameAs: [SOCIAL.instagram, SOCIAL.facebook, SOCIAL.youtube].filter(Boolean),
+  };
+
+  if (market === 'EU') {
+    return {
+      ...common,
+      alternateName: 'AutoHub360 Europe',
+      parentOrganization: {
+        '@type': 'Organization',
+        name: EU.operator.legalName,
+        identifier: EU.operator.siren,
+        vatID: EU.operator.vat,
+      },
+      areaServed: 'EU',
+    };
+  }
+
+  return {
+    ...common,
+    legalName: BR.registeredName,
+    taxID: BR.cnpj,
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        telephone: '+55-62-99190-3462',
+        availableLanguage: 'Portuguese',
+      },
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: BR.address.street,
+      addressLocality: BR.address.city,
+      addressRegion: BR.address.state,
+      postalCode: BR.address.zip,
+      addressCountry: 'BR',
+    },
+    areaServed: 'BR',
+  };
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const market = marketFromCookie(cookieStore.get('ah_market')?.value);
+  const marketConfig = MARKETS[market];
+  const jsonLd = organizationJsonLd(market);
+
   return (
-    <html lang="pt-BR" className={`${archivo.variable} ${inter.variable}`}>
+    <html lang={marketConfig.locale} className={`${archivo.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <a
-          href="#conteudo"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
-        >
-          Pular para o conteúdo
-        </a>
-        <MotionOrchestrator />
-        <Header />
-        <main id="conteudo" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <WhatsAppLauncher
-          entries={[
-            { context: 'general', label: 'Atendimento geral', description: 'Dúvidas, produtos e compatibilidade' },
-            { context: 'installation', label: 'Agendar instalação', description: 'Anápolis - GO' },
-            { context: 'pro', label: 'AutoHub360 Pro', description: 'Empresas, frotas e oficinas' },
-            { context: 'support', label: 'Suporte', description: 'Pós-venda e assistência' },
-          ]}
-        />
-        <CookieConsent />
+        <MarketProvider initialMarket={market}>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+          <a
+            href="#conteudo"
+            className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+          >
+            Pular para o conteúdo
+          </a>
+          <MotionOrchestrator />
+          <Header />
+          <main id="conteudo" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <WhatsAppLauncher
+            entries={[
+              { context: 'general', label: 'Atendimento geral', description: 'Dúvidas, produtos e compatibilidade' },
+              { context: 'installation', label: 'Agendar instalação', description: 'Anápolis - GO' },
+              { context: 'pro', label: 'AutoHub360 Pro', description: 'Empresas, frotas e oficinas' },
+              { context: 'support', label: 'Suporte', description: 'Pós-venda e assistência' },
+            ]}
+          />
+          <CookieConsent />
+        </MarketProvider>
       </body>
     </html>
   );
