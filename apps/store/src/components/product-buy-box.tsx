@@ -23,10 +23,10 @@ import {
   describeVehicle,
   fitmentStatus,
   compatibilityVersionIds,
-} from '@autohub360/catalog';;
+} from '@autohub360/catalog';
 import { INSTALLATION_FEE_CENTS, formatBRL } from '@autohub360/commerce';
 
-/** PDP buy box: quantity, vehicle compatibility state, somente produto vs + instalação. */
+/** PDP buy box: quantity, vehicle compatibility state, product vs + installation. */
 export function ProductBuyBox({ product }: { product: CatalogProduct }) {
   const add = useCart((s) => s.add);
   const [qty, setQty] = useState(1);
@@ -76,7 +76,6 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
 
   return (
     <div className="mt-4 flex flex-col gap-4 border-t border-surface-100 pt-4">
-      {/* Vehicle fitment block */}
       <section aria-label="Compatibilidade com o seu veículo" className="rounded-lg bg-surface-50 p-3.5">
         <p className="mb-2 flex items-center gap-1.5 text-sm font-bold text-ink-900">
           <Search className="h-4 w-4 text-ahblue-500" aria-hidden="true" />
@@ -86,27 +85,29 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
         {product.universal ? (
           <p className="flex items-start gap-1.5 text-[13px] leading-relaxed text-emerald-700">
             <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-            Produto universal — funciona em qualquer veículo (ou não depende de veículo).
+            Produto de aplicação universal conforme a descrição. Em caso de dúvida, confirme as
+            medidas e especificações antes da compra.
           </p>
         ) : (
           <div className="flex flex-col gap-2">
             {status === 'compatible' && versionId && (
               <p className="flex items-start gap-1.5 text-[13px] font-semibold text-emerald-700">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-                Compatível com {describeVehicle(versionId)}.
+                Compatibilidade indicada para {describeVehicle(versionId)}. Confirme as
+                especificações do veículo e do produto antes da instalação.
               </p>
             )}
             {status === 'not_compatible' && versionId && (
               <p className="flex items-start gap-1.5 text-[13px] font-semibold text-red-600">
                 <XCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-                Sem compatibilidade confirmada com {describeVehicle(versionId)}. Verifique o
-                soquete/fitagem correta antes de comprar.
+                Sem compatibilidade cadastrada para {describeVehicle(versionId)}. Verifique o
+                soquete, medidas e especificações antes de comprar.
               </p>
             )}
             {status === 'unconfirmed' && (
               <p className="flex items-start gap-1.5 text-[13px] text-ink-700">
                 <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" aria-hidden="true" />
-                Compatibilidade não confirmada — selecione o veículo abaixo para verificar.
+                Compatibilidade não informada — selecione o veículo abaixo para consultar nossa base.
               </p>
             )}
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
@@ -160,14 +161,13 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
             </div>
             <p className="text-[11px] text-ink-500">
               {compatCount > 0
-                ? `${compatCount} versões de veículos catalogadas com compatibilidade confirmada.`
+                ? `${compatCount} versões de veículos catalogadas para consulta de compatibilidade.`
                 : 'Compatibilidade em atualização — fale com a equipe pelo WhatsApp para confirmar.'}
             </p>
           </div>
         )}
       </section>
 
-      {/* Quantity */}
       <div className="flex items-center gap-3">
         <label htmlFor="qty" className="text-sm font-semibold text-ink-700">
           Quantidade
@@ -201,7 +201,6 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
         </div>
       </div>
 
-      {/* Installation option */}
       {product.installable && (
         <label className="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-ahorange-500/40 bg-ahorange-500/[0.06] p-3.5">
           <input
@@ -231,7 +230,7 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
           onClick={onAdd}
         >
           <ShoppingCart className="h-5 w-5" aria-hidden="true" />
-          {product.stock === 0 ? 'Produto esgotado' : 'Adicionar ao carrinho'}
+          {product.stock === 0 ? 'Produto indisponível' : 'Adicionar ao carrinho'}
         </Button>
         <Button href="/instalacao" variant="ghost-dark" size="md">
           <Wrench className="h-4.5 w-4.5" aria-hidden="true" />
@@ -241,8 +240,8 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
 
       <p className="flex items-start gap-1.5 text-[11px] leading-relaxed text-ink-500">
         <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-        *Condições de parcelamento dependem do provedor de pagamento ativo. Imagens ilustrativas.
-        Compatibilidade confirmada por base estruturada de veículos.
+        Condições de pagamento são apresentadas no checkout. Imagens ilustrativas. Em caso de dúvida
+        sobre aplicação ou compatibilidade, confirme com nossa equipe antes da compra.
       </p>
       <Link href="/legal/pagamentos-e-seguranca" className="text-[11px] text-ahblue-600 hover:underline">
         Condições de pagamento e segurança
