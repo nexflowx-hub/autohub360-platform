@@ -3,8 +3,10 @@ import { cookies } from 'next/headers';
 import { Archivo, Inter } from 'next/font/google';
 import { BR, EU, MARKETS, storeSite, type MarketCode } from '@autohub360/config';
 import {
+  AIWebChat,
   CookieConsent,
   MarketProvider,
+  MarketSwitcher,
   MotionOrchestrator,
   WhatsAppLauncher,
 } from '@autohub360/ui';
@@ -130,12 +132,23 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           >
             Pular para o conteúdo
           </a>
+          <div className="border-b border-white/10 bg-[#020b16] text-white">
+            <div className="mx-auto flex min-h-9 max-w-[1380px] items-center justify-between gap-3 px-4 py-1.5 sm:px-6 lg:px-8">
+              <p className="hidden text-[10px] text-slate-400 sm:block">
+                {market === 'BR'
+                  ? 'Operação Brasil · preços em BRL · loja e retirada em Anápolis - GO'
+                  : 'AutoHub360 Europe · catálogo/preços em EUR · checkout europeu em preparação'}
+              </p>
+              <MarketSwitcher className="ml-auto" />
+            </div>
+          </div>
           <MotionOrchestrator />
           <Header />
           <main id="conteudo" className="flex-1">
             {children}
           </main>
           <Footer />
+          <AIWebChat />
           <WhatsAppLauncher />
           <CookieConsent />
           <ServiceWorkerRegister />
