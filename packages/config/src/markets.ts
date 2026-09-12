@@ -24,9 +24,8 @@ export const MARKETS: Record<MarketCode, MarketContext> = {
     locale: 'pt-BR',
     status: 'live',
     checkoutEnabled: true,
-    operatorLine: 'AutoHub360 Brasil — CNPJ 66.991.513/0001-10',
-    legalFooterLine:
-      'AutoHub360 Brasil — CNPJ 66.991.513/0001-10 · Av. Portugal, 1148, Setor Oeste, Goiânia - GO, CEP 74140-020, Brasil',
+    operatorLine: 'AutoHub360 Brasil — CNPJ 69.093.616/0001-50',
+    legalFooterLine: 'AutoHub360 Brasil — CNPJ 69.093.616/0001-50',
     paymentNote:
       'Pagamentos processados por provedor certificado. Pix e cartão de crédito conforme disponibilidade do provedor ativo.',
     shippingNote: 'Entrega para todo o Brasil · Retirada local em Anápolis - GO',

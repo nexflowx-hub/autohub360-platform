@@ -16,7 +16,7 @@ import {
   PaymentMethods,
   Container,
 } from '@autohub360/ui';
-import { BR, MARKETS, UNIVERSES, paymentsConfig, SOCIAL, whatsappLink } from '@autohub360/config';
+import { BR, EU, MARKETS, UNIVERSES, paymentsConfig, SOCIAL, whatsappLink } from '@autohub360/config';
 import { CookiePreferencesLink } from '@autohub360/ui';
 
 const trust = [
@@ -153,10 +153,9 @@ export function Footer() {
             <LogoStacked size="md" className="hidden xl:flex" />
             <div className="max-w-3xl space-y-1.5">
               <p>
-                <strong className="text-slate-200">{BR.legalName}</strong> — CNPJ {BR.cnpj} ·{' '}
-                {BR.address.street}, {BR.address.district}, {BR.address.city} - {BR.address.state}, CEP{' '}
-                {BR.address.zip}, {BR.address.country}.
+                <strong className="text-slate-200">{BR.legalName}</strong> — CNPJ {BR.cnpj}.
               </p>
+              <p>{EU.operatorWording} SIREN {EU.operator.siren} · RCS {EU.operator.rcs}.</p>
               <p>
                 Atendimento: WhatsApp {BR.whatsapp} ·{' '}
                 <a href="mailto:suporte@autohub360.store" className="inline-flex items-center gap-1 hover:text-white">

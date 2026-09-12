@@ -163,9 +163,7 @@ export function Footer() {
             <LogoStacked size="md" className="hidden shrink-0 xl:flex" />
             <div className="max-w-3xl space-y-1.5">
               <p>
-                <strong className="text-slate-200">{BR.legalName}</strong> — CNPJ {BR.cnpj} ·{' '}
-                {BR.address.street}, {BR.address.district}, {BR.address.city} - {BR.address.state},
-                CEP {BR.address.zip}, {BR.address.country}.
+                <strong className="text-slate-200">{BR.legalName}</strong> — CNPJ {BR.cnpj}.
               </p>
               <p>{EU.operatorWording} SIREN {EU.operator.siren} · RCS {EU.operator.rcs}.</p>
               <p>

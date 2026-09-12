@@ -76,8 +76,8 @@ export function whatsappLink(
 
 /** Social URLs are centralized here. Only confirmed handles; empty string = not yet confirmed. */
 export const SOCIAL = {
-  instagram: 'https://www.instagram.com/autohub360',
-  facebook: 'https://www.facebook.com/autohub360',
-  youtube: 'https://www.youtube.com/@autohub360',
+  instagram: 'https://www.instagram.com/autohub360.tech',
+  facebook: 'https://www.facebook.com/autohub360.tech',
+  youtube: '',
   tiktok: '',
 } as const;

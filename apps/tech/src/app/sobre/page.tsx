@@ -75,7 +75,6 @@ export default function SobrePage() {
         <Breadcrumbs items={[{ label: 'Sobre', href: '/sobre' }]} />
       </Container>
 
-      {/* Hero */}
       <section className="ah-hero-glow relative overflow-hidden text-white">
         <div
           aria-hidden="true"
@@ -110,7 +109,6 @@ export default function SobrePage() {
         </Container>
       </section>
 
-      {/* Story */}
       <Section ariaLabel="Nossa história">
         <Container>
           <div className="max-w-3xl space-y-5 text-[15px] leading-relaxed text-ink-700 sm:text-base">
@@ -191,7 +189,6 @@ export default function SobrePage() {
         </Container>
       </Section>
 
-      {/* Sub-brands */}
       <Section ariaLabel="Sub-marcas" className="bg-surface-50">
         <Container>
           <SectionHeader
@@ -225,7 +222,6 @@ export default function SobrePage() {
         </Container>
       </Section>
 
-      {/* Values */}
       <Section ariaLabel="Nossos valores">
         <Container>
           <SectionHeader overline="Como a gente trabalha" title="Valores que aparecem na prática" />
@@ -248,7 +244,6 @@ export default function SobrePage() {
         </Container>
       </Section>
 
-      {/* Institutional data */}
       <Section ariaLabel="Dados institucionais" className="bg-surface-50">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
@@ -260,6 +255,7 @@ export default function SobrePage() {
               />
               <div className="rounded-xl border border-surface-200 bg-white p-6 shadow-[var(--ah-shadow-card)]">
                 <p className="font-display text-base font-extrabold text-ink-900">{BR.legalName}</p>
+                <p className="mt-1 text-sm font-semibold text-ink-700">{BR.registeredName}</p>
                 <p className="mt-2 text-sm leading-relaxed text-ink-700">
                   CNPJ {BR.cnpj}
                   <br />
@@ -268,6 +264,9 @@ export default function SobrePage() {
                   {BR.address.city} - {BR.address.state}, CEP {BR.address.zip}
                   <br />
                   {BR.address.country}
+                </p>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-ahblue-600">
+                  Loja e endereço comercial
                 </p>
                 <p className="mt-3 text-sm text-ink-700">Atendimento: WhatsApp {BR.whatsapp}</p>
                 <hr className="my-4 border-surface-200" />
@@ -304,7 +303,7 @@ export default function SobrePage() {
               </div>
               <p className="mt-6 flex items-center gap-2 text-xs text-slate-400">
                 <MapPin className="h-3.5 w-3.5 text-ahorange-400" aria-hidden="true" />
-                Goiânia - GO (matriz) · Anápolis - GO (instalação)
+                Anápolis - GO · Loja e operação AutoHub360 Brasil
               </p>
             </div>
           </div>

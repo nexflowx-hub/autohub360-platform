@@ -6,13 +6,14 @@
 
 export const BR = {
   legalName: 'AutoHub360 Brasil',
-  cnpj: '66.991.513/0001-10',
+  registeredName: '69.093.616 MICAELA GOMES DE JESUS',
+  cnpj: '69.093.616/0001-50',
   address: {
-    street: 'Av. Portugal, 1148',
-    district: 'Setor Oeste',
-    city: 'Goiânia',
+    street: 'Avenida João Florentino, 9 - Q4',
+    district: 'Residencial Araguaia',
+    city: 'Anápolis',
     state: 'GO',
-    zip: '74140-020',
+    zip: '75071-430',
     country: 'Brasil',
   },
   whatsapp: '+55 (62) 99190-3462',
@@ -28,7 +29,7 @@ export const EU = {
     vat: 'FR06924799356',
   },
   operatorWording:
-    'AutoHub360 Europe é uma marca comercial operada pela Auto Lux Europe SAS.',
+    'AutoHub360 Europe é uma marca comercial operada pela Auto Lux Europe SAS; a operação europeia é independente das vendas realizadas pela AutoHub360 Brasil.',
   supportWhatsapp: '+55 (62) 99190-3462',
 } as const;
 
