@@ -21,7 +21,6 @@ import {
   Price,
   ProductCard,
   ProductThumb,
-  Rating,
   Section,
   SectionHeader,
 } from '@autohub360/ui';
@@ -30,7 +29,7 @@ import {
   getAllProducts,
   getCatalogProduct,
   getComplementary,
-} from '@autohub360/catalog/server';;
+} from '@autohub360/catalog/server';
 import { ProductBuyBox } from '@/components/product-buy-box';
 import { ShareButton } from '@/components/share-button';
 import { productFaq } from '@/lib/faq';
@@ -66,6 +65,7 @@ export default async function ProductPage({ params }: Props) {
 
   const complementary = getComplementary(product);
   const faq = productFaq(product);
+  const publicBadges = product.badges.filter((badge) => badge !== 'Mais vendido');
 
   const productJsonLd = {
     '@context': 'https://schema.org',
@@ -80,18 +80,7 @@ export default async function ProductPage({ params }: Props) {
       url: `${STORE_URL}/produto/${product.slug}`,
       priceCurrency: product.currency,
       price: (product.priceCents / 100).toFixed(2),
-      availability:
-        product.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
     },
-    ...(product.reviewCount > 0
-      ? {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: product.rating,
-            reviewCount: product.reviewCount,
-          },
-        }
-      : {}),
   };
 
   return (
@@ -112,7 +101,6 @@ export default async function ProductPage({ params }: Props) {
 
       <Container>
         <div className="grid gap-8 pb-10 lg:grid-cols-[1.05fr_0.95fr]">
-          {/* Gallery */}
           <div className="flex flex-col gap-3">
             <Card className="overflow-hidden p-3">
               <ProductThumb
@@ -136,14 +124,13 @@ export default async function ProductPage({ params }: Props) {
             </div>
           </div>
 
-          {/* Buy column */}
           <div className="flex flex-col gap-4">
             <div>
               <div className="mb-2 flex flex-wrap items-center gap-2">
                 <Badge tone="outline">{product.brandName}</Badge>
                 <Badge tone="blue">{product.categoryName}</Badge>
-                {product.badges.map((b) => (
-                  <Badge key={b} tone={b === 'Mais vendido' ? 'orange' : 'blue'}>
+                {publicBadges.map((b) => (
+                  <Badge key={b} tone="blue">
                     {b}
                   </Badge>
                 ))}
@@ -153,29 +140,22 @@ export default async function ProductPage({ params }: Props) {
               </h1>
               <p className="mt-1.5 text-[15px] text-ink-500">{product.subtitle}</p>
               <div className="mt-3 flex items-center gap-3">
-                <Rating value={product.rating} count={product.reviewCount} size="md" />
                 <span className="text-xs text-ink-500">SKU: {product.sku}</span>
               </div>
             </div>
 
             <Card className="p-5">
-              <Price
-                cents={product.priceCents}
-                compareAtCents={product.compareAtCents}
-                size="lg"
-                showInstallments={false}
-              />
+              <Price cents={product.priceCents} size="lg" showInstallments={false} />
               <p className="mt-1 text-sm text-ink-500">
-                no Pix, ou em até 12x sem juros no cartão*
+                Formas e condições de pagamento são apresentadas no checkout.
               </p>
-              <p className="mt-3 flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
+              <p className="mt-3 flex items-center gap-1.5 text-sm font-semibold text-ahblue-600">
                 <Package className="h-4.5 w-4.5" aria-hidden="true" />
-                {product.stock > 0 ? 'Em estoque — pronto para envio' : 'Sem estoque no momento'}
+                Consulte a disponibilidade para envio ou retirada em Anápolis.
               </p>
               <ProductBuyBox product={product} />
             </Card>
 
-            {/* Trust mini strip */}
             <ul className="grid grid-cols-2 gap-2.5 text-[13px] text-ink-700">
               <li className="flex items-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-2.5">
                 <Truck className="h-4.5 w-4.5 shrink-0 text-ahblue-500" aria-hidden="true" />
@@ -183,11 +163,11 @@ export default async function ProductPage({ params }: Props) {
               </li>
               <li className="flex items-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-2.5">
                 <MapPin className="h-4.5 w-4.5 shrink-0 text-ahorange-500" aria-hidden="true" />
-                Retirada em Anápolis
+                Loja e retirada em Anápolis
               </li>
               <li className="flex items-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-2.5">
                 <ShieldCheck className="h-4.5 w-4.5 shrink-0 text-emerald-500" aria-hidden="true" />
-                Garantia de {product.warrantyMonths} meses
+                Garantia conforme CDC
               </li>
               <li className="flex items-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-2.5">
                 <RotateCcw className="h-4.5 w-4.5 shrink-0 text-ahblue-500" aria-hidden="true" />
@@ -195,7 +175,6 @@ export default async function ProductPage({ params }: Props) {
               </li>
             </ul>
 
-            {/* WhatsApp contextual */}
             <a
               href={whatsappLink('product', {
                 product: product.title,
@@ -213,7 +192,6 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </Container>
 
-      {/* Description + specs */}
       <Section ariaLabel="Descrição do produto" className="bg-white py-10">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
@@ -238,7 +216,9 @@ export default async function ProductPage({ params }: Props) {
                 ))}
                 <div className="grid grid-cols-[140px_1fr] gap-3 bg-surface-50 px-4 py-3 text-sm sm:grid-cols-[220px_1fr]">
                   <dt className="font-semibold text-ink-900">Garantia</dt>
-                  <dd className="text-ink-700">{product.warrantyMonths} meses</dd>
+                  <dd className="text-ink-700">
+                    Garantia legal conforme CDC e garantia contratual quando aplicável
+                  </dd>
                 </div>
               </dl>
 
@@ -255,9 +235,10 @@ export default async function ProductPage({ params }: Props) {
                   Garantia e trocas
                 </h3>
                 <p className="text-sm leading-relaxed text-ink-700">
-                  {product.warrantyMonths} meses de garantia contratual + garantia legal de 90 dias
-                  para vícios ocultos (CDC). Direito de arrependimento em até 7 dias corridos após o
-                  recebimento.
+                  Aplicam-se a garantia legal prevista no Código de Defesa do Consumidor e a
+                  garantia contratual do fabricante ou importador quando indicada e confirmada para
+                  o produto. O direito de arrependimento nas compras online pode ser exercido em até
+                  7 dias corridos após o recebimento, nos termos da legislação aplicável.
                 </p>
                 <Link
                   href="/legal/garantia"
@@ -292,7 +273,6 @@ export default async function ProductPage({ params }: Props) {
         </Container>
       </Section>
 
-      {/* Complementary products */}
       <Section ariaLabel="Produtos complementares" className="bg-surface-50">
         <Container>
           <SectionHeader overline="Combina com" title="Produtos complementares" />
