@@ -4,9 +4,8 @@ import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import type { CatalogProduct } from '@autohub360/catalog';
 import { useCart } from '@autohub360/commerce';
-import { Badge } from './primitives';
 import { ProductThumb } from './product-thumb';
-import { Price, Rating } from './price';
+import { Price } from './price';
 import { cn } from '../lib/cn';
 
 /** Dense commerce card matching the approved AutoHub360.store visual rhythm. */
@@ -34,11 +33,6 @@ export function ProductCard({
         className="relative block px-2 pt-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ahblue-400"
         tabIndex={priority ? 0 : 0}
       >
-        {product.compareAtCents && product.compareAtCents > product.priceCents && (
-          <span className="absolute left-3 top-3 z-10 rounded-[5px] bg-red-500 px-1.5 py-0.5 text-[10px] font-display font-extrabold text-white shadow-sm">
-            -{Math.round((1 - product.priceCents / product.compareAtCents) * 100)}%
-          </span>
-        )}
         <ProductThumb
           imageKey={product.imageKey}
           alt={product.title}
@@ -54,17 +48,16 @@ export function ProductCard({
         >
           {product.title}
         </Link>
-        <div className="mt-1.5 origin-left scale-[.92]">
-          <Rating value={product.rating} count={product.reviewCount} />
-        </div>
-        <div className="mt-auto pt-1.5">
-          <Price cents={product.priceCents} compareAtCents={product.compareAtCents} size="md" />
-          <p className="mt-0.5 text-[9.5px] leading-tight text-ink-500">em até 6x no cartão</p>
+        <div className="mt-auto pt-2.5">
+          <Price cents={product.priceCents} size="md" showInstallments={false} />
+          <p className="mt-0.5 text-[9.5px] leading-tight text-ink-500">
+            Condições de pagamento no checkout
+          </p>
           <div className="mt-2 flex min-h-[20px] items-center">
-            {product.badges.includes('Mais vendido') ? (
-              <Badge tone="orange" className="text-[9px]">Mais vendido</Badge>
-            ) : product.installable ? (
-              <span className="text-[9.5px] font-semibold text-ahblue-600">Instalação disponível</span>
+            {product.installable ? (
+              <span className="text-[9.5px] font-semibold text-ahblue-600">
+                Instalação disponível em Anápolis
+              </span>
             ) : null}
           </div>
           <button
@@ -97,7 +90,7 @@ export function ProductCard({
             )}
           >
             <ShoppingCart className="h-3.5 w-3.5" aria-hidden="true" />
-            {inStock ? 'Adicionar' : 'Esgotado'}
+            {inStock ? 'Adicionar' : 'Indisponível'}
           </button>
         </div>
       </div>
