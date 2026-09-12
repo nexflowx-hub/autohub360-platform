@@ -2,9 +2,7 @@ import { CreditCard, QrCode, Barcode, Landmark, CircleSlash } from 'lucide-react
 import type { PaymentsConfig, PaymentMethodId } from '@autohub360/config';
 import { cn } from '../lib/cn';
 
-/** Payment method badges — rendered from enabled configuration only.
- *  While no PSP is contracted (preview mode), badges render dimmed with an explicit notice. */
-
+/** Payment method badges — rendered only when a provider is actually active. */
 function BadgeArt({ badge }: { badge: string }) {
   switch (badge) {
     case 'visa':
@@ -75,8 +73,9 @@ export function PaymentMethods({
   className?: string;
   showNote?: boolean;
 }) {
-  const methods = config.enabledIds;
+  const methods = config.previewMode ? [] : config.enabledIds;
   const available = methods.length > 0;
+
   return (
     <div className={cn('flex flex-col gap-2', className)}>
       <div className="flex flex-wrap items-center gap-2" aria-label="Formas de pagamento">
@@ -84,15 +83,7 @@ export function PaymentMethods({
           methods.map((id: PaymentMethodId, i) => (
             <span
               key={`${id}-${i}`}
-              className={cn(
-                'flex h-8 min-w-14 items-center justify-center rounded-md border border-surface-200 bg-white px-2.5',
-                config.previewMode && 'opacity-60 grayscale-[35%]',
-              )}
-              title={
-                config.previewMode
-                  ? 'Prévia — habilitado apenas com provedor de pagamento ativo'
-                  : undefined
-              }
+              className="flex h-8 min-w-14 items-center justify-center rounded-md border border-surface-200 bg-white px-2.5"
             >
               <BadgeArt
                 badge={
@@ -104,15 +95,15 @@ export function PaymentMethods({
         ) : (
           <span className="inline-flex items-center gap-1.5 text-xs text-ink-500">
             <CreditCard className="h-4 w-4" aria-hidden="true" />
-            Formas de pagamento em definição
+            Formas de pagamento disponíveis serão apresentadas no checkout
           </span>
         )}
       </div>
       {(config.previewMode || showNote) && (
         <p className="max-w-md text-[11px] leading-relaxed text-ink-500">
           {config.previewMode
-            ? 'Vitrine em modo demonstração: os métodos aparecem como prévia e são habilitados de fato somente com o provedor de pagamento contratado.'
-            : undefined}
+            ? 'Os meios de pagamento serão exibidos após a ativação do provedor responsável pelo processamento.'
+            : 'Pagamento processado por provedor habilitado conforme as opções disponíveis no checkout.'}
         </p>
       )}
     </div>
