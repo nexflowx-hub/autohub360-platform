@@ -9,7 +9,11 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+const BR_LEGAL_UPDATED = '2026-09-12';
+
 function legalText(text: string): string {
+  const fullAddress = `${BR.address.street}, ${BR.address.district}, ${BR.address.city} - ${BR.address.state}, CEP ${BR.address.zip}, ${BR.address.country}.`;
+
   return text
     .replaceAll(
       'AutoHub360 Brasil, CNPJ 66.991.513/0001-10',
@@ -17,8 +21,25 @@ function legalText(text: string): string {
     )
     .replaceAll('66.991.513/0001-10', BR.cnpj)
     .replaceAll(
-      'O endereço fiscal da empresa em Goiânia - GO',
-      `O endereço comercial da empresa em ${BR.address.city} - ${BR.address.state}`,
+      'Av. Portugal, 1148, Setor Oeste, Goiânia - GO, CEP 74140-020, Brasil.',
+      fullAddress,
+    )
+    .replaceAll(
+      'O endereço fiscal da empresa em Goiânia - GO não é ponto de retirada nem local de instalação.',
+      `A retirada local pode ser realizada na loja ${BR.legalName} em ${BR.address.city} - ${BR.address.state}, mediante confirmação prévia do pedido e horário.`,
+    )
+    .replaceAll(
+      'Não mantemos balcão de vendas no endereço corporativo de Goiânia.',
+      `A retirada local é realizada na loja ${BR.legalName} em ${BR.address.city} - ${BR.address.state}, mediante confirmação prévia do pedido e horário.`,
+    )
+    .replaceAll('Goiânia - GO', `${BR.address.city} - ${BR.address.state}`)
+    .replaceAll(
+      'Enquanto nenhum provedor estiver contratado, a vitrine opera em modo de demonstração e pedidos reais não são capturados.',
+      'As formas de pagamento e condições de parcelamento disponíveis são apresentadas no checkout conforme a configuração do provedor de pagamentos ativo.',
+    )
+    .replaceAll(
+      'A disponibilidade real depende do provedor ativo configurado na loja; enquanto não houver provedor contratado, a vitrine opera em modo de demonstração.',
+      'A disponibilidade das formas de pagamento depende do provedor ativo e é apresentada no checkout no momento da compra.',
     )
     .replaceAll('conteúdo,-commerce', 'conteúdo, e-commerce');
 }
@@ -46,6 +67,7 @@ export default async function LegalPage({ params }: Props) {
   const isEU = doc.market === 'EU';
   const marketChip = (doc.market as MarketCode) === 'BR' ? 'Brasil' : 'Europa / França';
   const intro = isEU ? doc.intro : legalText(doc.intro);
+  const displayedUpdated = isEU ? doc.updated : BR_LEGAL_UPDATED;
 
   return (
     <Container className="py-8 sm:py-12">
@@ -56,7 +78,7 @@ export default async function LegalPage({ params }: Props) {
           <Badge tone={isEU ? 'orange' : 'blue'}>{marketChip}</Badge>
           <span className="text-xs text-ink-500">
             Atualizado em{' '}
-            {new Date(doc.updated).toLocaleDateString('pt-BR', {
+            {new Date(`${displayedUpdated}T12:00:00`).toLocaleDateString('pt-BR', {
               day: '2-digit',
               month: 'long',
               year: 'numeric',
@@ -92,7 +114,9 @@ export default async function LegalPage({ params }: Props) {
               {BR.address.street}, {BR.address.district}, {BR.address.city} - {BR.address.state}, CEP{' '}
               {BR.address.zip}, {BR.address.country}.
             </p>
-            <p className="mt-2">AutoHub360 Brasil é a identificação comercial apresentada neste site.</p>
+            <p className="mt-2">
+              AutoHub360 Brasil é a identificação comercial da loja e da operação brasileira apresentada neste site.
+            </p>
           </div>
         )}
 
