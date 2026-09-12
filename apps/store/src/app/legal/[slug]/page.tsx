@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FileText } from 'lucide-react';
 import { Breadcrumbs, Container, Section } from '@autohub360/ui';
-import { LEGAL_DOCS } from '@autohub360/config';
+import { BR, LEGAL_DOCS } from '@autohub360/config';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -11,6 +11,20 @@ interface Props {
 
 /** BR market documents only — the EU set is not published on this store. */
 const BR_DOCS = LEGAL_DOCS.filter((d) => d.market === 'BR');
+
+function legalText(text: string): string {
+  return text
+    .replaceAll(
+      'AutoHub360 Brasil, CNPJ 66.991.513/0001-10',
+      `${BR.legalName}, CNPJ ${BR.cnpj}`,
+    )
+    .replaceAll('66.991.513/0001-10', BR.cnpj)
+    .replaceAll(
+      'O endereço fiscal da empresa em Goiânia - GO',
+      `O endereço comercial da empresa em ${BR.address.city} - ${BR.address.state}`,
+    )
+    .replaceAll('conteúdo,-commerce', 'conteúdo, e-commerce');
+}
 
 export function generateStaticParams() {
   return BR_DOCS.map((d) => ({ slug: d.slug }));
@@ -22,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!doc) return { title: 'Documento não encontrado' };
   return {
     title: doc.title,
-    description: doc.intro.slice(0, 155),
+    description: legalText(doc.intro).slice(0, 155),
   };
 }
 
@@ -80,7 +94,19 @@ export default async function LegalDocPage({ params }: Props) {
                   year: 'numeric',
                 })}
               </p>
-              <p className="mt-5 text-[15px] leading-relaxed text-ink-700">{doc.intro}</p>
+              <p className="mt-5 text-[15px] leading-relaxed text-ink-700">{legalText(doc.intro)}</p>
+
+              <div className="mt-6 rounded-xl border border-surface-200 bg-surface-50 p-4 text-sm leading-relaxed text-ink-700">
+                <p className="font-display font-bold text-ink-900">Identificação da operação no Brasil</p>
+                <p className="mt-2">
+                  <strong>{BR.registeredName}</strong> · CNPJ {BR.cnpj}
+                </p>
+                <p>
+                  {BR.address.street}, {BR.address.district}, {BR.address.city} - {BR.address.state}, CEP{' '}
+                  {BR.address.zip}, {BR.address.country}.
+                </p>
+                <p className="mt-2">AutoHub360 Brasil é a identificação comercial apresentada neste site.</p>
+              </div>
 
               <div className="mt-8 flex flex-col gap-8">
                 {doc.sections.map((section) => (
@@ -94,7 +120,7 @@ export default async function LegalDocPage({ params }: Props) {
                           key={i}
                           className="text-[15px] leading-relaxed text-ink-700"
                         >
-                          {paragraph}
+                          {legalText(paragraph)}
                         </p>
                       ))}
                     </div>
