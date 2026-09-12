@@ -17,28 +17,17 @@ import vehiclesData from './data/vehicles.json';
 import articlesData from './data/articles.json';
 
 /**
- * Catalog modes:
- * - real (default): only sourced/verifiable products are public.
- * - mixed: sourced products first, legacy demo catalog afterwards.
- * - demo: legacy bundled catalog only, useful for design/dev previews.
+ * Public catalog is deliberately real-first and runtime-neutral.
+ * Legacy demo products remain exported for internal design/dev tools only; apps must opt into
+ * them explicitly instead of changing production behavior through a browser-visible env flag.
  */
 export const categories = categoriesData as unknown as Category[];
 export const brands = brandsData as unknown as Brand[];
 
-const realProducts = realProductsData as unknown as Array<Product & { socket?: string }>;
-const demoProducts = [...products1, ...products2, ...products3] as unknown as Array<
+export const products = realProductsData as unknown as Array<Product & { socket?: string }>;
+export const demoCatalogProducts = [...products1, ...products2, ...products3] as unknown as Array<
   Product & { socket?: string }
 >;
-
-const catalogMode = process.env.NEXT_PUBLIC_CATALOG_MODE ?? 'real';
-
-export const products = (
-  catalogMode === 'demo'
-    ? demoProducts
-    : catalogMode === 'mixed'
-      ? [...realProducts, ...demoProducts]
-      : realProducts
-) as Array<Product & { socket?: string }>;
 
 export const vehicleMakes = vehiclesData.makes as unknown as VehicleMake[];
 export const vehicleModels = vehiclesData.models as unknown as VehicleModel[];
