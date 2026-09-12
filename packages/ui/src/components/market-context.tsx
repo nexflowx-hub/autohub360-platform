@@ -27,6 +27,10 @@ export function MarketProvider({
     document.cookie = `ah_market=${next}; Path=/; Max-Age=31536000; SameSite=Lax`;
     try {
       window.localStorage.setItem('ah_market', next);
+      // Cart prices and fulfillment rules are market-specific. Never carry a BR basket into EU.
+      window.localStorage.removeItem('autohub360.cart');
+      window.sessionStorage.removeItem('autohub360.shipping');
+      window.sessionStorage.removeItem('autohub360.coupon');
     } catch {
       // Storage can be blocked; the cookie remains the source of truth.
     }
