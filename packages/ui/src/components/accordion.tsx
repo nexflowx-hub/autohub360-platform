@@ -4,11 +4,23 @@ import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '../lib/cn';
 
+type AccordionItem =
+  | { question: string; answer: string }
+  | { title: string; content: string };
+
+function itemQuestion(item: AccordionItem) {
+  return 'question' in item ? item.question : item.title;
+}
+
+function itemAnswer(item: AccordionItem) {
+  return 'answer' in item ? item.answer : item.content;
+}
+
 export function Accordion({
   items,
   className,
 }: {
-  items: Array<{ question: string; answer: string }>;
+  items: AccordionItem[];
   className?: string;
 }) {
   return (
@@ -21,7 +33,7 @@ export function Accordion({
         >
           <AccordionPrimitive.Header>
             <AccordionPrimitive.Trigger className="group flex w-full items-center justify-between gap-4 px-4 py-3.5 text-left text-[15px] font-semibold text-ink-900 transition-colors hover:bg-surface-50">
-              {item.question}
+              {itemQuestion(item)}
               <ChevronDown
                 aria-hidden="true"
                 className="h-4.5 w-4.5 shrink-0 text-ink-500 transition-transform duration-200 group-data-[state=open]:rotate-180"
@@ -30,7 +42,7 @@ export function Accordion({
           </AccordionPrimitive.Header>
           <AccordionPrimitive.Content className="overflow-hidden data-[state=closed]:animate-none">
             <p className="border-t border-surface-100 px-4 py-3.5 text-[15px] leading-relaxed text-ink-700">
-              {item.answer}
+              {itemAnswer(item)}
             </p>
           </AccordionPrimitive.Content>
         </AccordionPrimitive.Item>
