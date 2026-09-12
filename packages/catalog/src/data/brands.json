@@ -1,4 +1,10 @@
 [
+  { "id": "brd-generic", "slug": "generico", "name": "Genérico" },
+  { "id": "brd-volauto", "slug": "volauto", "name": "Volauto" },
+  { "id": "brd-hmaston", "slug": "hmaston", "name": "HMASTON" },
+  { "id": "brd-aweshine", "slug": "aweshine", "name": "Aweshine" },
+  { "id": "brd-rayx", "slug": "rayx", "name": "RayX" },
+  { "id": "brd-comercial21", "slug": "comercial-21", "name": "Comercial 21" },
   { "id": "brd-neon", "slug": "neon-drive", "name": "NeonDrive" },
   { "id": "brd-vision", "slug": "visionone", "name": "VisionOne" },
   { "id": "brd-track", "slug": "trackpoint", "name": "TrackPoint" },
