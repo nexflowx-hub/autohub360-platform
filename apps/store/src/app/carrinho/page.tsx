@@ -13,7 +13,7 @@ import {
   Truck,
   X,
 } from 'lucide-react';
-import { Button, Card, Checkbox, Container, Input, ProductThumb } from '@autohub360/ui';
+import { Button, Card, Checkbox, Container, Input, ProductMediaThumb } from '@autohub360/ui';
 import { INSTALLATION_FEE_CENTS, formatBRL, useCart } from '@autohub360/commerce';
 import { track } from '@autohub360/analytics';
 import {
@@ -164,7 +164,8 @@ export default function CarrinhoPage() {
                     className="shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ahblue-400"
                     aria-label={`Ver ${line.title}`}
                   >
-                    <ProductThumb
+                    <ProductMediaThumb
+                      imageUrl={line.imageUrl}
                       imageKey={line.imageKey}
                       alt={line.title}
                       size="sm"
