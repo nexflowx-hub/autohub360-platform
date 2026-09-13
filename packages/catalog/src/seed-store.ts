@@ -16,6 +16,7 @@ import products2 from './data/products-2.json';
 import products3 from './data/products-3.json';
 import vehiclesData from './data/vehicles.json';
 import articlesData from './data/articles.json';
+import { productMediaBySku } from './product-media';
 
 /**
  * Public catalog is deliberately real-first and runtime-neutral.
@@ -25,9 +26,15 @@ import articlesData from './data/articles.json';
 export const categories = categoriesData as unknown as Category[];
 export const brands = brandsData as unknown as Brand[];
 
-export const products = [...realProductsData, ...liveExtraProductsData] as unknown as Array<
+const baseProducts = [...realProductsData, ...liveExtraProductsData] as unknown as Array<
   Product & { socket?: string }
 >;
+
+export const products = baseProducts.map((product) => ({
+  ...product,
+  ...(productMediaBySku[product.sku] ?? {}),
+}));
+
 export const demoCatalogProducts = [...products1, ...products2, ...products3] as unknown as Array<
   Product & { socket?: string }
 >;
