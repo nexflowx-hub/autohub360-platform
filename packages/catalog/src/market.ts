@@ -12,6 +12,8 @@ const BR_VERIFIED_OFFERS: Record<string, Pick<ProductMarketOffer, 'stock' | 'act
   'SRC-BR-CHG-001': { stock: 3, active: true },
   'SRC-BR-CHG-002': { stock: 3, active: true },
   'SRC-BR-ENE-002': { stock: 3, active: true },
+  'SRC-BR-MOUNT-001': { stock: 3, active: true },
+  'SRC-BR-BIN-001': { stock: 3, active: true },
 };
 
 const EU_PREVIEW_OFFERS: Record<string, ProductMarketOffer> = {
