@@ -11,6 +11,7 @@ export interface CartLine {
   title: string;
   sku: string;
   imageKey: string;
+  imageUrl?: string;
   unitPriceCents: number;
   compareAtCents?: number;
   quantity: number;
@@ -38,7 +39,11 @@ export const useCart = create<CartState>()(
         const idx = lines.findIndex((l) => l.productId === line.productId);
         if (idx >= 0) {
           const cur = lines[idx]!;
-          lines[idx] = { ...cur, quantity: Math.min(cur.quantity + qty, cur.maxStock || 99) };
+          lines[idx] = {
+            ...cur,
+            ...line,
+            quantity: Math.min(cur.quantity + qty, line.maxStock || cur.maxStock || 99),
+          };
         } else {
           lines.push({ ...line, quantity: qty });
         }
