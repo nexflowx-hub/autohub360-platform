@@ -1,6 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "crons": [
-    { "path": "/api/admin/automation/dispatch", "schedule": "0 * * * *" }
-  ]
+  "ignoreCommand": "cd ../.. && npx turbo query affected --base=$VERCEL_GIT_PREVIOUS_SHA --packages @autohub360/admin --exit-code"
 }

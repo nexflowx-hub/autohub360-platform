@@ -1,4 +1,4 @@
-import { Activity, BellRing, Bot, Boxes, PackageCheck, ShoppingBag, UsersRound } from 'lucide-react';
+import { Activity, BellRing, Boxes, PackageCheck, ShoppingBag, UsersRound } from 'lucide-react';
 import { EmptyState, MetricCard, PageHeading, Panel, StatusBadge } from '@/components/admin-ui';
 import { adminDb, formatDate, formatMoney } from '@/lib/admin-data';
 
@@ -24,7 +24,6 @@ export default async function DashboardPage() {
   const brlRevenue = orders.filter((o) => String(o.currency).trim() === 'BRL' && paidStates.has(o.status)).reduce((sum, o) => sum + (o.total_cents ?? 0), 0);
   const eurRevenue = orders.filter((o) => String(o.currency).trim() === 'EUR' && paidStates.has(o.status)).reduce((sum, o) => sum + (o.total_cents ?? 0), 0);
   const shipments = shipmentsR.data ?? [];
-  const support = supportR.data ?? [];
   const outbox = outboxR.data ?? [];
   const sourcing = sourcingR.data ?? [];
   const unknownFulfillment = sourcing.filter((s) => s.direct_ship_status !== 'approved' && s.direct_ship_status !== 'validated').length;
