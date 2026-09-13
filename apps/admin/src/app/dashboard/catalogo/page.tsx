@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- supplier media hosts are dynamic operational data; thumbnails intentionally use native img */
 import { Boxes, ImageIcon, Link2, Truck } from 'lucide-react';
 import { EmptyState, MetricCard, PageHeading, Panel, StatusBadge } from '@/components/admin-ui';
 import { adminDb, formatDate, formatMoney } from '@/lib/admin-data';
