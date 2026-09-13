@@ -1,0 +1,62 @@
+[
+  {
+    "id": "src-mount-001",
+    "slug": "suporte-celular-magnetico-hmaston-cj65",
+    "sku": "SRC-BR-MOUNT-001",
+    "categoryId": "cat-gadgets",
+    "brandId": "brd-hmaston",
+    "title": "Suporte Celular Magnético H'Maston CJ-65",
+    "subtitle": "Suporte veicular compacto com ajuste 360° e fixação magnética",
+    "description": "Suporte veicular H'Maston CJ-65 em alumínio, com fixação magnética e ajuste de 360 graus. A base utiliza fixação por dupla face; confirme a superfície adequada antes da instalação.",
+    "specs": [
+      { "label": "Modelo", "value": "CJ-65" },
+      { "label": "Fixação do celular", "value": "Magnética" },
+      { "label": "Ajuste", "value": "360°" },
+      { "label": "Fixação da base", "value": "Dupla face" }
+    ],
+    "imageKey": "phone-mount",
+    "priceCents": 4690,
+    "currency": "BRL",
+    "stock": 3,
+    "weightGrams": 0,
+    "warrantyMonths": 0,
+    "universal": true,
+    "installable": false,
+    "featured": true,
+    "bestSeller": false,
+    "rating": 0,
+    "reviewCount": 0,
+    "badges": ["Disponível online"],
+    "createdAt": "2026-09-13T12:55:00-03:00"
+  },
+  {
+    "id": "src-bin-001",
+    "slug": "lixeira-automotiva-cambio-preta-young",
+    "sku": "SRC-BR-BIN-001",
+    "categoryId": "cat-gadgets",
+    "brandId": "brd-young",
+    "title": "Lixeira Automotiva para Câmbio Young Preta",
+    "subtitle": "Organizador compacto e reutilizável para o interior do veículo",
+    "description": "Lixeira automotiva compacta para instalação junto ao câmbio, na cor preta. Produto reutilizável e de limpeza simples, indicado para pequenos resíduos e organização do interior do veículo.",
+    "specs": [
+      { "label": "Cor", "value": "Preto" },
+      { "label": "Instalação", "value": "Junto ao câmbio" },
+      { "label": "Uso", "value": "Organização e pequenos resíduos" },
+      { "label": "Garantia anunciada pelo vendedor", "value": "90 dias" }
+    ],
+    "imageKey": "gadget",
+    "priceCents": 3490,
+    "currency": "BRL",
+    "stock": 3,
+    "weightGrams": 0,
+    "warrantyMonths": 3,
+    "universal": true,
+    "installable": false,
+    "featured": true,
+    "bestSeller": true,
+    "rating": 4.6,
+    "reviewCount": 228,
+    "badges": ["+1.000 vendidos na origem", "Disponível online"],
+    "createdAt": "2026-09-13T12:56:00-03:00"
+  }
+]
