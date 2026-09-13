@@ -4,6 +4,7 @@ export { Button, type ButtonProps } from './components/button';
 export { Badge, Card, Container, Section, SectionHeader } from './components/primitives';
 export { Input, Textarea, Select, Field, Checkbox } from './components/form';
 export { ProductThumb } from './components/product-thumb';
+export { ProductMediaThumb } from './components/product-media-thumb';
 export { Rating, Price } from './components/price';
 export { Breadcrumbs, breadcrumbJsonLd, type Crumb } from './components/breadcrumbs';
 export { Accordion } from './components/accordion';
