@@ -24,7 +24,8 @@ const EU_PREVIEW_OFFERS: Record<string, ProductMarketOffer> = {
 
 /**
  * Resolves the commercial offer for a product in a market.
- * Bundled catalog prices are treated as the BR fallback only.
+ * Newly sourced SRC-* records intentionally stay non-purchasable until fulfillment, invoice,
+ * packaging and supplier availability have been verified for that SKU.
  */
 export function resolveProductMarketOffer(
   product: Product,
@@ -34,13 +35,14 @@ export function resolveProductMarketOffer(
   if (override) return override;
 
   if (market === 'BR') {
+    const sourcedPreview = product.sku.startsWith('SRC-');
     return {
       market: 'BR',
       currency: product.currency,
       priceCents: product.priceCents,
       compareAtCents: product.compareAtCents,
-      stock: product.stock,
-      active: true,
+      stock: sourcedPreview ? 0 : product.stock,
+      active: !sourcedPreview,
     };
   }
 
