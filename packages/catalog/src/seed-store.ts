@@ -9,18 +9,26 @@ import type {
 } from './types';
 import categoriesData from './data/categories.json';
 import brandsData from './data/brands.json';
+import realProductsData from './data/products-real.json';
 import products1 from './data/products-1.json';
 import products2 from './data/products-2.json';
 import products3 from './data/products-3.json';
 import vehiclesData from './data/vehicles.json';
 import articlesData from './data/articles.json';
 
-/** Bundled demo catalog (supabase/seed is the SQL counterpart). */
+/**
+ * Public catalog is deliberately real-first and runtime-neutral.
+ * Legacy demo products remain exported for internal design/dev tools only; apps must opt into
+ * them explicitly instead of changing production behavior through a browser-visible env flag.
+ */
 export const categories = categoriesData as unknown as Category[];
 export const brands = brandsData as unknown as Brand[];
-export const products = [...products1, ...products2, ...products3] as unknown as Array<
+
+export const products = realProductsData as unknown as Array<Product & { socket?: string }>;
+export const demoCatalogProducts = [...products1, ...products2, ...products3] as unknown as Array<
   Product & { socket?: string }
 >;
+
 export const vehicleMakes = vehiclesData.makes as unknown as VehicleMake[];
 export const vehicleModels = vehiclesData.models as unknown as VehicleModel[];
 export const vehicleVersions = vehiclesData.versions as unknown as VehicleVersion[];

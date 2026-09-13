@@ -1,0 +1,26 @@
+import { BellRing, Workflow } from 'lucide-react';
+import { AutomationToggle } from '@/components/automation-toggle';
+import { DispatchButton } from '@/components/dispatch-button';
+import { EmptyState, MetricCard, PageHeading, Panel, StatusBadge } from '@/components/admin-ui';
+import { formatDate } from '@/lib/admin-data';
+import { backendAdminConfigured, backendAdminFetch } from '@/lib/backend-admin';
+
+export const metadata={title:'Automações'};
+
+type Rule={id:string;code:string;name:string;trigger_event:string;market:string;audience:string;channel:string;template_code:string;delay_minutes:number;frequency_cap_hours:number;status:string;created_at:string;updated_at:string};
+type Template={id:string;code:string;market:string;channel:string;name:string;subject:string|null;body:string;status:string};
+type Outbox={id:string;template_code:string;market:string;channel:string;destination:string;status:string;scheduled_for:string;sent_at:string|null;attempts:number;provider:string|null;provider_ref:string|null;error:string|null};
+type ListResponse<T>={success:boolean;data:T[]};
+
+export default async function AutomationsPage(){
+  if(!backendAdminConfigured())return <EmptyState text="Backend AutoHub360 não configurado no Admin."/>;
+  const [rulesR,templatesR,outboxR]=await Promise.all([
+    backendAdminFetch<ListResponse<Rule>>('/api/v1/admin/automations/rules?limit=100'),
+    backendAdminFetch<ListResponse<Template>>('/api/v1/admin/automations/templates?limit=100'),
+    backendAdminFetch<ListResponse<Outbox>>('/api/v1/admin/automations/outbox?limit=100'),
+  ]);
+  const rules=rulesR.data;const templates=templatesR.data;const outbox=outboxR.data;
+  return <div className="space-y-6"><PageHeading title="Automações & notificações" description="Event-driven automation: lead, pedido e entrega geram atividades CRM e comunicação transacional/marketing conforme consentimento e regra ativa." actions={<DispatchButton/>}/>
+<div className="grid gap-3 sm:grid-cols-4"><MetricCard label="Regras" value={String(rules.length)} icon={<Workflow className="h-4 w-4"/>}/><MetricCard label="Ativas" value={String(rules.filter((r)=>r.status==='active').length)} tone="green"/><MetricCard label="Fila" value={String(outbox.filter((o)=>o.status==='queued').length)} icon={<BellRing className="h-4 w-4"/>} tone="orange"/><MetricCard label="Enviadas" value={String(outbox.filter((o)=>o.status==='sent').length)} tone="violet"/></div>
+<Panel title="Automation Builder — regras"><div className="overflow-x-auto"><table className="w-full min-w-[850px] text-left text-xs"><thead className="text-[10px] uppercase tracking-wide text-slate-600"><tr><th className="pb-3">Regra</th><th>Evento</th><th>Canal</th><th>Delay</th><th>Audience</th><th>Status</th></tr></thead><tbody className="divide-y divide-white/6">{rules.map((r)=><tr key={r.id}><td className="py-3"><p className="font-bold text-white">{r.name}</p><p className="font-mono text-[10px] text-slate-600">{r.code}</p></td><td className="text-blue-300">{r.trigger_event}</td><td className="text-slate-300">{r.channel}</td><td className="text-slate-400">{r.delay_minutes===0?'imediato':`${r.delay_minutes} min`}</td><td className="text-slate-400">{r.audience}</td><td><AutomationToggle code={r.code} status={r.status}/></td></tr>)}</tbody></table>{rules.length===0?<EmptyState text="Nenhuma regra configurada."/>:null}</div></Panel>
+<div className="grid gap-5 xl:grid-cols-2"><Panel title="Templates"><div className="space-y-2">{templates.map((t)=><div key={t.id} className="rounded-xl border border-white/7 bg-black/15 p-3"><div className="flex justify-between gap-3"><p className="text-xs font-bold text-white">{t.name}</p><StatusBadge value={t.status}/></div><p className="mt-1 text-[10px] text-slate-500">{t.market} · {t.channel} · {t.code}</p><p className="mt-2 line-clamp-2 text-[11px] text-slate-400">{t.body}</p></div>)}{templates.length===0?<EmptyState text="Sem templates."/>:null}</div></Panel><Panel title="Outbox recente"><div className="space-y-2">{outbox.slice(0,20).map((o)=><div key={o.id} className="rounded-xl border border-white/7 bg-black/15 p-3"><div className="flex items-center justify-between gap-3"><p className="truncate text-xs font-semibold text-white">{o.channel} → {o.destination}</p><StatusBadge value={o.status}/></div><p className="mt-1 text-[10px] text-slate-500">{o.template_code} · agenda {formatDate(o.scheduled_for)} · tentativas {o.attempts}</p>{o.error?<p className="mt-1 text-[10px] text-red-300">{o.error}</p>:null}</div>)}{outbox.length===0?<EmptyState text="Outbox vazia."/>:null}</div></Panel></div></div>}

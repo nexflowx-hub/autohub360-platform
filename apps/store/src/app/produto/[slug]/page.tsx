@@ -1,16 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
-import {
-  ShieldCheck,
-  Truck,
-  MapPin,
-  Wrench,
-  CalendarClock,
-  Package,
-  RotateCcw,
-  HelpCircle,
-} from 'lucide-react';
+import { CalendarClock, HelpCircle, ShieldCheck, Wrench } from 'lucide-react';
 import {
   Accordion,
   Badge,
@@ -18,19 +10,19 @@ import {
   Button,
   Card,
   Container,
-  Price,
   ProductCard,
   ProductThumb,
   Section,
   SectionHeader,
 } from '@autohub360/ui';
 import { STORE_URL, whatsappLink } from '@autohub360/config';
+import { resolveProductMarketOffer, type CatalogMarket } from '@autohub360/catalog';
 import {
   getAllProducts,
   getCatalogProduct,
   getComplementary,
 } from '@autohub360/catalog/server';
-import { ProductBuyBox } from '@/components/product-buy-box';
+import { ProductMarketCommerce } from '@/components/product-market-commerce';
 import { ShareButton } from '@/components/share-button';
 import { productFaq } from '@/lib/faq';
 
@@ -63,8 +55,11 @@ export default async function ProductPage({ params }: Props) {
   const product = getCatalogProduct(slug);
   if (!product) notFound();
 
+  const cookieStore = await cookies();
+  const market: CatalogMarket = cookieStore.get('ah_market')?.value === 'EU' ? 'EU' : 'BR';
+  const offer = resolveProductMarketOffer(product, market);
   const complementary = getComplementary(product);
-  const faq = productFaq(product);
+  const faq = productFaq(product, market);
   const publicBadges = product.badges.filter((badge) => badge !== 'Mais vendido');
 
   const productJsonLd = {
@@ -75,13 +70,23 @@ export default async function ProductPage({ params }: Props) {
     sku: product.sku,
     brand: { '@type': 'Brand', name: product.brandName },
     category: product.categoryName,
-    offers: {
-      '@type': 'Offer',
-      url: `${STORE_URL}/produto/${product.slug}`,
-      priceCurrency: product.currency,
-      price: (product.priceCents / 100).toFixed(2),
-    },
+    ...(offer?.active
+      ? {
+          offers: {
+            '@type': 'Offer',
+            url: `${STORE_URL}/produto/${product.slug}`,
+            priceCurrency: offer.currency,
+            price: (offer.priceCents / 100).toFixed(2),
+            availability:
+              offer.stock > 0
+                ? 'https://schema.org/InStock'
+                : 'https://schema.org/OutOfStock',
+          },
+        }
+      : {}),
   };
+
+  const marketLabel = market === 'BR' ? 'Brasil' : 'Europa';
 
   return (
     <>
@@ -129,57 +134,26 @@ export default async function ProductPage({ params }: Props) {
               <div className="mb-2 flex flex-wrap items-center gap-2">
                 <Badge tone="outline">{product.brandName}</Badge>
                 <Badge tone="blue">{product.categoryName}</Badge>
-                {publicBadges.map((b) => (
-                  <Badge key={b} tone="blue">
-                    {b}
-                  </Badge>
+                <Badge tone="outline">{marketLabel}</Badge>
+                {publicBadges.map((badge) => (
+                  <Badge key={badge} tone="blue">{badge}</Badge>
                 ))}
               </div>
               <h1 className="font-display text-2xl font-extrabold leading-tight text-ink-900 sm:text-3xl">
                 {product.title}
               </h1>
               <p className="mt-1.5 text-[15px] text-ink-500">{product.subtitle}</p>
-              <div className="mt-3 flex items-center gap-3">
-                <span className="text-xs text-ink-500">SKU: {product.sku}</span>
-              </div>
+              <p className="mt-3 text-xs text-ink-500">SKU: {product.sku}</p>
             </div>
 
-            <Card className="p-5">
-              <Price cents={product.priceCents} size="lg" showInstallments={false} />
-              <p className="mt-1 text-sm text-ink-500">
-                Formas e condições de pagamento são apresentadas no checkout.
-              </p>
-              <p className="mt-3 flex items-center gap-1.5 text-sm font-semibold text-ahblue-600">
-                <Package className="h-4.5 w-4.5" aria-hidden="true" />
-                Consulte a disponibilidade para envio ou retirada em Anápolis.
-              </p>
-              <ProductBuyBox product={product} />
-            </Card>
-
-            <ul className="grid grid-cols-2 gap-2.5 text-[13px] text-ink-700">
-              <li className="flex items-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-2.5">
-                <Truck className="h-4.5 w-4.5 shrink-0 text-ahblue-500" aria-hidden="true" />
-                Entrega para todo o Brasil
-              </li>
-              <li className="flex items-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-2.5">
-                <MapPin className="h-4.5 w-4.5 shrink-0 text-ahorange-500" aria-hidden="true" />
-                Loja e retirada em Anápolis
-              </li>
-              <li className="flex items-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-2.5">
-                <ShieldCheck className="h-4.5 w-4.5 shrink-0 text-emerald-500" aria-hidden="true" />
-                Garantia conforme CDC
-              </li>
-              <li className="flex items-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-2.5">
-                <RotateCcw className="h-4.5 w-4.5 shrink-0 text-ahblue-500" aria-hidden="true" />
-                7 dias para arrependimento
-              </li>
-            </ul>
+            <ProductMarketCommerce product={product} />
 
             <a
               href={whatsappLink('product', {
                 product: product.title,
                 sku: product.sku,
                 url: `${STORE_URL}/produto/${product.slug}`,
+                market,
               })}
               target="_blank"
               rel="noopener noreferrer"
@@ -214,12 +188,6 @@ export default async function ProductPage({ params }: Props) {
                     <dd className="text-ink-700">{spec.value}</dd>
                   </div>
                 ))}
-                <div className="grid grid-cols-[140px_1fr] gap-3 bg-surface-50 px-4 py-3 text-sm sm:grid-cols-[220px_1fr]">
-                  <dt className="font-semibold text-ink-900">Garantia</dt>
-                  <dd className="text-ink-700">
-                    Garantia legal conforme CDC e garantia contratual quando aplicável
-                  </dd>
-                </div>
               </dl>
 
               <h2 className="mb-4 mt-8 font-display text-xl font-extrabold text-ink-900">
@@ -232,38 +200,38 @@ export default async function ProductPage({ params }: Props) {
               <Card className="p-5">
                 <h3 className="mb-3 flex items-center gap-2 font-display text-base font-bold text-ink-900">
                   <ShieldCheck className="h-5 w-5 text-emerald-500" aria-hidden="true" />
-                  Garantia e trocas
+                  {market === 'BR' ? 'Garantia e trocas no Brasil' : 'Proteção do consumidor na Europa'}
                 </h3>
                 <p className="text-sm leading-relaxed text-ink-700">
-                  Aplicam-se a garantia legal prevista no Código de Defesa do Consumidor e a
-                  garantia contratual do fabricante ou importador quando indicada e confirmada para
-                  o produto. O direito de arrependimento nas compras online pode ser exercido em até
-                  7 dias corridos após o recebimento, nos termos da legislação aplicável.
+                  {market === 'BR'
+                    ? 'Aplicam-se os direitos previstos na legislação brasileira e eventual garantia contratual somente quando identificada para o SKU. Consulte as políticas publicadas antes da compra.'
+                    : 'As condições de garantia, devolução, entrega e direito de retratação serão publicadas por mercado antes da ativação do checkout europeu.'}
                 </p>
                 <Link
                   href="/legal/garantia"
                   className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-ahblue-600 hover:underline"
                 >
-                  Política de garantia
+                  Ver políticas aplicáveis
                 </Link>
               </Card>
-              {product.installable && (
+
+              {market === 'BR' && product.installable && (
                 <Card className="border-ahorange-500/30 p-5">
                   <h3 className="mb-3 flex items-center gap-2 font-display text-base font-bold text-ink-900">
                     <Wrench className="h-5 w-5 text-ahorange-500" aria-hidden="true" />
                     Instalação especializada
                   </h3>
                   <p className="text-sm leading-relaxed text-ink-700">
-                    Este produto pode ser instalado pelo nosso parceiro oficial em Anápolis - GO.
-                    Escolha <strong>&ldquo;Produto + instalação&rdquo;</strong> no carrinho ou
-                    agende somente o serviço.
+                    Para produtos homologados para instalação, a equipe confirma compatibilidade,
+                    valor e agenda com o parceiro oficial em Anápolis - GO.
                   </p>
                   <Button href="/instalacao" variant="accent" size="sm" className="mt-3">
                     <CalendarClock className="h-4 w-4" aria-hidden="true" />
-                    Agendar instalação
+                    Consultar instalação
                   </Button>
                 </Card>
               )}
+
               <Card className="p-5">
                 <h3 className="mb-2 font-display text-base font-bold text-ink-900">Compartilhar</h3>
                 <ShareButton title={product.title} />
@@ -273,18 +241,20 @@ export default async function ProductPage({ params }: Props) {
         </Container>
       </Section>
 
-      <Section ariaLabel="Produtos complementares" className="bg-surface-50">
-        <Container>
-          <SectionHeader overline="Combina com" title="Produtos complementares" />
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-            {complementary.map((p) => (
-              <li key={p.id} className="flex">
-                <ProductCard product={p} className="w-full" />
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
+      {complementary.length > 0 && (
+        <Section ariaLabel="Produtos complementares" className="bg-surface-50">
+          <Container>
+            <SectionHeader overline="Combina com" title="Produtos complementares" />
+            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+              {complementary.map((item) => (
+                <li key={item.id} className="flex">
+                  <ProductCard product={item} className="w-full" />
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </Section>
+      )}
     </>
   );
 }

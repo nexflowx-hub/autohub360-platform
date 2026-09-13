@@ -1,6 +1,7 @@
 /** Catalog domain types shared by all AutoHub360 apps. */
 
 export type Currency = 'BRL' | 'EUR';
+export type CatalogMarket = 'BR' | 'EU';
 export type VehicleType = 'car' | 'moto' | 'truck';
 
 export interface Category {
@@ -24,6 +25,16 @@ export interface ProductSpec {
   value: string;
 }
 
+/** Market-specific commercial state. The same product may be sold in one or both markets. */
+export interface ProductMarketOffer {
+  market: CatalogMarket;
+  currency: Currency;
+  priceCents: number;
+  compareAtCents?: number;
+  stock: number;
+  active: boolean;
+}
+
 export interface Product {
   id: string;
   slug: string;
@@ -35,12 +46,15 @@ export interface Product {
   subtitle: string;
   description: string;
   specs: ProductSpec[];
-  /** Category-themed placeholder key (no real photography in V1 demo). */
+  /** Category-themed placeholder key; real media can override it in the DB-backed catalog. */
   imageKey: string;
+  /** Base BR offer kept for backwards compatibility with the bundled catalog. */
   priceCents: number;
   compareAtCents?: number;
   currency: Currency;
   stock: number;
+  /** Optional market overrides. Missing EU offer means the item is not yet offered in Europe. */
+  marketOffers?: Partial<Record<CatalogMarket, ProductMarketOffer>>;
   weightGrams: number;
   warrantyMonths: number;
   /** true = fits any vehicle/none needed (gadgets, smart home...). */
