@@ -10,6 +10,7 @@ import type {
 import categoriesData from './data/categories.json';
 import brandsData from './data/brands.json';
 import realProductsData from './data/products-real.json';
+import liveExtraProductsData from './data/products-live-extra.json';
 import products1 from './data/products-1.json';
 import products2 from './data/products-2.json';
 import products3 from './data/products-3.json';
@@ -24,7 +25,9 @@ import articlesData from './data/articles.json';
 export const categories = categoriesData as unknown as Category[];
 export const brands = brandsData as unknown as Brand[];
 
-export const products = realProductsData as unknown as Array<Product & { socket?: string }>;
+export const products = [...realProductsData, ...liveExtraProductsData] as unknown as Array<
+  Product & { socket?: string }
+>;
 export const demoCatalogProducts = [...products1, ...products2, ...products3] as unknown as Array<
   Product & { socket?: string }
 >;
