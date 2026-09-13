@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import { resolveProductMarketOffer, type CatalogProduct } from '@autohub360/catalog';
 import { useCart } from '@autohub360/commerce';
-import { ProductThumb } from './product-thumb';
+import { ProductMediaThumb } from './product-media-thumb';
 import { Price } from './price';
 import { useMarket } from './market-context';
 import { cn } from '../lib/cn';
@@ -36,7 +36,8 @@ export function ProductCard({
         className="relative block px-2 pt-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ahblue-400"
         tabIndex={priority ? 0 : 0}
       >
-        <ProductThumb
+        <ProductMediaThumb
+          imageUrl={product.imageUrl}
           imageKey={product.imageKey}
           alt={product.title}
           size="md"
@@ -87,6 +88,7 @@ export function ProductCard({
                   title: product.title,
                   sku: product.sku,
                   imageKey: product.imageKey,
+                  imageUrl: product.imageUrl,
                   unitPriceCents: offer.priceCents,
                   compareAtCents: offer.compareAtCents,
                   installation: false,
