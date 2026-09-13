@@ -46,10 +46,7 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
   const versions = useMemo(() => (modelId ? getVehicleVersions(modelId) : []), [modelId]);
 
   const status = fitmentStatus(product, versionId || undefined);
-  const compatCount = useMemo(
-    () => compatibilityVersionIds(product).length,
-    [product],
-  );
+  const compatCount = useMemo(() => compatibilityVersionIds(product).length, [product]);
 
   const compatibleModels = useMemo(() => {
     if (product.universal) return true;
@@ -67,6 +64,7 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
         title: product.title,
         sku: product.sku,
         imageKey: product.imageKey,
+        imageUrl: product.imageUrl,
         unitPriceCents: offer.priceCents,
         compareAtCents: offer.compareAtCents,
         installation: market === 'BR' && install && product.installable,
@@ -181,94 +179,66 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
         )}
       </section>
 
-      {purchasable && (
-        <div className="flex items-center gap-3">
-          <label htmlFor="qty" className="text-sm font-semibold text-ink-700">
-            Quantidade
-          </label>
-          <div className="flex items-center overflow-hidden rounded-[10px] border border-surface-300">
-            <button
-              type="button"
-              aria-label="Diminuir quantidade"
-              className="h-10 w-10 text-lg font-bold text-ink-700 hover:bg-surface-100 disabled:opacity-40"
-              disabled={qty <= 1}
-              onClick={() => setQty((q) => Math.max(1, q - 1))}
-            >
-              −
-            </button>
-            <input
-              id="qty"
-              readOnly
-              value={qty}
-              aria-label="Quantidade selecionada"
-              className="h-10 w-12 border-x border-surface-300 text-center text-sm font-bold text-ink-900"
-            />
-            <button
-              type="button"
-              aria-label="Aumentar quantidade"
-              className="h-10 w-10 text-lg font-bold text-ink-700 hover:bg-surface-100 disabled:opacity-40"
-              disabled={qty >= maxStock}
-              onClick={() => setQty((q) => Math.min(maxStock, q + 1))}
-            >
-              +
-            </button>
-          </div>
+      {!compatibleModels && versionId ? (
+        <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+          <p className="flex items-center gap-2 font-semibold">
+            <XCircle className="h-4 w-4" aria-hidden="true" />
+            Esta aplicação não consta como compatível para o veículo selecionado.
+          </p>
         </div>
-      )}
+      ) : null}
 
-      {market === 'BR' && product.installable && purchasable && (
-        <label className="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-ahorange-500/40 bg-ahorange-500/[0.06] p-3.5">
-          <input
-            type="checkbox"
-            checked={install}
-            onChange={(e) => {
-              setInstall(e.target.checked);
-              if (e.target.checked) track('select_installation', { item_id: product.id });
-            }}
-            className="mt-0.5 h-4.5 w-4.5 accent-ahorange-500"
-          />
-          <span className="text-sm">
-            <span className="block font-bold text-ink-900">Produto + instalação em Anápolis</span>
-            <span className="mt-0.5 block text-[13px] leading-relaxed text-ink-700">
-              Adicione a instalação especializada com o parceiro oficial por{' '}
-              <strong>{formatBRL(INSTALLATION_FEE_CENTS)}</strong> por unidade. O agendamento é
-              combinado após a confirmação do pedido.
-            </span>
-          </span>
+      <div className="flex flex-wrap items-end gap-3">
+        <label className="flex flex-col gap-1 text-xs font-semibold text-ink-700">
+          Quantidade
+          <Select
+            value={qty}
+            disabled={!purchasable}
+            onChange={(e) => setQty(Number(e.target.value))}
+            className="w-24"
+          >
+            {Array.from({ length: Math.max(1, Math.min(maxStock, 10)) }, (_, i) => i + 1).map((n) => (
+              <option key={n} value={n}>{n}</option>
+            ))}
+          </Select>
         </label>
-      )}
 
-      <div className="flex flex-col gap-2.5">
-        <Button
-          size="lg"
-          disabled={!purchasable || (versionId !== '' && !compatibleModels)}
-          onClick={onAdd}
-        >
-          <ShoppingCart className="h-5 w-5" aria-hidden="true" />
-          {market === 'EU' && !marketConfig.checkoutEnabled
-            ? 'Checkout europeu em preparação'
-            : !offer
-              ? 'Ainda não disponível neste mercado'
-              : !offer.active || offer.stock === 0
-                ? 'Confirmar disponibilidade'
-                : 'Adicionar ao carrinho'}
-        </Button>
-        {market === 'BR' && product.installable && (
-          <Button href="/instalacao" variant="ghost-dark" size="md">
-            <Wrench className="h-4.5 w-4.5" aria-hidden="true" />
-            Agendar somente instalação
-          </Button>
-        )}
+        {market === 'BR' && product.installable ? (
+          <label className="flex min-h-10 flex-1 cursor-pointer items-center gap-2 rounded-lg border border-surface-200 px-3 py-2 text-sm text-ink-700">
+            <input
+              type="checkbox"
+              checked={install}
+              onChange={(e) => setInstall(e.target.checked)}
+              className="h-4 w-4 accent-ahblue-500"
+            />
+            <Wrench className="h-4 w-4 text-ahorange-500" aria-hidden="true" />
+            Adicionar instalação em Anápolis (+{formatBRL(INSTALLATION_FEE_CENTS)})
+          </label>
+        ) : null}
       </div>
 
-      <p className="flex items-start gap-1.5 text-[11px] leading-relaxed text-ink-500">
-        <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-        {market === 'BR'
-          ? 'Preço de referência, disponibilidade e condições são confirmados antes da captura do pagamento. Em caso de dúvida sobre aplicação ou compatibilidade, confirme com nossa equipe.'
-          : 'A operação europeia está em preparação. Preço em EUR pode ser exibido para itens já pesquisados, mas checkout, disponibilidade e logística permanecem bloqueados até validação.'}
-      </p>
-      <Link href="/legal/pagamentos-e-seguranca" className="text-[11px] text-ahblue-600 hover:underline">
-        Condições de pagamento e segurança
+      <Button
+        type="button"
+        size="lg"
+        className="w-full"
+        disabled={!purchasable || (!compatibleModels && Boolean(versionId))}
+        onClick={onAdd}
+      >
+        <ShoppingCart className="h-5 w-5" aria-hidden="true" />
+        {purchasable ? 'Adicionar ao carrinho' : 'Indisponível para compra agora'}
+      </Button>
+
+      {!purchasable ? (
+        <p className="flex items-start gap-1.5 text-xs leading-relaxed text-ink-500">
+          <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+          {market === 'EU'
+            ? 'O checkout europeu permanece bloqueado enquanto pagamentos, VAT/IVA, logística e devoluções não estiverem homologados.'
+            : 'A oferta permanece visível para pesquisa, mas só é liberada para compra depois da validação de disponibilidade e operação.'}
+        </p>
+      ) : null}
+
+      <Link href="/carrinho" className="text-center text-sm font-semibold text-ahblue-600 hover:underline">
+        Ver carrinho
       </Link>
     </div>
   );
