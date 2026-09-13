@@ -11,7 +11,7 @@ import {
   Wrench,
   Search,
 } from 'lucide-react';
-import { Button, Select } from '@autohub360/ui';
+import { Button, Select, useMarket } from '@autohub360/ui';
 import { track } from '@autohub360/analytics';
 import { useCart } from '@autohub360/commerce';
 import { useFitmentStore } from '@autohub360/vehicle-fitment';
@@ -23,12 +23,16 @@ import {
   describeVehicle,
   fitmentStatus,
   compatibilityVersionIds,
+  resolveProductMarketOffer,
 } from '@autohub360/catalog';
 import { INSTALLATION_FEE_CENTS, formatBRL } from '@autohub360/commerce';
 
 /** PDP buy box: quantity, vehicle compatibility state, product vs + installation. */
 export function ProductBuyBox({ product }: { product: CatalogProduct }) {
   const add = useCart((s) => s.add);
+  const { market, marketConfig } = useMarket();
+  const offer = resolveProductMarketOffer(product, market);
+  const purchasable = Boolean(offer?.active && offer.stock > 0 && marketConfig.checkoutEnabled);
   const [qty, setQty] = useState(1);
   const [install, setInstall] = useState(false);
   const selected = useFitmentStore((s) => s.selected);
@@ -50,11 +54,12 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
   const compatibleModels = useMemo(() => {
     if (product.universal) return true;
     const ids = new Set(compatibilityVersionIds(product));
-    if (!versionId) return true;
+    if (!versionId || ids.size === 0) return true;
     return ids.has(versionId);
   }, [product, versionId]);
 
   function onAdd() {
+    if (!offer || !purchasable) return;
     add(
       {
         productId: product.id,
@@ -62,17 +67,25 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
         title: product.title,
         sku: product.sku,
         imageKey: product.imageKey,
-        unitPriceCents: product.priceCents,
-        compareAtCents: product.compareAtCents,
-        installation: install && product.installable,
-        installable: product.installable,
+        unitPriceCents: offer.priceCents,
+        compareAtCents: offer.compareAtCents,
+        installation: market === 'BR' && install && product.installable,
+        installable: market === 'BR' && product.installable,
         universal: product.universal,
-        maxStock: product.stock,
+        maxStock: offer.stock,
       },
       qty,
     );
-    if (versionId) track('fitment_checked', { item_id: product.id, fitment_status: status, vehicle: describeVehicle(versionId) });
+    if (versionId) {
+      track('fitment_checked', {
+        item_id: product.id,
+        fitment_status: status,
+        vehicle: describeVehicle(versionId),
+      });
+    }
   }
+
+  const maxStock = offer?.stock ?? 0;
 
   return (
     <div className="mt-4 flex flex-col gap-4 border-t border-surface-100 pt-4">
@@ -168,40 +181,42 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
         )}
       </section>
 
-      <div className="flex items-center gap-3">
-        <label htmlFor="qty" className="text-sm font-semibold text-ink-700">
-          Quantidade
-        </label>
-        <div className="flex items-center overflow-hidden rounded-[10px] border border-surface-300">
-          <button
-            type="button"
-            aria-label="Diminuir quantidade"
-            className="h-10 w-10 text-lg font-bold text-ink-700 hover:bg-surface-100 disabled:opacity-40"
-            disabled={qty <= 1}
-            onClick={() => setQty((q) => Math.max(1, q - 1))}
-          >
-            −
-          </button>
-          <input
-            id="qty"
-            readOnly
-            value={qty}
-            aria-label="Quantidade selecionada"
-            className="h-10 w-12 border-x border-surface-300 text-center text-sm font-bold text-ink-900"
-          />
-          <button
-            type="button"
-            aria-label="Aumentar quantidade"
-            className="h-10 w-10 text-lg font-bold text-ink-700 hover:bg-surface-100 disabled:opacity-40"
-            disabled={qty >= product.stock}
-            onClick={() => setQty((q) => Math.min(product.stock, q + 1))}
-          >
-            +
-          </button>
+      {purchasable && (
+        <div className="flex items-center gap-3">
+          <label htmlFor="qty" className="text-sm font-semibold text-ink-700">
+            Quantidade
+          </label>
+          <div className="flex items-center overflow-hidden rounded-[10px] border border-surface-300">
+            <button
+              type="button"
+              aria-label="Diminuir quantidade"
+              className="h-10 w-10 text-lg font-bold text-ink-700 hover:bg-surface-100 disabled:opacity-40"
+              disabled={qty <= 1}
+              onClick={() => setQty((q) => Math.max(1, q - 1))}
+            >
+              −
+            </button>
+            <input
+              id="qty"
+              readOnly
+              value={qty}
+              aria-label="Quantidade selecionada"
+              className="h-10 w-12 border-x border-surface-300 text-center text-sm font-bold text-ink-900"
+            />
+            <button
+              type="button"
+              aria-label="Aumentar quantidade"
+              className="h-10 w-10 text-lg font-bold text-ink-700 hover:bg-surface-100 disabled:opacity-40"
+              disabled={qty >= maxStock}
+              onClick={() => setQty((q) => Math.min(maxStock, q + 1))}
+            >
+              +
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
-      {product.installable && (
+      {market === 'BR' && product.installable && purchasable && (
         <label className="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-ahorange-500/40 bg-ahorange-500/[0.06] p-3.5">
           <input
             type="checkbox"
@@ -226,22 +241,31 @@ export function ProductBuyBox({ product }: { product: CatalogProduct }) {
       <div className="flex flex-col gap-2.5">
         <Button
           size="lg"
-          disabled={product.stock === 0 || (versionId !== '' && !compatibleModels)}
+          disabled={!purchasable || (versionId !== '' && !compatibleModels)}
           onClick={onAdd}
         >
           <ShoppingCart className="h-5 w-5" aria-hidden="true" />
-          {product.stock === 0 ? 'Produto indisponível' : 'Adicionar ao carrinho'}
+          {market === 'EU' && !marketConfig.checkoutEnabled
+            ? 'Checkout europeu em preparação'
+            : !offer
+              ? 'Ainda não disponível neste mercado'
+              : !offer.active || offer.stock === 0
+                ? 'Confirmar disponibilidade'
+                : 'Adicionar ao carrinho'}
         </Button>
-        <Button href="/instalacao" variant="ghost-dark" size="md">
-          <Wrench className="h-4.5 w-4.5" aria-hidden="true" />
-          Agendar somente instalação
-        </Button>
+        {market === 'BR' && product.installable && (
+          <Button href="/instalacao" variant="ghost-dark" size="md">
+            <Wrench className="h-4.5 w-4.5" aria-hidden="true" />
+            Agendar somente instalação
+          </Button>
+        )}
       </div>
 
       <p className="flex items-start gap-1.5 text-[11px] leading-relaxed text-ink-500">
         <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-        Condições de pagamento são apresentadas no checkout. Imagens ilustrativas. Em caso de dúvida
-        sobre aplicação ou compatibilidade, confirme com nossa equipe antes da compra.
+        {market === 'BR'
+          ? 'Preço de referência, disponibilidade e condições são confirmados antes da captura do pagamento. Em caso de dúvida sobre aplicação ou compatibilidade, confirme com nossa equipe.'
+          : 'A operação europeia está em preparação. Preço em EUR pode ser exibido para itens já pesquisados, mas checkout, disponibilidade e logística permanecem bloqueados até validação.'}
       </p>
       <Link href="/legal/pagamentos-e-seguranca" className="text-[11px] text-ahblue-600 hover:underline">
         Condições de pagamento e segurança
