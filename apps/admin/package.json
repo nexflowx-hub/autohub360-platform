@@ -1,6 +1,6 @@
 {
   "name": "@autohub360/admin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev --port 3003",
@@ -10,11 +10,15 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@autohub360/auth": "workspace:*",
     "@autohub360/config": "workspace:*",
+    "@autohub360/integrations": "workspace:*",
     "@autohub360/ui": "workspace:*",
+    "lucide-react": "^0.545.0",
     "next": "^15.5.4",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "15.5.4",

@@ -2,158 +2,16 @@ import type { Metadata, Viewport } from 'next';
 import { cookies } from 'next/headers';
 import { Archivo, Inter } from 'next/font/google';
 import { BR, EU, MARKETS, storeSite, type MarketCode } from '@autohub360/config';
-import {
-  AIWebChat,
-  CookieConsent,
-  MarketProvider,
-  MarketSwitcher,
-  MotionOrchestrator,
-  WhatsAppLauncher,
-} from '@autohub360/ui';
+import { AIWebChat, CookieConsent, MarketProvider, MarketSwitcher, MotionOrchestrator, WhatsAppLauncher } from '@autohub360/ui';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { ServiceWorkerRegister } from '@/components/service-worker-register';
+import { WebTracker } from '@/components/web-tracker';
 import './globals.css';
 
-const archivo = Archivo({
-  subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
-  variable: '--font-archivo',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-export const metadata: Metadata = {
-  metadataBase: new URL(storeSite.url),
-  title: {
-    default: storeSite.title,
-    template: `%s | ${storeSite.name}`,
-  },
-  description: storeSite.description,
-  applicationName: 'AutoHub360 Store',
-  manifest: '/manifest.webmanifest',
-  icons: {
-    icon: [{ url: '/icons/favicon-32.png', sizes: '32x32', type: 'image/png' }],
-    apple: [{ url: '/icons/icon-180.png', sizes: '180x180' }],
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'pt_BR',
-    url: storeSite.url,
-    siteName: storeSite.name,
-    title: storeSite.title,
-    description: storeSite.description,
-    images: [{ url: '/og-store.png', width: 1200, height: 630, alt: 'AutoHub360 Store' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: storeSite.title,
-    description: storeSite.description,
-  },
-  robots: { index: true, follow: true },
-};
-
-export const viewport: Viewport = {
-  themeColor: '#0a1628',
-  width: 'device-width',
-  initialScale: 1,
-};
-
-function marketFromCookie(value?: string): MarketCode {
-  return value === 'EU' ? 'EU' : 'BR';
-}
-
-function storeJsonLd(market: MarketCode) {
-  if (market === 'EU') {
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'OnlineStore',
-      name: 'AutoHub360 Europe',
-      url: storeSite.url,
-      description: storeSite.description,
-      parentOrganization: {
-        '@type': 'Organization',
-        name: EU.operator.legalName,
-        vatID: EU.operator.vat,
-        identifier: EU.operator.siren,
-      },
-      areaServed: 'EU',
-      currenciesAccepted: 'EUR',
-    };
-  }
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'OnlineStore',
-    name: 'AutoHub360 Store',
-    url: storeSite.url,
-    description: storeSite.description,
-    parentOrganization: {
-      '@type': 'Organization',
-      name: BR.registeredName,
-      alternateName: BR.legalName,
-      taxID: BR.cnpj,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: BR.address.street,
-        addressLocality: BR.address.city,
-        addressRegion: BR.address.state,
-        postalCode: BR.address.zip,
-        addressCountry: 'BR',
-      },
-    },
-    areaServed: 'BR',
-    currenciesAccepted: 'BRL',
-  };
-}
-
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = await cookies();
-  const market = marketFromCookie(cookieStore.get('ah_market')?.value);
-  const marketConfig = MARKETS[market];
-  const organizationJsonLd = storeJsonLd(market);
-
-  return (
-    <html lang={marketConfig.locale} className={`${archivo.variable} ${inter.variable}`}>
-      <body className="min-h-screen flex flex-col antialiased">
-        <MarketProvider initialMarket={market}>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-          />
-          <a
-            href="#conteudo"
-            className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
-          >
-            Pular para o conteúdo
-          </a>
-          <div className="border-b border-white/10 bg-[#020b16] text-white">
-            <div className="mx-auto flex min-h-9 max-w-[1380px] items-center justify-between gap-3 px-4 py-1.5 sm:px-6 lg:px-8">
-              <p className="hidden text-[10px] text-slate-400 sm:block">
-                {market === 'BR'
-                  ? 'Operação Brasil · preços em BRL · loja e retirada em Anápolis - GO'
-                  : 'AutoHub360 Europe · catálogo/preços em EUR · checkout europeu em preparação'}
-              </p>
-              <MarketSwitcher className="ml-auto" />
-            </div>
-          </div>
-          <MotionOrchestrator />
-          <Header />
-          <main id="conteudo" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <AIWebChat />
-          <WhatsAppLauncher />
-          <CookieConsent />
-          <ServiceWorkerRegister />
-        </MarketProvider>
-      </body>
-    </html>
-  );
-}
+const archivo=Archivo({subsets:['latin'],weight:['500','600','700','800'],variable:'--font-archivo',display:'swap'});const inter=Inter({subsets:['latin'],variable:'--font-inter',display:'swap'});
+export const metadata:Metadata={metadataBase:new URL(storeSite.url),title:{default:storeSite.title,template:`%s | ${storeSite.name}`},description:storeSite.description,applicationName:'AutoHub360 Store',manifest:'/manifest.webmanifest',icons:{icon:[{url:'/icons/favicon-32.png',sizes:'32x32',type:'image/png'}],apple:[{url:'/icons/icon-180.png',sizes:'180x180'}]},openGraph:{type:'website',locale:'pt_BR',url:storeSite.url,siteName:storeSite.name,title:storeSite.title,description:storeSite.description,images:[{url:'/og-store.png',width:1200,height:630,alt:'AutoHub360 Store'}]},twitter:{card:'summary_large_image',title:storeSite.title,description:storeSite.description},robots:{index:true,follow:true}};
+export const viewport:Viewport={themeColor:'#0a1628',width:'device-width',initialScale:1};
+function marketFromCookie(value?:string):MarketCode{return value==='EU'?'EU':'BR'}
+function storeJsonLd(market:MarketCode){if(market==='EU')return{'@context':'https://schema.org','@type':'OnlineStore',name:'AutoHub360 Europe',url:storeSite.url,description:storeSite.description,parentOrganization:{'@type':'Organization',name:EU.operator.legalName,vatID:EU.operator.vat,identifier:EU.operator.siren},areaServed:'EU',currenciesAccepted:'EUR'};return{'@context':'https://schema.org','@type':'OnlineStore',name:'AutoHub360 Store',url:storeSite.url,description:storeSite.description,parentOrganization:{'@type':'Organization',name:BR.registeredName,alternateName:BR.legalName,taxID:BR.cnpj,address:{'@type':'PostalAddress',streetAddress:BR.address.street,addressLocality:BR.address.city,addressRegion:BR.address.state,postalCode:BR.address.zip,addressCountry:'BR'}},areaServed:'BR',currenciesAccepted:'BRL'};}
+export default async function RootLayout({children}:{children:React.ReactNode}){const cookieStore=await cookies();const market=marketFromCookie(cookieStore.get('ah_market')?.value);const marketConfig=MARKETS[market];const organizationJsonLd=storeJsonLd(market);return <html lang={marketConfig.locale} className={`${archivo.variable} ${inter.variable}`}><body className="min-h-screen flex flex-col antialiased"><MarketProvider initialMarket={market}><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(organizationJsonLd)}}/><a href="#conteudo" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold">Pular para o conteúdo</a><div className="border-b border-white/10 bg-[#020b16] text-white"><div className="mx-auto flex min-h-9 max-w-[1380px] items-center justify-between gap-3 px-4 py-1.5 sm:px-6 lg:px-8"><p className="hidden text-[10px] text-slate-400 sm:block">{market==='BR'?'Operação Brasil · preços em BRL · loja e retirada em Anápolis - GO':'AutoHub360 Europe · catálogo/preços em EUR · checkout europeu em preparação'}</p><MarketSwitcher className="ml-auto"/></div></div><MotionOrchestrator/><WebTracker/><Header/><main id="conteudo" className="flex-1">{children}</main><Footer market={market}/><AIWebChat/><WhatsAppLauncher/><CookieConsent/><ServiceWorkerRegister/></MarketProvider></body></html>}
