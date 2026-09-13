@@ -11,7 +11,7 @@ import {
   Card,
   Container,
   ProductCard,
-  ProductThumb,
+  ProductMediaThumb,
   Section,
   SectionHeader,
 } from '@autohub360/ui';
@@ -46,6 +46,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: product.title,
       description: product.subtitle,
       type: 'website',
+      ...(product.imageUrl
+        ? { images: [{ url: product.imageUrl, alt: product.title }] }
+        : {}),
     },
   };
 }
@@ -61,6 +64,9 @@ export default async function ProductPage({ params }: Props) {
   const complementary = getComplementary(product);
   const faq = productFaq(product, market);
   const publicBadges = product.badges.filter((badge) => badge !== 'Mais vendido');
+  const realMedia = [product.imageUrl, ...(product.galleryUrls ?? [])].filter(
+    (url): url is string => Boolean(url),
+  );
 
   const productJsonLd = {
     '@context': 'https://schema.org',
@@ -70,6 +76,7 @@ export default async function ProductPage({ params }: Props) {
     sku: product.sku,
     brand: { '@type': 'Brand', name: product.brandName },
     category: product.categoryName,
+    ...(realMedia.length > 0 ? { image: realMedia } : {}),
     ...(offer?.active
       ? {
           offers: {
@@ -108,25 +115,30 @@ export default async function ProductPage({ params }: Props) {
         <div className="grid gap-8 pb-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="flex flex-col gap-3">
             <Card className="overflow-hidden p-3">
-              <ProductThumb
+              <ProductMediaThumb
+                imageUrl={realMedia[0]}
                 imageKey={product.imageKey}
                 alt={product.title}
                 size="lg"
                 className="aspect-[4/3] w-full"
               />
             </Card>
-            <div className="grid grid-cols-4 gap-3">
-              {[1, 2, 3, 4].map((i) => (
-                <Card key={i} className="p-1.5 opacity-80 transition-opacity hover:opacity-100">
-                  <ProductThumb
-                    imageKey={product.imageKey}
-                    alt={`${product.title} — visão ${i}`}
-                    size="sm"
-                    className="aspect-square w-full"
-                  />
-                </Card>
-              ))}
-            </div>
+
+            {realMedia.length > 1 && (
+              <div className="grid grid-cols-4 gap-3">
+                {realMedia.slice(0, 4).map((url, index) => (
+                  <Card key={url} className="p-1.5 opacity-90 transition-opacity hover:opacity-100">
+                    <ProductMediaThumb
+                      imageUrl={url}
+                      imageKey={product.imageKey}
+                      alt={`${product.title} — imagem ${index + 1}`}
+                      size="sm"
+                      className="aspect-square w-full"
+                    />
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col gap-4">
