@@ -1,21 +1,51 @@
-import type { CatalogProduct } from '@autohub360/catalog';
+import type { CatalogProduct, CatalogMarket } from '@autohub360/catalog';
 
-/** PDP FAQ — only questions whose answers are visible/true for the product. */
-export function productFaq(product: CatalogProduct) {
+/** PDP FAQ — only questions whose answers are visible/true for the product and selected market. */
+export function productFaq(product: CatalogProduct, market: CatalogMarket = 'BR') {
+  if (market === 'EU') {
+    const faq: Array<{ question: string; answer: string }> = [
+      {
+        question: 'O produto já está disponível para compra na Europa?',
+        answer:
+          'Nem sempre. A AutoHub360 Europe já pesquisa e estrutura preços em EUR, mas checkout, disponibilidade, logística, devoluções e obrigações por mercado permanecem bloqueados até a homologação comercial de cada SKU.',
+      },
+      {
+        question: 'O preço em EUR é definitivo?',
+        answer:
+          'Não enquanto a oferta estiver em preparação. O valor exibido é uma referência de sourcing e deve ser reconfirmado junto com disponibilidade, impostos aplicáveis e logística antes de uma compra ser habilitada.',
+      },
+      {
+        question: 'Como funcionará a garantia e devolução na Europa?',
+        answer:
+          'As condições serão publicadas por mercado antes da ativação do checkout europeu, respeitando a legislação de consumo aplicável ao país de venda e a política do operador europeu.',
+      },
+    ];
+
+    if (!product.universal) {
+      faq.push({
+        question: 'Como sei se é compatível com o meu veículo?',
+        answer:
+          'Use as especificações técnicas como referência e confirme a aplicação com nossa equipe antes da compra. A base de compatibilidade está em expansão e não substitui a verificação do veículo e do componente.',
+      });
+    }
+    return faq;
+  }
+
   const faq: Array<{ question: string; answer: string }> = [
     {
       question: 'O produto acompanha garantia?',
-      answer: `Sim: ${product.warrantyMonths} meses de garantia contratual, além da garantia legal de 90 dias para vícios ocultos prevista no Código de Defesa do Consumidor.`,
+      answer:
+        'Aplicam-se os direitos previstos na legislação brasileira e eventual garantia contratual do fabricante ou importador somente quando ela estiver identificada e confirmada para o SKU adquirido.',
     },
     {
       question: 'Vocês entregam no meu endereço?',
       answer:
-        'Enviamos para todo o Brasil. O prazo e o valor do frete são calculados no carrinho a partir do seu CEP, e você também pode optar por retirada em Anápolis - GO quando o item estiver disponível localmente.',
+        'A entrega nacional depende da homologação logística e disponibilidade do SKU. Quando a oferta estiver ativa, o prazo e o valor serão informados no carrinho; retirada em Anápolis - GO poderá ser oferecida para itens disponíveis localmente.',
     },
     {
       question: 'Posso devolver se me arrepender?',
       answer:
-        'Sim. Você tem até 7 dias corridos após o recebimento para se arrepender de compras feitas fora do estabelecimento comercial (art. 49 do CDC), sem custo. Basta acionar trocas@autohub360.store com o número do pedido.',
+        'Nas compras online elegíveis, aplicam-se os direitos de arrependimento previstos na legislação brasileira. As instruções e condições ficam publicadas na política de trocas e devoluções do site.',
     },
   ];
 
@@ -23,7 +53,7 @@ export function productFaq(product: CatalogProduct) {
     faq.push({
       question: 'Como funciona a instalação em Anápolis?',
       answer:
-        'Adicione a opção "Produto + instalação" e finalize o pedido. Nossa equipe confirma o agendamento com o parceiro oficial Generoso Auto Center em Anápolis - GO por WhatsApp, conforme sua disponibilidade.',
+        'Quando o serviço estiver disponível para o SKU, a equipe confirma produto, veículo, valor e agendamento com o parceiro oficial em Anápolis - GO antes da execução.',
     });
   }
 
@@ -31,7 +61,7 @@ export function productFaq(product: CatalogProduct) {
     faq.push({
       question: 'Como sei se é compatível com o meu veículo?',
       answer:
-        'Use o seletor de compatibilidade na página do produto informando marca, modelo e versão. Nossa base estruturada confirma o encaixe correto; em caso de dúvida, a equipe responde pelo WhatsApp com o seu veículo informado.',
+        'Use o seletor como consulta inicial e confirme as especificações do produto e do veículo antes da compra ou instalação. Em caso de dúvida, a equipe valida pelo WhatsApp.',
     });
   }
 
