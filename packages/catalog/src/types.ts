@@ -46,8 +46,14 @@ export interface Product {
   subtitle: string;
   description: string;
   specs: ProductSpec[];
-  /** Category-themed placeholder key; real media can override it in the DB-backed catalog. */
+  /** Category-themed fallback key used only when a real product image cannot be rendered. */
   imageKey: string;
+  /** Verified product/supplier image used by cards, PDP and cart. */
+  imageUrl?: string;
+  /** Additional verified media. The primary image does not need to be repeated here. */
+  galleryUrls?: string[];
+  /** Public page from which the media was validated; operational provenance only. */
+  imageSourceUrl?: string;
   /** Base BR offer kept for backwards compatibility with the bundled catalog. */
   priceCents: number;
   compareAtCents?: number;
