@@ -5,9 +5,8 @@ import {
   INSTALLATION_FEE_CENTS,
   formatBRL,
 } from '@autohub360/commerce';
-import {
-  getProductsByIds,
-} from '@autohub360/catalog/server';;
+import { resolveProductMarketOffer } from '@autohub360/catalog';
+import { getProductsByIds } from '@autohub360/catalog/server';
 import {
   getEmailAdapter,
   getPaymentAdapter,
@@ -22,7 +21,7 @@ export const runtime = 'nodejs';
 const COUPON_CODE = 'AUTOHUB10';
 const COUPON_MIN_SUBTOTAL_CENTS = 20000;
 
-/** Never trust client prices: all monetary values are recomputed from the catalog here. */
+/** Never trust client prices or availability: both are recomputed from the BR commercial offer. */
 export async function POST(request: Request) {
   const ip = clientIp(request.headers);
   const limit = rateLimit(`checkout:${ip}`, 5, 60_000);
@@ -49,9 +48,12 @@ export async function POST(request: Request) {
   }
   const payload = parsed.data;
 
-  // ===== Server-side totals from catalog data =====
+  // ===== Server-side totals + commercial availability from catalog data =====
   const products = getProductsByIds(payload.items.map((i) => i.productId));
   const byId = new Map(products.map((p) => [p.id, p]));
+  const offersById = new Map(
+    products.map((product) => [product.id, resolveProductMarketOffer(product, 'BR')]),
+  );
 
   let subtotalCents = 0;
   let installationCents = 0;
@@ -63,13 +65,22 @@ export async function POST(request: Request) {
         { status: 409 },
       );
     }
-    if (product.stock <= 0) {
+
+    const offer = offersById.get(item.productId);
+    if (!offer?.active || offer.stock <= 0) {
       return NextResponse.json(
-        { ok: false, error: `Produto sem estoque: ${product.title}.` },
+        { ok: false, error: `Produto indisponível para compra: ${product.title}.` },
         { status: 409 },
       );
     }
-    subtotalCents += product.priceCents * item.quantity;
+    if (item.quantity > offer.stock) {
+      return NextResponse.json(
+        { ok: false, error: `Quantidade indisponível para ${product.title}. Máximo atual: ${offer.stock}.` },
+        { status: 409 },
+      );
+    }
+
+    subtotalCents += offer.priceCents * item.quantity;
     if (item.installation && product.installable) {
       installationCents += INSTALLATION_FEE_CENTS * item.quantity;
     }
@@ -181,17 +192,17 @@ export async function POST(request: Request) {
       .single();
 
     if (orderError || !orderRow) {
-      // DB configured but insert failed — log and fall back to the demo response path.
       console.error('[checkout] order insert failed:', orderError?.message);
     } else {
       demo = false;
       const items = payload.items.map((item) => {
         const product = byId.get(item.productId)!;
+        const offer = offersById.get(item.productId)!;
         return {
           order_id: orderRow.id,
           title: product.title,
           sku: product.sku,
-          unit_price_cents: product.priceCents,
+          unit_price_cents: offer!.priceCents,
           quantity: item.quantity,
           installation: item.installation && product.installable,
         };
