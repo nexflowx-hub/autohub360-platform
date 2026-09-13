@@ -1,10 +1,19 @@
 import type { CatalogMarket, Product, ProductMarketOffer } from './types';
 
 /**
- * Temporary bundled mirror of validated DB preview offers.
- * Supabase remains the source of truth; this keeps the static storefront market-aware
- * until the catalog datasource is fully DB-backed.
+ * Bundled commercial mirror for sourced products while the storefront catalog remains static.
+ * Supabase is the operational source of truth. Only SKUs with recently observed supplier stock
+ * and a conservative AutoHub availability buffer are enabled here.
  */
+const BR_VERIFIED_OFFERS: Record<string, Pick<ProductMarketOffer, 'stock' | 'active'>> = {
+  'SRC-BR-TAG-001': { stock: 3, active: true },
+  'SRC-BR-PARK-001': { stock: 3, active: true },
+  'SRC-BR-PARK-002': { stock: 3, active: true },
+  'SRC-BR-CHG-001': { stock: 3, active: true },
+  'SRC-BR-CHG-002': { stock: 3, active: true },
+  'SRC-BR-ENE-002': { stock: 3, active: true },
+};
+
 const EU_PREVIEW_OFFERS: Record<string, ProductMarketOffer> = {
   'SRC-BR-CAM-002': {
     market: 'EU',
@@ -24,8 +33,8 @@ const EU_PREVIEW_OFFERS: Record<string, ProductMarketOffer> = {
 
 /**
  * Resolves the commercial offer for a product in a market.
- * Newly sourced SRC-* records intentionally stay non-purchasable until fulfillment, invoice,
- * packaging and supplier availability have been verified for that SKU.
+ * Sourced products are purchasable only when their SKU is explicitly mirrored from verified
+ * operational inventory. Unknown/unverified supplier availability stays visible but unavailable.
  */
 export function resolveProductMarketOffer(
   product: Product,
@@ -35,14 +44,25 @@ export function resolveProductMarketOffer(
   if (override) return override;
 
   if (market === 'BR') {
-    const sourcedPreview = product.sku.startsWith('SRC-');
+    if (product.sku.startsWith('SRC-')) {
+      const verified = BR_VERIFIED_OFFERS[product.sku];
+      return {
+        market: 'BR',
+        currency: product.currency,
+        priceCents: product.priceCents,
+        compareAtCents: product.compareAtCents,
+        stock: verified?.stock ?? 0,
+        active: verified?.active ?? false,
+      };
+    }
+
     return {
       market: 'BR',
       currency: product.currency,
       priceCents: product.priceCents,
       compareAtCents: product.compareAtCents,
-      stock: sourcedPreview ? 0 : product.stock,
-      active: !sourcedPreview,
+      stock: product.stock,
+      active: product.stock > 0,
     };
   }
 
