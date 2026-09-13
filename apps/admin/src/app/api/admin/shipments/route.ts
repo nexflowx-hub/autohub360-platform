@@ -1,8 +1,22 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { supabaseServiceRole } from '@autohub360/auth/server';
 import { hasAdminSession } from '@/lib/admin-session';
+import { backendAdminFetch } from '@/lib/backend-admin';
 
 export const runtime='nodejs';
 const schema=z.object({shipment:z.string().trim().min(3).max(120),status:z.enum(['created','labeled','in_transit','out_for_delivery','delivered','exception','returned']),title:z.string().trim().min(2).max(120),description:z.string().trim().max(800).optional(),location:z.string().trim().max(160).optional()});
-export async function POST(request:Request){if(!(await hasAdminSession()))return NextResponse.json({ok:false,error:'Não autorizado.'},{status:401});const parsed=schema.safeParse(await request.json().catch(()=>null));if(!parsed.success)return NextResponse.json({ok:false,error:'Dados inválidos.'},{status:422});const db=supabaseServiceRole();if(!db)return NextResponse.json({ok:false,error:'Supabase não configurado.'},{status:503});const q=parsed.data.shipment;let {data:shipment}=await db.from('shipments').select('id,public_code,tracking_code').eq('public_code',q.toUpperCase()).maybeSingle();if(!shipment){const r=await db.from('shipments').select('id,public_code,tracking_code').eq('tracking_code',q).maybeSingle();shipment=r.data;}if(!shipment)return NextResponse.json({ok:false,error:'Expedição não encontrada.'},{status:404});const {error}=await db.from('shipment_events').insert({shipment_id:shipment.id,event_code:parsed.data.status,status:parsed.data.status,title:parsed.data.title,description:parsed.data.description||null,location:parsed.data.location||null,occurred_at:new Date().toISOString()});if(error)return NextResponse.json({ok:false,error:error.message},{status:500});return NextResponse.json({ok:true,publicCode:shipment.public_code});}
+
+type BackendResponse={success:boolean;publicCode?:string;error?:string};
+
+export async function POST(request:Request){
+  if(!(await hasAdminSession()))return NextResponse.json({ok:false,error:'Não autorizado.'},{status:401});
+  const parsed=schema.safeParse(await request.json().catch(()=>null));
+  if(!parsed.success)return NextResponse.json({ok:false,error:'Dados inválidos.'},{status:422});
+  try{
+    const data=await backendAdminFetch<BackendResponse>('/api/v1/admin/shipments/events',{method:'POST',body:JSON.stringify({shipment:parsed.data.shipment,status:parsed.data.status,eventCode:parsed.data.status,title:parsed.data.title,description:parsed.data.description||undefined,location:parsed.data.location||undefined})});
+    return NextResponse.json({ok:true,publicCode:data.publicCode});
+  }catch(error){
+    const status=typeof error==='object'&&error&&'status' in error?Number((error as {status?:number}).status||500):500;
+    return NextResponse.json({ok:false,error:status===404?'Expedição não encontrada.':'Falha no backend AutoHub360.'},{status});
+  }
+}
