@@ -173,3 +173,8 @@ export function getArticles(): Article[] {
 export function getArticle(slug: string): Article | undefined {
   return seedArticles.find((a) => a.slug === slug);
 }
+
+
+// Generic multi-storefront Commerce Core bridge.
+export { getSharedStorefrontCatalog } from './shared-storefront';
+export type { SharedStorefrontListing } from './shared-storefront';
